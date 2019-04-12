@@ -1,11 +1,11 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <h2>Sense Hat Data</h2>
-CPU Temp: {{ senseHatData.cpuTemp }}<br/>
-Temperature: {{ senseHatData.temperature }}<br/>
-Pressure: {{ senseHatData.pressure }}<br/>
-Temp from Pressure Sensor: {{ senseHatData.temperatureFromPressure }} <br/>
-Humidity: {{ senseHatData.humidity }} <br/>
+CPU Temp: {{ celsiusToFahrenheit senseHatData.cpuTemp }} F<br/>
+Temperature: {{ celsiusToFahrenheit senseHatData.temperature }} F<br/>
+Pressure: {{ mbarToInHg senseHatData.pressure }} inHg <br/>
+Temp from Pressure Sensor: {{ celsiusToFahrenheit senseHatData.temperatureFromPressure }} F<br/>
+Humidity: {{ senseHatData.humidity }}%<br/>
 Pitch: {{ senseHatData.pitch }}<br/>
 Roll: {{ senseHatData.roll }}<br/>
 Yaw: {{ senseHatData.yaw }}
