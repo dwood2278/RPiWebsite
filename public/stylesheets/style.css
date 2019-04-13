@@ -5,3 +5,7 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* Vue Styles */
+[v-cloak] > * { display:none }
+[v-cloak]::before { content: "loading…" }
