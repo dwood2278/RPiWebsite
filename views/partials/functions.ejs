@@ -1,0 +1,12 @@
+<!-- Common utility functions for use by EJS templates -->
+<%
+    //Convert celsius to Fahrenheit
+    celsiusToFahrenheit = function (celsiusTemp) {
+        return (celsiusTemp * 9/5) + 32;
+    }
+
+    mbarToInHg = function (mbarPressure) {
+        return mbarPressure / 33.864;
+    }
+
+%>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/head %>
+    </head>
+    <body>
+        <header>
+            <% include ../partials/header %>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h1><%= title %></h1>
+                        <p>Welcome to <%= title %></p>
+                        <h2>Sense Hat Data</h2>
+                        CPU Temp: <%= celsiusToFahrenheit(senseHatData.cpuTemp).toFixed(1) %> F<br/>
+                        Temperature: <%= celsiusToFahrenheit(senseHatData.temperature).toFixed(1) %> F<br/>
+                        Pressure: <%= mbarToInHg(senseHatData.pressure).toFixed(2) %> inHg <br/>
+                        Temp from Pressure Sensor: <%= celsiusToFahrenheit(senseHatData.temperatureFromPressure).toFixed(1) %> F<br/>
+                        Humidity: <%= senseHatData.humidity.toFixed(1) %>%<br/>
+                        Pitch: <%= senseHatData.pitch.toFixed(1) %><br/>
+                        Roll: <%= senseHatData.roll.toFixed(1) %><br/>
+                        Yaw: <%= senseHatData.yaw.toFixed(1) %>
+                    </div>
+                </div>
+            </div>  
+        </main>
+    </body>
+    <footer>
+            <% include ../partials/footer %>
+    </footer>
+</html>

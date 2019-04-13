@@ -9,7 +9,7 @@ exports.index = function (req, res, next) {
 
     //Use the promise to render the page on success
     senseHatDataPromise.then(function(result) {
-        res.render('index', { title: 'Galileo', senseHatData: result});
+        res.render('pages/index', { title: 'Galileo', senseHatData: result});
     },
     function(err) {
         console.log(err);
