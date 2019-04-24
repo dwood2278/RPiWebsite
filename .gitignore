@@ -1,6 +1,9 @@
 #node_modules
 node_modules/
 
+#Database Connection folder
+db_connection/
+
 # OS generated files
 .DS_Store
 .DS_Store?
