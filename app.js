@@ -14,11 +14,14 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+//Set up static routes
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/favicon.ico', express.static(path.join(__dirname, 'public/images/favicon.ico')));
 
+//Set up routers
 app.use('/', indexRouter);
 app.use('/sensehatapi', senseHatApiRouter);
 app.use('/login', loginRouter);
