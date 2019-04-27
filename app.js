@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var senseHatApiRouter = require('./routes/senseHatApi')
 var loginRouter = require('./routes/login');
+var initDatabase = require('./DAL/initdb');
 
 var app = express();
 
@@ -41,5 +42,8 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('pages/error', {title: 'Error'});
 });
+
+//Verify the database is there, and initialize if it isn't set up right.
+initDatabase.verifyAndInitDatabase();
 
 module.exports = app;

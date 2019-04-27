@@ -4,7 +4,7 @@ var router = express.Router();
 //Require controller
 index_controller = require('../controllers/indexController');
 
-/* GET home page. */
+// GET home page.
 router.get('/', index_controller.index);
 
 module.exports = router;

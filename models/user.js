@@ -6,4 +6,12 @@ function User() {
     this.password = "";
 }
 
+User.prototype.create = function () {
+
+};
+
+User.prototype.update = function () {
+
+};
+
 module.exports = User;
