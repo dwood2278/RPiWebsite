@@ -42,6 +42,7 @@ app.use(function(err, req, res, next) {
     res.render('pages/error', {title: 'Error'});
 });
 
-const { User } = require('./initOrmModels')
+//Initialize the models on application load.
+const { User } = require('./initOrmModels');
 
 module.exports = app;

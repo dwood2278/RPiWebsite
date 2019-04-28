@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {  
     const User = sequelize.define('user', {
         id: {
@@ -25,6 +27,35 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             required: true
         }
+    },{
+        hooks: {
+            beforeCreate: (user, options) => {
+                user.password  = bcrypt.hashSync(user.password, 10);
+            },
+            beforeBulkCreate: (user, options) => {
+                user.password  = bcrypt.hashSync(user.password, 10);
+            },
+            beforeUpdate: (user, options) => {
+                user.password  = bcrypt.hashSync(user.password, 10);
+            },
+            beforeBulkUpdate: (user, options) => {
+                user.password  = bcrypt.hashSync(user.password, 10);
+            }
+        }
     });
+
+    User.authenticate = function (userName, password) {
+
+        console.log('Authenticate');
+
+        /*const user = User.findOne({ where: { userName: userName } });
+
+        if (bcrypt.compareSync(password, user.password)) {
+            return user;
+        } else {
+            return null;
+        }*/
+    }
+
     return User;
 };
