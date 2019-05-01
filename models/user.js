@@ -46,15 +46,24 @@ module.exports = (sequelize, DataTypes) => {
 
     User.authenticate = function (userName, password) {
 
-        console.log('Authenticate');
+        //Wrap it in a promise since this calls async methods.
+        return new Promise(function(resolve, reject) {
 
-        /*const user = User.findOne({ where: { userName: userName } });
-
-        if (bcrypt.compareSync(password, user.password)) {
-            return user;
-        } else {
-            return null;
-        }*/
+            User.findOne({ where: { userName: userName } }).then(function(user) {
+            
+                if (user != undefined) {
+                    bcrypt.compare(password, user.password, function(err, authenticated) {
+                        if (authenticated) {
+                            resolve(user);
+                        } else {
+                            resolve(undefined);
+                        }
+                    });
+                } else {
+                    resolve(undefined);
+                }   
+            });
+        });
     }
 
     return User;

@@ -2,15 +2,24 @@ const { User } = require('../initOrmModels');
 
 //Login page
 exports.login = function (req, res, next) {
-    res.render('pages/login/login', { title: 'Login' });
+    res.render('pages/login/login', {
+        title: 'Login'
+    });
 };
 
 exports.login_post = function (req, res, next) {
 
     //Authenticate the user
-    var authenticatedUser = User.authenticate(req.txtUserName, req.txtPassword);
-
-    res.render('pages/login/login', { title: 'Login' });
+    User.authenticate(req.body.txtUserName, req.body.txtPassword).then(function(user) {
+        if (user != undefined) {
+            res.redirect('/');
+        } else {
+            res.render('pages/login/login', {
+                title: 'Login',
+                body: req.body
+            });
+        }
+    });
 };
 
 //Registration Page
