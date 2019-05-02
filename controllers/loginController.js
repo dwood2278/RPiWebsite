@@ -12,6 +12,7 @@ exports.login_post = function (req, res, next) {
     //Authenticate the user
     User.authenticate(req.body.txtUserName, req.body.txtPassword).then(function(user) {
         if (user != undefined) {
+            req.session.user = user;
             res.redirect('/');
         } else {
             res.render('pages/login/login', {
