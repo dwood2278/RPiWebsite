@@ -2,7 +2,7 @@ const { User } = require('../initOrmModels');
 
 //Login page
 exports.login = function (req, res, next) {
-    res.render('pages/login/login', {
+    res.render('pages/login', {
         title: 'Login'
     });
 };
@@ -15,9 +15,10 @@ exports.login_post = function (req, res, next) {
             req.session.user = user;
             res.redirect('/');
         } else {
-            res.render('pages/login/login', {
+            res.render('pages/login', {
                 title: 'Login',
-                body: req.body
+                body: req.body,
+                authError: "Invalid username or password."
             });
         }
     });
@@ -25,7 +26,7 @@ exports.login_post = function (req, res, next) {
 
 //Registration Page
 exports.register = function (req, res, next) {
-    res.render('pages/login/register', { title: 'Register' });
+    res.render('pages/register', { title: 'Register' });
 };
 
 exports.register_post = function (req, res, next) {
@@ -40,7 +41,7 @@ exports.register_post = function (req, res, next) {
         userName: req.body.txtUserName,
         password: req.body.txtPassword
     }).then(
-        res.render('pages/login/register', { title: 'Register' })
+        res.render('pages/register', { title: 'Register' })
     );
 
 };

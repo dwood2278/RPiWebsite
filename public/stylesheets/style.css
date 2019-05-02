@@ -9,3 +9,13 @@ a {
 /* Vue Styles */
 [v-cloak] > * { display:none }
 [v-cloak]::before { content: "loading…" }
+
+/* Error styles */
+.error-text {
+    color: red;
+}
+
+.invalid-field {
+    border-color: red;
+    box-shadow: 0px 0px 10px red;
+}
