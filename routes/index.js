@@ -13,8 +13,15 @@ router.get('/', authorization.isUserAuthenticated, index_controller.index);
 router.get('/login', user_controller.login);
 router.post('/login', user_controller.login_post);
 
+//Logout page
+router.get('/logout', user_controller.logout)
+
+//Change password page.
+router.get('/changePassword', authorization.isUserAuthenticated, user_controller.changePassword);
+router.post('/changePassword', authorization.isUserAuthenticated, user_controller.changePassword_post);
+
 //Registration page.
-router.get('/register', user_controller.register);
-router.post('/register', user_controller.register_post);
+router.get('/createUser', [authorization.isUserAuthenticated, authorization.isUserAdmin], user_controller.createUser);
+router.post('/createUser', [authorization.isUserAuthenticated, authorization.isUserAdmin], user_controller.createUser_post);
 
 module.exports = router;

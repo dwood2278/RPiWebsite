@@ -5,6 +5,7 @@ exports.isUserAuthenticated = function (req, res, next) {
         return next();
     } else {
         //Redirect to the login if they aren't logged in.
+        req.session.loginRedirectUrl = req.url
         res.redirect('/login');
     }
 };
@@ -12,9 +13,15 @@ exports.isUserAuthenticated = function (req, res, next) {
 //See if the user is an admin
 exports.isUserAdmin = function (req, res, next) {
     if (req.session && req.session.user) {
-        return next();
+        if (req.session.user.isAdmin) {
+            return next();
+        } else {
+            var err = new Error('You are not authorized to view this page.');
+            err.status = 401;
+            return next(err);
+        }
     } else {
-        var err = new Error('You must be logged in to view this page.');
+        var err = new Error('You are not authorized to view this page.');
         err.status = 401;
         return next(err);
     }

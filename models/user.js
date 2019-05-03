@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             required: false
         },
+        middleName: {
+            type: DataTypes.STRING,
+            required: false
+        },
         lastName: {
             type: DataTypes.STRING,
             required: false
@@ -25,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         }, 
         password: {
             type: DataTypes.STRING,
+            required: true
+        },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
             required: true
         }
     },{
@@ -44,6 +52,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
+    //Authenticate username and password.
     User.authenticate = function (userName, password) {
 
         //Wrap it in a promise since this calls async methods.
@@ -63,6 +72,18 @@ module.exports = (sequelize, DataTypes) => {
                     resolve(undefined);
                 }   
             });
+        });
+    }
+
+    //Verify the password.
+    User.verifyPassword = function (user, password) {
+
+         //Wrap it in a promise since this calls async methods.
+         return new Promise(function(resolve, reject) {
+            bcrypt.compare(password, user.password, function(err, verified) {
+                resolve(verified);
+            });  
+           
         });
     }
 

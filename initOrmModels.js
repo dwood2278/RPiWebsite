@@ -20,7 +20,8 @@ User.count({ where: { userName: 'admin' } }).then(count => {
             firstName: 'Admin',
             lastName: 'User',
             userName: 'admin',
-            password: 'admin'
+            password: 'admin',
+            isAdmin: true
         })
         .then(newUser => {
             console.log(`New user ${newUser.userName} has been created.`);
