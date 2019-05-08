@@ -32,7 +32,7 @@ exports.login_post = function (req, res, next) {
                 title: 'Login',
                 session: req.session,
                 body: req.body,
-                hasAuthError: true
+                errorMessage: "Invalid username or password."
             });
         }
     });
@@ -48,21 +48,27 @@ exports.changePassword = function (req, res, next) {
 
 exports.changePassword_post = function (req, res, next) {
 
-    var user = req.session.user;
-    console.log(user);
-    //Verify the password
-    User.verifyPassword(user, req.body.txtCurrentPassword).then(function(isPasswordVerified) {
-        if (isPasswordVerified){
-            res.render('pages/changePassword', {
-                title: 'Change Password',
-                session: req.session
-            });
-        } else {
-            res.render('pages/changePassword', {
-                title: 'Change Password',
-                session: req.session
-            });
-        }
+    User.findByPk(req.session.user.id).then(user => {
+        //Verify the password
+        user.verifyPassword(req.body.txtCurrentPassword).then(function(isPasswordVerified) {
+            if (isPasswordVerified){
+                user.update({
+                    password: req.body.txtNewPassword
+                }).then(user => {
+                    res.render('pages/changePassword', {
+                        title: 'Change Password',
+                        session: req.session,
+                        passwordChangeSuccess: true
+                    });
+                });
+            } else {
+                res.render('pages/changePassword', {
+                    title: 'Change Password',
+                    session: req.session,
+                    errorMessage: "Invalid current password."
+                });
+            }
+        });
     });
 }
 
@@ -71,7 +77,7 @@ exports.logout = function (req, res, next) {
     if (req.session) {
         //Logout by destroying the session
         req.session.destroy(function(err) {
-            if(err) {
+            if (err) {
                 return next(err);
             } else {
                 return res.redirect('/login');

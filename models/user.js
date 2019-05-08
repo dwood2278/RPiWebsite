@@ -76,7 +76,10 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     //Verify the password.
-    User.verifyPassword = function (user, password) {
+    User.prototype.verifyPassword = function (password) {
+
+        //Declare user object so it is scoped correctly in promise.
+        var user = this;
 
          //Wrap it in a promise since this calls async methods.
          return new Promise(function(resolve, reject) {
