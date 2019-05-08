@@ -20,7 +20,7 @@ User.count({ where: { userName: 'admin' } }).then(count => {
             firstName: 'Admin',
             lastName: 'User',
             userName: 'admin',
-            password: 'admin',
+            password: User.hashPassword('admin'),
             isAdmin: true
         })
         .then(newUser => {

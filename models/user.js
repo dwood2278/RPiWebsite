@@ -35,21 +35,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             required: true
         }
-    },{
-        hooks: {
-            beforeCreate: (user, options) => {
-                user.password  = bcrypt.hashSync(user.password, 10);
-            },
-            beforeBulkCreate: (user, options) => {
-                user.password  = bcrypt.hashSync(user.password, 10);
-            },
-            beforeUpdate: (user, options) => {
-                user.password  = bcrypt.hashSync(user.password, 10);
-            },
-            beforeBulkUpdate: (user, options) => {
-                user.password  = bcrypt.hashSync(user.password, 10);
-            }
-        }
     });
 
     //Authenticate username and password.
@@ -73,6 +58,11 @@ module.exports = (sequelize, DataTypes) => {
                 }   
             });
         });
+    }
+
+    //Hash a password.
+    User.hashPassword = function (password) {
+        return bcrypt.hashSync(password, 10);
     }
 
     //Verify the password.

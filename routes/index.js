@@ -20,6 +20,10 @@ router.get('/logout', user_controller.logout)
 router.get('/changePassword', authorization.isUserAuthenticated, user_controller.changePassword);
 router.post('/changePassword', authorization.isUserAuthenticated, user_controller.changePassword_post);
 
+//Edit user page
+router.get('/editUser', authorization.isUserAuthenticated, user_controller.editUser);
+router.post('/editUser', authorization.isUserAuthenticated, user_controller.editUser_post);
+
 //Registration page.
 router.get('/createUser', [authorization.isUserAuthenticated, authorization.isUserAdmin], user_controller.createUser);
 router.post('/createUser', [authorization.isUserAuthenticated, authorization.isUserAdmin], user_controller.createUser_post);

@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 const { User } = require('../initOrmModels');
 
 //Login page
@@ -38,6 +41,20 @@ exports.login_post = function (req, res, next) {
     });
 };
 
+//Logout (no page, redirects to login)
+exports.logout = function (req, res, next) {
+    if (req.session) {
+        //Logout by destroying the session
+        req.session.destroy(function(err) {
+            if (err) {
+                return next(err);
+            } else {
+                return res.redirect('/login');
+            }
+        });
+    }
+}
+
 //Password change page.
 exports.changePassword = function (req, res, next) {
     res.render('pages/changePassword', {
@@ -53,8 +70,9 @@ exports.changePassword_post = function (req, res, next) {
         user.verifyPassword(req.body.txtCurrentPassword).then(function(isPasswordVerified) {
             if (isPasswordVerified){
                 user.update({
-                    password: req.body.txtNewPassword
+                    password: User.hashPassword(req.body.txtNewPassword)
                 }).then(user => {
+                    req.session.user = user;
                     res.render('pages/changePassword', {
                         title: 'Change Password',
                         session: req.session,
@@ -72,18 +90,54 @@ exports.changePassword_post = function (req, res, next) {
     });
 }
 
-//Logout (no page, redirects to login)
-exports.logout = function (req, res, next) {
-    if (req.session) {
-        //Logout by destroying the session
-        req.session.destroy(function(err) {
-            if (err) {
-                return next(err);
-            } else {
-                return res.redirect('/login');
+//Edit the user profile
+exports.editUser = function (req, res, next) {
+    res.render('pages/editUser', {
+        title: 'Edit User',
+        session: req.session
+    });
+}
+
+exports.editUser_post = function (req, res, next) {
+
+    //Verify the username isn't taken by someone else.
+    User.count({
+        where: {
+            userName: req.body.txtUserName,
+            [Op.not]: {
+                id: req.session.user.id
             }
-        });
-    }
+        }
+    }).then(count => {
+        if (count == 0 ){
+
+            //No users match, update the record
+            User.findByPk(req.session.user.id).then(user => {
+
+                user.update({
+                    firstName: req.body.txtfirstName,
+                    middleName: req.body.txtMiddleName,
+                    lastName: req.body.txtLastName,
+                    email: req.body.txtEmail,
+                    userName: req.body.txtUserName
+                }).then(user => {
+                    req.session.user = user;
+                    res.render('pages/editUser', {
+                        title: 'Edit User',
+                        session: req.session,
+                        userChangeSuccess: true
+                    });
+                });
+            });
+        } else {
+            // at least one user matches, display error.
+            res.render('pages/editUser', {
+                title: 'Edit User',
+                session: req.session,
+                errorMessage: "The username &quot;" + req.body.txtUserName + "&quot; is already taken, please choose another."
+            });
+        }
+    });
 }
 
 //Create user page
