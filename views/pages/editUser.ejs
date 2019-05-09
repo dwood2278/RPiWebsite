@@ -6,7 +6,7 @@
     <body>
         <% include ../partials/header %>
         <main>
-            <form action="/editUser" method="POST">
+            <form action="/users/editUser" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -78,7 +78,7 @@
                                                     <span v-show="!fieldIsValid.userName" class="error-text">*</span>
                                                 </label>
                                                 <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtUserName" v-bind:class="{ 'invalid-field': !fieldIsValid.userName }" :disabled="userName == 'admin'" v-model="userName">
+                                                    <input type="text" class="form-control" name="txtUserName" v-bind:class="{ 'invalid-field': !fieldIsValid.userName }" :readonly="userName == 'admin'" v-model="userName">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <a href="/editUser">Update the profile.</a>
+                                                    <a href="/users/editUser">Update the profile.</a>
                                                 </div>
                                             </div>
                                         <% } %>
@@ -107,11 +107,11 @@
                                 var editUserApp = new Vue({
                                     el: '#editUserApp',
                                     data: {
-                                        firstName: '<%= session.user.firstName %>',
-                                        middleName: '<%= session.user.middleName %>',
-                                        lastName: '<%= session.user.lastName %>',
-                                        email: '<%= session.user.email %>',
-                                        userName: '<%= session.user.userName %>',
+                                        firstName: '<%= user.firstName %>',
+                                        middleName: '<%= user.middleName %>',
+                                        lastName: '<%= user.lastName %>',
+                                        email: '<%= user.email %>',
+                                        userName: '<%= user.userName %>',
                                         fieldIsValid: {
                                             firstName: true,
                                             middleName: true,

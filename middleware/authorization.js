@@ -5,7 +5,7 @@ exports.isUserAuthenticated = function (req, res, next) {
         return next();
     } else {
         //Redirect to the login if they aren't logged in.
-        req.session.loginRedirectUrl = req.url
+        req.session.loginRedirectUrl = req.originalUrl
         res.redirect('/login');
     }
 };

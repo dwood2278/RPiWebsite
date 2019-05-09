@@ -33,7 +33,7 @@ exports.login_post = function (req, res, next) {
         } else {
             res.render('pages/login', {
                 title: 'Login',
-                session: req.session,
+                user: req.session.user,
                 body: req.body,
                 errorMessage: "Invalid username or password."
             });
@@ -59,7 +59,7 @@ exports.logout = function (req, res, next) {
 exports.changePassword = function (req, res, next) {
     res.render('pages/changePassword', {
         title: 'Change Password',
-        session: req.session
+        user: req.session.user
     });
 }
 
@@ -75,14 +75,14 @@ exports.changePassword_post = function (req, res, next) {
                     req.session.user = user;
                     res.render('pages/changePassword', {
                         title: 'Change Password',
-                        session: req.session,
+                        user: req.session.user,
                         passwordChangeSuccess: true
                     });
                 });
             } else {
                 res.render('pages/changePassword', {
                     title: 'Change Password',
-                    session: req.session,
+                    user: req.session.user,
                     errorMessage: "Invalid current password."
                 });
             }
@@ -94,7 +94,7 @@ exports.changePassword_post = function (req, res, next) {
 exports.editUser = function (req, res, next) {
     res.render('pages/editUser', {
         title: 'Edit User',
-        session: req.session
+        user: req.session.user
     });
 }
 
@@ -124,7 +124,7 @@ exports.editUser_post = function (req, res, next) {
                     req.session.user = user;
                     res.render('pages/editUser', {
                         title: 'Edit User',
-                        session: req.session,
+                        user: req.session.user,
                         userChangeSuccess: true
                     });
                 });
@@ -140,11 +140,41 @@ exports.editUser_post = function (req, res, next) {
     });
 }
 
+//Manage Users page
+exports.manageUsers = function (req, res, next) {
+
+    //Fetch all users and pass them to the page.
+    User.findAll().then( userListFromDb => {
+
+        var userList = [];
+
+        //Loop through the users and create user records for the display
+        userListFromDb.forEach(function(userFromDb) {
+            userList.push({
+                id: userFromDb.id,
+                firstName: userFromDb.firstName,
+                middleName: userFromDb.middleName,
+                lastName: userFromDb.lastName,
+                email: userFromDb.email,
+                userName: userFromDb.userName, 
+                isAdmin: userFromDb.isAdmin
+            });
+        });
+        
+        res.render('pages/manageUsers', {
+            title: 'Manage Users',
+            user: req.session.user,
+            userListJson: JSON.stringify(userList)
+         });
+
+    }); 
+}
+
 //Create user page
 exports.createUser = function (req, res, next) {
     res.render('pages/createUser', {
         title: 'Create User',
-        session: req.session
+        user: req.session.user
      });
 };
 
@@ -160,7 +190,7 @@ exports.createUser_post = function (req, res, next) {
     }).then(
         res.render('pages/createUser', {
             title: 'Create User',
-            session: req.session
+            user: req.session.user
         })
     );
 
