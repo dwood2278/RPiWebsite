@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/userRouter');
+var userApiRouter = require('./routes/userApi');
 var senseHatApiRouter = require('./routes/senseHatApi')
 
 var app = express();
@@ -32,6 +33,7 @@ app.use('/favicon.ico', express.static(path.join(__dirname, 'public/images/favic
 //Set up routers
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/userApi', userApiRouter);
 app.use('/sensehatapi', senseHatApiRouter);
 
 // catch 404 and forward to error handler

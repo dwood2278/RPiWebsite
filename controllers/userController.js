@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
 const { User } = require('../initOrmModels');
+const jwt = require("jsonwebtoken");
 
 //Login page
 exports.login = function (req, res, next) {
@@ -195,3 +195,45 @@ exports.createUser_post = function (req, res, next) {
     );
 
 };
+
+exports.authenticate = function (req, res, next) {
+
+    //Check that the username and password are not undefined
+    if (req.body.userName == undefined ||
+        req.body.password == undefined) {
+        res.json({
+            authenticated: false
+        });
+    }
+
+    //Authenticate the user
+    User.authenticate(req.body.userName, req.body.password).then(function(user) {
+        if (user != undefined) {
+
+            //Create a user with only the necessary values
+            var returnUser = {
+                firstName: user.firstName,
+                middleName: user.middleName,
+                lastName: user.lastName,
+                email: user.email,
+                userName: user.userName
+            }
+
+            const payload = {
+                user: returnUser
+            };
+            let token = jwt.sign(payload, 'testSecret', {
+                expiresIn: '24h'
+            });
+            res.json({
+                authenticated: true,
+                user: returnUser,
+                token: token
+            });
+        } else {
+            res.json({
+                authenticated: false,
+            });
+        }
+    });
+}
