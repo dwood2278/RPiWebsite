@@ -27,8 +27,13 @@ a {
 [v-cloak]::before { content: "loading…" }
 
 /* Error styles */
-.error-text {
+.error-asterisk {
     color: red;
+}
+
+.field-error-text {
+    color: red;
+    font-size: 0.75em;
 }
 
 .invalid-field {

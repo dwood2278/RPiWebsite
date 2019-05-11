@@ -1,18 +1,19 @@
-import Vue from 'vue'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './components/App.vue'
-import LoginApp from './components/LoginApp.vue'
+import Vue from 'vue';
+import Vuelidate from 'vuelidate';
+
+Vue.use(Vuelidate);
+
+
+import Login from './components/Login.vue';
+import SenseHatData from './components/SenseHatData.vue'
+import ChangePassword from './components/ChangePassword.vue'
+//Vue.config.productionTip = false
 
 new Vue({
-    el: 'app',
-    template: '<App/>',
-    components: {App},
-    methods: {}
-});
-
-new Vue({
-    el: 'loginApp',
-    template: '<loginApp/>',
-    components: {LoginApp},
-    methods: {}
+    el: '#app',
+    components: {
+        Login: Login,
+        ChangePassword: ChangePassword,
+        SenseHatData: SenseHatData
+    }
 });

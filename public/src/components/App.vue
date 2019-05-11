@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row col-md-12 d-flex justify-content-center">
         <div class="row col-md-12 d-flex justify-content-center">
-          FooBar
+          {{ testProperty }}
         </div>
       </div>
     </div>
@@ -11,11 +11,10 @@
 </template>
 
 <script>
-  //import CreateTodo from './CreateTodo.vue';
-  //import ListTodo from './ListTodo.vue';
 
 export default {
     name: 'app',
+    props: ['testProperty'],
     components: {},
   }
 </script>
