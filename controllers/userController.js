@@ -115,7 +115,7 @@ exports.editUser_post = function (req, res, next) {
             User.findByPk(req.session.user.id).then(user => {
 
                 user.update({
-                    firstName: req.body.txtfirstName,
+                    firstName: req.body.txtFirstName,
                     middleName: req.body.txtMiddleName,
                     lastName: req.body.txtLastName,
                     email: req.body.txtEmail,

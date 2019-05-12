@@ -4,187 +4,41 @@
         <% include ../partials/head %>
     </head>
     <body>
-        <% include ../partials/header %>
-        <main>
-            <form action="/users/editUser" method="POST">
+        <div id="app" v-cloak>
+            <header>
+                <% include ../partials/header %>
+            </header>
+            <main>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="editUserApp" class="card" v-cloak>
-                                <h5 class="card-header">Edit My Profile</h5>
-                                <div class="card-body">
-                                    <div class="card-text">
-                                        <% if (!locals.userChangeSuccess) { %>
-                                            <% if (locals.errorMessage) { %>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="alert alert-danger" role="alert">
-                                                            <i class="fas fa-exclamation-triangle"></i> <%= errorMessage %>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <% } %>
-                                            <div v-if="validationErrorList.length > 0" class="row">
-                                                <div class="col-12">
-                                                    <div class="alert alert-danger" role="alert">
-                                                        <i class="fas fa-exclamation-triangle"></i> Errors in form:
-                                                        <ul>
-                                                            <li v-for="error in validationErrorList">
-                                                                {{ error }}
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtFirstName" class="col-md-4 col-lg-2 col-form-label">
-                                                    First Name
-                                                    <span v-show="!fieldIsValid.firstName" class="error-text">*</span>
-                                                </label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtFirstName" v-bind:class="{ 'invalid-field': !fieldIsValid.firstName }" v-model="firstName">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtMiddleName" class="col-md-4 col-lg-2 col-form-label">
-                                                    Middle Name
-                                                    <span v-show="!fieldIsValid.middleName" class="error-text">*</span>
-                                                </label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtMiddleName" v-bind:class="{ 'invalid-field': !fieldIsValid.middleName }" v-model="middleName">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtLastName" class="col-md-4 col-lg-2 col-form-label">
-                                                    Last Name
-                                                    <span v-show="!fieldIsValid.lastName" class="error-text">*</span>
-                                                </label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtLastName" v-bind:class="{ 'invalid-field': !fieldIsValid.lastName }" v-model="lastName">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtEmail" class="col-md-4 col-lg-2 col-form-label">
-                                                    Email
-                                                    <span v-show="!fieldIsValid.email" class="error-text">*</span>
-                                                </label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="email" class="form-control" name="txtEmail" v-bind:class="{ 'invalid-field': !fieldIsValid.email }" v-model="email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtUsername" class="col-md-4 col-lg-2 col-form-label">
-                                                    Username
-                                                    <span v-show="!fieldIsValid.userName" class="error-text">*</span>
-                                                </label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtUserName" v-bind:class="{ 'invalid-field': !fieldIsValid.userName }" :readonly="userName == 'admin'" v-model="userName">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-12 text-center">
-                                                    <button type="submit" @click="submitForm" class="btn btn-primary"><i class="fas fa-user-edit"></i> Update</button>
-                                                </div>
-                                            </div>
-                                        <% } else { %>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="alert alert-success" role="alert">
-                                                        <i class="fas fa-check"></i> Profile updated.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <a href="/users/editUser">Update the profile.</a>
-                                                </div>
-                                            </div>
-                                        <% } %>
-                                    </div>
+                    <% if (!locals.userChangeSuccess) { %>
+                        <div class="row">
+                            <div class="col-12">
+                                <edit-user
+                                    error-message = '<%= locals.errorMessage %>'
+                                    :user = '<%- JSON.stringify(locals.user) %>'
+                                ></edit-user>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success" role="alert">
+                                    <i class="fas fa-check"></i> Profile updated.
                                 </div>
                             </div>
-                            <script>
-                                var editUserApp = new Vue({
-                                    el: '#editUserApp',
-                                    data: {
-                                        firstName: '<%= user.firstName %>',
-                                        middleName: '<%= user.middleName %>',
-                                        lastName: '<%= user.lastName %>',
-                                        email: '<%= user.email %>',
-                                        userName: '<%= user.userName %>',
-                                        fieldIsValid: {
-                                            firstName: true,
-                                            middleName: true,
-                                            lastName: true,
-                                            email: true,
-                                            userName: true
-                                        },
-                                        validationErrorList: [],
-                                    },
-                                    methods: {
-                                        validateForm: function () {
-                    
-                                            //Void out errors first
-                                            this.validationErrorList = [];
-                                            this.fieldIsValid.firstName = true;
-                                            this.fieldIsValid.middleName = true;
-                                            this.fieldIsValid.lastName = true;
-                                            this.fieldIsValid.email = true;
-                                            this.fieldIsValid.userName = true;
-                    
-                                            //Verify the fields are not blank
-                                            if (this.firstName == '') {
-                    
-                                                this.fieldIsValid.firstName = false;
-                                                this.validationErrorList.push('You must enter your first name.');
-                    
-                                            }
-                                            if (this.middleName == '') {
-
-                                                this.fieldIsValid.middleName = false;
-                                                this.validationErrorList.push('You must enter your middle name.');
-
-                                            }
-                                            if (this.lastName == '') {
-                    
-                                                this.fieldIsValid.lastName = false;
-                                                this.validationErrorList.push('You must enter your last name.');
-                    
-                                            }
-                                            if (this.email == '') {
-                    
-                                                this.fieldIsValid.email = false;
-                                                this.validationErrorList.push('You must enter your email.');
-                    
-                                            }
-                                            if (this.userName == '') {
-                                                this.fieldIsValid.userName = false;
-                                                this.validationErrorList.push('You must enter a user name.');
-                                            }
-                    
-                                            //Return the correct value
-                                            if (this.validationErrorList.length == 0 ){
-                                                return true;
-                                            } else {
-                                                return false;
-                                            }
-                    
-                                        },
-                                        submitForm: function (event) {
-                                            //Validate form
-                                            if (!this.validateForm()) {
-                                                //Cancel submission
-                                                event.preventDefault();
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="/users/editUser">Update your profile again.</a>
+                            </div>
+                        </div>
+                    <% } %>
                 </div> 
-            </form>
-        </main>
-        <% include ../partials/footer %>
+            </main>
+            <footer class="border-top footer text-muted bg-dark">
+                <% include ../partials/footer %>
+            </footer>
+        </div>
+        <script src="/build/bundle.js"></script>
     </body>
 </html> 

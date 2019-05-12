@@ -1,12 +1,16 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
+import BootstrapVue from 'bootstrap-vue';
+import Login from './components/Login.vue';
+import ChangePassword from './components/ChangePassword.vue';
+import EditUser from './components/EditUser.vue';
+import SenseHatData from './components/SenseHatData.vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.use(Vuelidate);
+Vue.use(BootstrapVue);
 
-
-import Login from './components/Login.vue';
-import SenseHatData from './components/SenseHatData.vue'
-import ChangePassword from './components/ChangePassword.vue'
 //Vue.config.productionTip = false
 
 new Vue({
@@ -14,6 +18,7 @@ new Vue({
     components: {
         Login: Login,
         ChangePassword: ChangePassword,
+        EditUser: EditUser,
         SenseHatData: SenseHatData
     }
 });
