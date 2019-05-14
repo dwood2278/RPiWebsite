@@ -4,6 +4,7 @@ import BootstrapVue from 'bootstrap-vue';
 import Login from './components/Login.vue';
 import ChangePassword from './components/ChangePassword.vue';
 import EditUser from './components/EditUser.vue';
+import CreateUser from './components/CreateUser.vue'
 import SenseHatData from './components/SenseHatData.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -19,6 +20,7 @@ new Vue({
         Login: Login,
         ChangePassword: ChangePassword,
         EditUser: EditUser,
+        CreateUser: CreateUser,
         SenseHatData: SenseHatData
     }
 });

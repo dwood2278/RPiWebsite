@@ -186,11 +186,12 @@ exports.createUser_post = function (req, res, next) {
         lastName: req.body.txtLastName,
         email: req.body.txtEmail,
         userName: req.body.txtUserName,
-        password: req.body.txtPassword
+        password: User.hashPassword(req.body.txtPassword)
     }).then(
         res.render('pages/createUser', {
             title: 'Create User',
-            user: req.session.user
+            user: req.session.user,
+            createUserSuccess: true
         })
     );
 

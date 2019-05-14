@@ -4,61 +4,37 @@
         <% include ../partials/head %>
     </head>
     <body>
-        <div class="app" v-cloak>
-            <% include ../partials/header %>
+        <div id="app" v-cloak>
+            <header>
+                <% include ../partials/header %>
+            </header>
             <main>
-                <form action="/users/register" method="POST">
-                    <div class="container">
+                <div class="container">
+                    <% if (!locals.createUserSuccess) { %>
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Register</h5>
-                                    <div class="card-body">
-                                        <div class="card-text">
-                                            <div class="form-group row">
-                                                <label for="txtFirstName" class="col-md-4 col-lg-2 col-form-label">First Name</label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtFirstName">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtLastName" class="col-md-4 col-lg-2 col-form-label">Last Name</label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtLastName">
-                                                </div>
-                                            </div>  
-                                            <div class="form-group row">
-                                                <label for="txtEmail" class="col-md-4 col-lg-2 col-form-label">Email</label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="email" class="form-control" name="txtEmail">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtUsername" class="col-md-4 col-lg-2 col-form-label">Username</label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="text" class="form-control" name="txtUserName">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="txtPassword" class="col-md-4 col-lg-2 col-form-label">Password</label>
-                                                <div class="col-md-8 col-lg-10">
-                                                    <input type="password" class="form-control" name="txtPassword">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-12 text-center">
-                                                    <button type="submit" class="btn btn-primary">Register</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <create-user></create-user>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success" role="alert">
+                                    <i class="fas fa-check"></i> User created.
                                 </div>
                             </div>
                         </div>
-                    </div> 
-                </form>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="/users/createUser">Create another user.</a>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
             </main>
-            <% include ../partials/footer %>
+            <footer class="border-top footer text-muted bg-dark">
+                <% include ../partials/footer %>
+            </footer>
         </div>
         <script src="/build/bundle.js"></script>
     </body>
