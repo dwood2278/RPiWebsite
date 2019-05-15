@@ -44,6 +44,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <div class="offset-md-4 offset-lg-2  col-md-8 col-lg-10">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="chkUseEmailAsUsername" v-model="useEmailAsUsername">
+                                <label for="chkUseEmailAsUsername" class="form-check-label">
+                                    Use email address as username.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-show="!useEmailAsUsername" class="form-group row">
                         <label for="txtUsername" class="col-md-4 col-lg-2 col-form-label">
                             Username <span v-show="$v.userName.$error" class="error-asterisk">*</span>
                         </label>
@@ -78,6 +88,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <div class="offset-md-4 offset-lg-2 col-md-8 col-lg-10">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="chkIsAdmin" v-model="isAdmin">
+                                <label for="chkIsAdmin" class="form-check-label">
+                                    This user is an admin.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-12 text-center">
                             <button type="submit" @click="submitForm" class="btn btn-primary"><i class="fas fa-user-plus"></i> Create User</button>
                         </div>
@@ -100,6 +120,8 @@
                 middleName: '',
                 lastName: '',
                 email: '',
+                isAdmin: false,
+                useEmailAsUsername: true,
                 userName: '',
                 password: '',
                 passwordConf: ''
@@ -129,6 +151,18 @@
             passwordConf: {
                 required,
                 sameAsPassword: sameAs('password')
+            }
+        },
+        watch: {
+            email: function (val) {
+                if (this.useEmailAsUsername) {
+                    this.userName = this.email;
+                }
+            },
+            useEmailAsUsername: function (val) {
+                if (this.useEmailAsUsername) {
+                    this.userName = this.email;
+                }
             }
         },
         methods: {                    

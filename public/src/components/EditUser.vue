@@ -90,7 +90,8 @@
                 middleName: this.user.middleName,
                 lastName: this.user.lastName,
                 email: this.user.email,
-                userName: this.user.userName
+                userName: this.user.userName,
+                isAdmin: this.isAdmin
             }
         },
         props: [

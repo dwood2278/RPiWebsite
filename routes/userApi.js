@@ -1,10 +1,13 @@
-var express = require('express');
-var authorization = require('../middleware/authorization');
-var router = express.Router();
+const express = require('express');
+const apiTokenAuth = require('../middleware/apiTokenAuthorization');
+const router = express.Router();
 
-user_controller = require('../controllers/userController');
+const user_api_controller = require('../controllers/userApiController');
 
-//Authentication
-router.post('/authenticate', user_controller.authenticate);
+//Get API Token
+router.post('/gettoken', user_api_controller.getToken);
+
+//Fetching users
+router.get('/getallusers', [apiTokenAuth.hasValidAdminToken] , user_api_controller.getAllUsers)
 
 module.exports = router;

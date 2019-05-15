@@ -22,7 +22,21 @@ exports.login_post = function (req, res, next) {
     //Authenticate the user
     User.authenticate(req.body.txtUserName, req.body.txtPassword).then(function(user) {
         if (user != undefined) {
+            
+            //Load the user into session.
             req.session.user = user;
+
+            //Create client safe user and put it into jwt.
+            let clientUser = createClientUser(user);
+            let payload = {
+                user: clientUser
+            };
+            let token = jwt.sign(payload, 'testSecret', {
+                expiresIn: '24h'
+            });
+
+            res.cookie('RPiWebsite_token', token, {maxAge: 86400000});
+
             if (req.session.loginRedirectUrl) {
                 var redirectUrl = req.session.loginRedirectUrl;
                 req.session.loginRedirectUrl = undefined;
@@ -49,6 +63,7 @@ exports.logout = function (req, res, next) {
             if (err) {
                 return next(err);
             } else {
+                res.clearCookie("RPiWebsite_token");
                 return res.redirect('/login');
             }
         });
@@ -186,7 +201,8 @@ exports.createUser_post = function (req, res, next) {
         lastName: req.body.txtLastName,
         email: req.body.txtEmail,
         userName: req.body.txtUserName,
-        password: User.hashPassword(req.body.txtPassword)
+        password: User.hashPassword(req.body.txtPassword),
+        isAdmin: req.body.chkIsAdmin
     }).then(
         res.render('pages/createUser', {
             title: 'Create User',
@@ -197,44 +213,14 @@ exports.createUser_post = function (req, res, next) {
 
 };
 
-exports.authenticate = function (req, res, next) {
-
-    //Check that the username and password are not undefined
-    if (req.body.userName == undefined ||
-        req.body.password == undefined) {
-        res.json({
-            authenticated: false
-        });
+//Creates a user suitable for clients (i.e. no secure information like password)
+function createClientUser (user) {
+    return {
+        firstName: user.firstName,
+        middleName: user.middleName,
+        lastName: user.lastName,
+        email: user.email,
+        userName: user.userName,
+        isAdmin: user.isAdmin
     }
-
-    //Authenticate the user
-    User.authenticate(req.body.userName, req.body.password).then(function(user) {
-        if (user != undefined) {
-
-            //Create a user with only the necessary values
-            var returnUser = {
-                firstName: user.firstName,
-                middleName: user.middleName,
-                lastName: user.lastName,
-                email: user.email,
-                userName: user.userName
-            }
-
-            const payload = {
-                user: returnUser
-            };
-            let token = jwt.sign(payload, 'testSecret', {
-                expiresIn: '24h'
-            });
-            res.json({
-                authenticated: true,
-                user: returnUser,
-                token: token
-            });
-        } else {
-            res.json({
-                authenticated: false,
-            });
-        }
-    });
 }

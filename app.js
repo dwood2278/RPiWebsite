@@ -33,7 +33,7 @@ app.use('/favicon.ico', express.static(path.join(__dirname, 'public/images/favic
 //Set up routers
 app.use('/', indexRouter);
 app.use('/users', userRouter);
-app.use('/userApi', userApiRouter);
+app.use('/userapi', userApiRouter);
 app.use('/sensehatapi', senseHatApiRouter);
 
 // catch 404 and forward to error handler
