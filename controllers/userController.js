@@ -85,7 +85,7 @@ exports.changePassword_post = function (req, res, next) {
         user.verifyPassword(req.body.txtCurrentPassword).then(function(isPasswordVerified) {
             if (isPasswordVerified){
                 user.update({
-                    password: User.hashPassword(req.body.txtNewPassword)
+                    password: req.body.txtNewPassword
                 }).then(user => {
                     req.session.user = user;
                     res.render('pages/changePassword', {
@@ -201,7 +201,7 @@ exports.createUser_post = function (req, res, next) {
         lastName: req.body.txtLastName,
         email: req.body.txtEmail,
         userName: req.body.txtUserName,
-        password: User.hashPassword(req.body.txtPassword),
+        password: req.body.txtPassword,
         isAdmin: req.body.chkIsAdmin
     }).then(
         res.render('pages/createUser', {

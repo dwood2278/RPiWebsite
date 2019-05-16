@@ -47,10 +47,17 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-12 text-center">
-                            <button type="submit" @click="submitForm" class="btn btn-primary"><i class="fas fa-key"></i> Change Password</button>
+                            <button type="button" @click="submitForm" class="btn btn-primary"><i class="fas fa-key"></i> Change Password</button>
                         </div>
                     </div>
                 </form>
+                <div v-if="sucessfullyChangedPassword" class="row">
+                    <div class="col-12">
+                        <b-alert show variant="success">
+                            <i class="fas fa-check"></i> Successfully changed password.
+                        </b-alert>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -58,6 +65,7 @@
 <script>
     
     import { required, sameAs } from 'vuelidate/lib/validators';
+    import axios from "axios";
 
     export default {
         name: 'changePasswordApp',
@@ -65,11 +73,13 @@
             return {
                 currentPassword: '',
                 newPassword: '',
-                newPasswordConf: ''
+                newPasswordConf: '',
+                sucessfullyChangedPassword: false
             }
         },
         props: [
-            'errorMessage'
+            'errorMessage',
+            'userId'
         ],
         validations: {
             currentPassword: {
@@ -87,9 +97,26 @@
             submitForm: function (event) {
                 //Check validation
                 this.$v.$touch();
-                if (this.$v.$anyError) {
-                    //Cancel submission
-                    event.preventDefault();
+                if (!this.$v.$anyError) {
+                    //No errors
+                    let vueObj = this;
+                    axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    //Change password
+                    axios
+                    .patch('/userapi/users/' + vueObj.userId, {
+                        password: vueObj.newPassword
+                    })
+                    .then(function(res) {
+                        if (res.data.sucessfullyUpdated) {
+                            vueObj.sucessfullyChangedPassword = true;
+                        };
+                    })
+                    .catch(function (error) {
+
+                        console.log(error);
+                    });
+
                 }
             }
         }

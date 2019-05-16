@@ -58,6 +58,19 @@ exports.getAllUsers = function (req, res, next) {
 
 }
 
+exports.updateUser = function (req, res, next) {
+
+    var userId = req.params.userId;
+
+    User.findByPk(userId).then(user => {
+        user.update(req.body).then(user => {
+            res.json({
+                sucessfullyUpdated: true
+            });
+        });
+    });
+}
+
 //Creates a user suitable for clients (i.e. no secure information like password)
 function createClientUser (user) {
     return {

@@ -10,4 +10,7 @@ router.post('/gettoken', user_api_controller.getToken);
 //Fetching users
 router.get('/getallusers', [apiTokenAuth.hasValidAdminToken] , user_api_controller.getAllUsers)
 
+//Update a user
+router.patch('/users/:userId', user_api_controller.updateUser)
+
 module.exports = router;

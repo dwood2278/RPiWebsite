@@ -35,6 +35,21 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             required: true
         }
+    },{
+        hooks: {
+            beforeCreate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            },
+            beforeBulkCreate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            },
+            beforeUpdate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            },
+            beforeBulkUpdate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            }
+        }
     });
 
     //Authenticate username and password.
@@ -82,3 +97,10 @@ module.exports = (sequelize, DataTypes) => {
 
     return User;
 };
+
+//Helper function to hash password if changed
+function hashPasswordIfChanged(user, options) {
+    if (user.password && user.changed('password')) {
+        user.password = bcrypt.hashSync(user.password, 10);
+    }
+}
