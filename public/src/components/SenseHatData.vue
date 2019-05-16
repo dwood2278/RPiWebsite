@@ -9,7 +9,7 @@
                         Fetching Sense Hat Data
                     </div>
                 </div>
-                <div class="row" v-if="!isLoading">
+                <div class="row" v-if="!isLoading && !serverRequestError">
                     <div class="col-12">
                         CPU Temp: {{ celsiusToFahrenheit(senseHatData.cpuTemp).toFixed(1) }} F<br/>
                         Temperature: {{ celsiusToFahrenheit(senseHatData.temperature).toFixed(1) }} F<br/>
@@ -19,6 +19,13 @@
                         Pitch: {{ senseHatData.pitch.toFixed(1) }}<br/>
                         Roll: {{ senseHatData.roll.toFixed(1) }}<br/>
                         Yaw: {{ senseHatData.yaw.toFixed(1) }}
+                    </div>
+                </div>
+                <div class="row" v-if="serverRequestError">
+                    <div class="col-12">
+                        <b-alert variant="danger" show>
+                            <i class="fas fa-exclamation-triangle"></i> {{ serverRequestError }}
+                        </b-alert>
                     </div>
                 </div>
             </div>
@@ -42,16 +49,23 @@
                     roll: 0,
                     yaw: 0
                 },
-                isLoading: false
+                isLoading: false,
+                serverRequestError: ''
             }
         },
         created: function () {
             var vueObject = this;
             this.isLoading = true;
+            axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
             axios
             .get('/sensehatapi/getsensehatdata')
             .then(function(response) {
                 vueObject.senseHatData = response.data;
+                vueObject.isLoading = false;
+            })
+            .catch(function (error) {
+                vueObject.serverRequestError = error;
+                console.log(error);
                 vueObject.isLoading = false;
             });
         },
