@@ -28688,7 +28688,8 @@ exports.default = _default;
             currentPassword: '',
             newPassword: '',
             newPasswordConf: '',
-            sucessfullyChangedPassword: false
+            errorMessage: '',
+            successfullyChangedPassword: false
         };
     },
     props: ['userId'],
@@ -28706,6 +28707,9 @@ exports.default = _default;
     },
     methods: {
         submitForm: function (event) {
+            //Reset error message
+            this.errorMessage = '';
+
             //Check validation
             this.$v.$touch();
             if (!this.$v.$anyError) {
@@ -28714,12 +28718,15 @@ exports.default = _default;
                 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
                 //Change password
-                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.userId, {
-                    password: vueObj.newPassword
+                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/changepassword/' + vueObj.userId, {
+                    currentPassword: vueObj.currentPassword,
+                    newPassword: vueObj.newPassword
                 }).then(function (res) {
-                    if (res.data.sucessfullyUpdated) {
-                        vueObj.sucessfullyChangedPassword = true;
-                    };
+                    if (res.data.successfullyChangedPassword) {
+                        vueObj.successfullyChangedPassword = true;
+                    } else if (res.data.errorMessage) {
+                        vueObj.errorMessage = res.data.errorMessage;
+                    }
                 }).catch(function (error) {
 
                     console.log(error);
@@ -46378,7 +46385,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "card-text" }, [
-          _vm.sucessfullyChangedPassword
+          _vm.successfullyChangedPassword
             ? _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
@@ -46418,282 +46425,282 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "form",
-            { attrs: { action: "/users/changePassword", method: "POST" } },
-            [
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-6 col-form-label",
-                    attrs: { for: "txtCurrentPassword" }
-                  },
-                  [
-                    _vm._v("\n                        Current Password "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.$v.currentPassword.$error,
-                            expression: "$v.currentPassword.$error"
-                          }
-                        ],
-                        staticClass: "error-asterisk"
-                      },
-                      [_vm._v("*")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.currentPassword,
-                        expression: "currentPassword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: { "invalid-field": _vm.$v.currentPassword.$error },
-                    attrs: { type: "password", name: "txtCurrentPassword" },
-                    domProps: { value: _vm.currentPassword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.currentPassword = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "offset-md-6 col-md-6 field-error-message" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.currentPassword.$error &&
-                              !_vm.$v.currentPassword.required,
-                            expression:
-                              "$v.currentPassword.$error && !$v.currentPassword.required"
-                          }
-                        ]
-                      },
-                      [_vm._v("Current password is required.")]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-6 col-form-label",
-                    attrs: { for: "txtNewPassword" }
-                  },
-                  [
-                    _vm._v("\n                        New Password "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.$v.newPassword.$error,
-                            expression: "$v.newPassword.$error"
-                          }
-                        ],
-                        staticClass: "error-asterisk"
-                      },
-                      [_vm._v("*")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newPassword,
-                        expression: "newPassword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: { "invalid-field": _vm.$v.newPassword.$error },
-                    attrs: { type: "password", name: "txtNewPassword" },
-                    domProps: { value: _vm.newPassword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.newPassword = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "offset-md-6 col-md-6 field-error-message" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.newPassword.$error &&
-                              !_vm.$v.newPassword.required,
-                            expression:
-                              "$v.newPassword.$error && !$v.newPassword.required"
-                          }
-                        ]
-                      },
-                      [_vm._v("New password is required.")]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-6 col-form-label",
-                    attrs: { for: "txtNewPasswordConf" }
-                  },
-                  [
-                    _vm._v("\n                        Confirm New Password  "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.$v.newPasswordConf.$error,
-                            expression: "$v.newPasswordConf.$error"
-                          }
-                        ],
-                        staticClass: "error-asterisk"
-                      },
-                      [_vm._v("*")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newPasswordConf,
-                        expression: "newPasswordConf"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: { "invalid-field": _vm.$v.newPasswordConf.$error },
-                    attrs: { type: "password", name: "txtNewPasswordConf" },
-                    domProps: { value: _vm.newPasswordConf },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.newPasswordConf = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "offset-md-6 col-md-6 field-error-message" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.newPasswordConf.$error &&
-                              !_vm.$v.newPasswordConf.required,
-                            expression:
-                              "$v.newPasswordConf.$error && !$v.newPasswordConf.required"
-                          }
-                        ]
-                      },
-                      [_vm._v("New password confirmation is required.")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.newPasswordConf.$error &&
-                              _vm.$v.newPasswordConf.required &&
-                              !_vm.$v.newPasswordConf.sameAsPassword,
-                            expression:
-                              "$v.newPasswordConf.$error && $v.newPasswordConf.required && !$v.newPasswordConf.sameAsPassword"
-                          }
-                        ]
-                      },
-                      [
-                        _vm._v(
-                          "Confirmation password does not match new password."
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c("div", { staticClass: "col-12 text-center" }, [
+          !_vm.successfullyChangedPassword
+            ? _c("div", [
+                _c("div", { staticClass: "form-group row" }, [
                   _c(
-                    "button",
+                    "label",
                     {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "button" },
-                      on: { click: _vm.submitForm }
+                      staticClass: "col-md-6 col-form-label",
+                      attrs: { for: "txtCurrentPassword" }
                     },
                     [
-                      _c("i", { staticClass: "fas fa-key" }),
-                      _vm._v(" Change Password")
+                      _vm._v("\n                        Current Password "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.$v.currentPassword.$error,
+                              expression: "$v.currentPassword.$error"
+                            }
+                          ],
+                          staticClass: "error-asterisk"
+                        },
+                        [_vm._v("*")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentPassword,
+                          expression: "currentPassword"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "invalid-field": _vm.$v.currentPassword.$error },
+                      attrs: { type: "password", name: "txtCurrentPassword" },
+                      domProps: { value: _vm.currentPassword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.currentPassword = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "offset-md-6 col-md-6 field-error-message" },
+                    [
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.$v.currentPassword.$error &&
+                                !_vm.$v.currentPassword.required,
+                              expression:
+                                "$v.currentPassword.$error && !$v.currentPassword.required"
+                            }
+                          ]
+                        },
+                        [_vm._v("Current password is required.")]
+                      )
                     ]
                   )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-6 col-form-label",
+                      attrs: { for: "txtNewPassword" }
+                    },
+                    [
+                      _vm._v("\n                        New Password "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.$v.newPassword.$error,
+                              expression: "$v.newPassword.$error"
+                            }
+                          ],
+                          staticClass: "error-asterisk"
+                        },
+                        [_vm._v("*")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newPassword,
+                          expression: "newPassword"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "invalid-field": _vm.$v.newPassword.$error },
+                      attrs: { type: "password", name: "txtNewPassword" },
+                      domProps: { value: _vm.newPassword },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.newPassword = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "offset-md-6 col-md-6 field-error-message" },
+                    [
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.$v.newPassword.$error &&
+                                !_vm.$v.newPassword.required,
+                              expression:
+                                "$v.newPassword.$error && !$v.newPassword.required"
+                            }
+                          ]
+                        },
+                        [_vm._v("New password is required.")]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-6 col-form-label",
+                      attrs: { for: "txtNewPasswordConf" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Confirm New Password  "
+                      ),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.$v.newPasswordConf.$error,
+                              expression: "$v.newPasswordConf.$error"
+                            }
+                          ],
+                          staticClass: "error-asterisk"
+                        },
+                        [_vm._v("*")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newPasswordConf,
+                          expression: "newPasswordConf"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "invalid-field": _vm.$v.newPasswordConf.$error },
+                      attrs: { type: "password", name: "txtNewPasswordConf" },
+                      domProps: { value: _vm.newPasswordConf },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.newPasswordConf = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "offset-md-6 col-md-6 field-error-message" },
+                    [
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.$v.newPasswordConf.$error &&
+                                !_vm.$v.newPasswordConf.required,
+                              expression:
+                                "$v.newPasswordConf.$error && !$v.newPasswordConf.required"
+                            }
+                          ]
+                        },
+                        [_vm._v("New password confirmation is required.")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.$v.newPasswordConf.$error &&
+                                _vm.$v.newPasswordConf.required &&
+                                !_vm.$v.newPasswordConf.sameAsPassword,
+                              expression:
+                                "$v.newPasswordConf.$error && $v.newPasswordConf.required && !$v.newPasswordConf.sameAsPassword"
+                            }
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "Confirmation password does not match new password."
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c("div", { staticClass: "col-12 text-center" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: { click: _vm.submitForm }
+                      },
+                      [
+                        _c("i", { staticClass: "fas fa-key" }),
+                        _vm._v(" Change Password")
+                      ]
+                    )
+                  ])
                 ])
               ])
-            ]
-          )
+            : _vm._e()
         ])
       ])
     ]

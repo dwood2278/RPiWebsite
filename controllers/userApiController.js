@@ -61,7 +61,7 @@ exports.getAllUsers = function (req, res, next) {
 exports.changePassword = function(req, res, next) {
 
     //Get the user ID
-    var userId = req.params.userId;
+    var userId = req.params.id;
 
     //Get the user
     User.findByPk(userId).then(user => {
@@ -76,14 +76,14 @@ exports.changePassword = function(req, res, next) {
                 .then(user => {
                     //Sucessfully updated the password
                     res.json({
-                        successfullyUpdatedPassword: true,
+                        successfullyChangedPassword: true,
                         errorMessage: ''
                     });
                 });
 
             } else {
                 res.json({
-                    successfullyUpdatedPassword: false,
+                    successfullyChangedPassword: false,
                     errorMessage: 'Invalid current password.'
                 });
             }
@@ -95,7 +95,7 @@ exports.changePassword = function(req, res, next) {
 exports.updateUser = function (req, res, next) {
 
     //Get the user ID
-    var userId = req.params.userId;
+    var userId = req.params.id;
 
     //Get the user and update it.
     User.findByPk(userId).then(user => {

@@ -3,7 +3,7 @@
         <h5 class="card-header">Change Password</h5>
         <div class="card-body">
             <div class="card-text">
-                <div v-if="sucessfullyChangedPassword" class="row">
+                <div v-if="successfullyChangedPassword" class="row">
                     <div class="col-12">
                         <b-alert show variant="success">
                             <i class="fas fa-check"></i> Successfully changed password.
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="/users/changePassword" method="POST">
+                <div v-if="!successfullyChangedPassword">
                     <div class="form-group row">
                         <label for="txtCurrentPassword" class="col-md-6 col-form-label">
                             Current Password <span v-show="$v.currentPassword.$error" class="error-asterisk">*</span>
@@ -57,7 +57,7 @@
                             <button type="button" @click="submitForm" class="btn btn-primary"><i class="fas fa-key"></i> Change Password</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
                 newPassword: '',
                 newPasswordConf: '',
                 errorMessage: '',
-                sucessfullyChangedPassword: false
+                successfullyChangedPassword: false
             }
         },
         props: [
@@ -95,6 +95,9 @@
         },
         methods: {
             submitForm: function (event) {
+                //Reset error message
+                this.errorMessage = '';
+
                 //Check validation
                 this.$v.$touch();
                 if (!this.$v.$anyError) {
@@ -105,13 +108,14 @@
                     //Change password
                     axios
                     .patch('/userapi/changepassword/' + vueObj.userId, {
-                        password: vueObj.newPassword
+                        currentPassword: vueObj.currentPassword,
+                        newPassword: vueObj.newPassword
                     })
                     .then(function(res) {
-                        if (res.data.sucessfullyChangedPassword) {
-                            vueObj.sucessfullyChangedPassword = true;
+                        if (res.data.successfullyChangedPassword) {
+                            vueObj.successfullyChangedPassword = true;
                         } else if (res.data.errorMessage) {
-                            vueObj.errorMessage = es.data.errorMessage;
+                            vueObj.errorMessage = res.data.errorMessage;
                         }
                     })
                     .catch(function (error) {
