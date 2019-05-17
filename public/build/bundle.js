@@ -28691,7 +28691,7 @@ exports.default = _default;
             sucessfullyChangedPassword: false
         };
     },
-    props: ['errorMessage', 'userId'],
+    props: ['userId'],
     validations: {
         currentPassword: {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
@@ -46378,6 +46378,24 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "card-text" }, [
+          _vm.sucessfullyChangedPassword
+            ? _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-12" },
+                  [
+                    _c("b-alert", { attrs: { show: "", variant: "success" } }, [
+                      _c("i", { staticClass: "fas fa-check" }),
+                      _vm._v(
+                        " Successfully changed password.\n                    "
+                      )
+                    ])
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _vm.errorMessage
             ? _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12" }, [
@@ -46675,25 +46693,7 @@ var render = function() {
                 ])
               ])
             ]
-          ),
-          _vm._v(" "),
-          _vm.sucessfullyChangedPassword
-            ? _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-12" },
-                  [
-                    _c("b-alert", { attrs: { show: "", variant: "success" } }, [
-                      _c("i", { staticClass: "fas fa-check" }),
-                      _vm._v(
-                        " Successfully changed password.\n                    "
-                      )
-                    ])
-                  ],
-                  1
-                )
-              ])
-            : _vm._e()
+          )
         ])
       ])
     ]

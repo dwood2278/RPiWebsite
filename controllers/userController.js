@@ -26,10 +26,11 @@ exports.login_post = function (req, res, next) {
             //Load the user into session.
             req.session.user = user;
 
-            //Create client safe user and put it into jwt.
-            let clientUser = createClientUser(user);
+            //Remove the password for things that make it to the client
+            delete user.password;
+
             let payload = {
-                user: clientUser
+                user: user
             };
             let token = jwt.sign(payload, 'testSecret', {
                 expiresIn: '24h'
@@ -47,7 +48,6 @@ exports.login_post = function (req, res, next) {
         } else {
             res.render('pages/login', {
                 title: 'Login',
-                user: req.session.user,
                 body: req.body,
                 errorMessage: "Invalid username or password."
             });
@@ -73,8 +73,7 @@ exports.logout = function (req, res, next) {
 //Password change page.
 exports.changePassword = function (req, res, next) {
     res.render('pages/changePassword', {
-        title: 'Change Password',
-        user: req.session.user
+        title: 'Change Password'
     });
 }
 
@@ -90,14 +89,12 @@ exports.changePassword_post = function (req, res, next) {
                     req.session.user = user;
                     res.render('pages/changePassword', {
                         title: 'Change Password',
-                        user: req.session.user,
                         passwordChangeSuccess: true
                     });
                 });
             } else {
                 res.render('pages/changePassword', {
                     title: 'Change Password',
-                    user: req.session.user,
                     errorMessage: "Invalid current password."
                 });
             }
@@ -109,7 +106,6 @@ exports.changePassword_post = function (req, res, next) {
 exports.editUser = function (req, res, next) {
     res.render('pages/editUser', {
         title: 'Edit User',
-        user: req.session.user
     });
 }
 
@@ -139,7 +135,6 @@ exports.editUser_post = function (req, res, next) {
                     req.session.user = user;
                     res.render('pages/editUser', {
                         title: 'Edit User',
-                        user: req.session.user,
                         userChangeSuccess: true
                     });
                 });
@@ -178,7 +173,6 @@ exports.manageUsers = function (req, res, next) {
         
         res.render('pages/manageUsers', {
             title: 'Manage Users',
-            user: req.session.user,
             userListJson: JSON.stringify(userList)
          });
 
@@ -188,8 +182,7 @@ exports.manageUsers = function (req, res, next) {
 //Create user page
 exports.createUser = function (req, res, next) {
     res.render('pages/createUser', {
-        title: 'Create User',
-        user: req.session.user
+        title: 'Create User'
      });
 };
 
@@ -206,21 +199,8 @@ exports.createUser_post = function (req, res, next) {
     }).then(
         res.render('pages/createUser', {
             title: 'Create User',
-            user: req.session.user,
             createUserSuccess: true
         })
     );
 
 };
-
-//Creates a user suitable for clients (i.e. no secure information like password)
-function createClientUser (user) {
-    return {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName,
-        email: user.email,
-        userName: user.userName,
-        isAdmin: user.isAdmin
-    }
-}

@@ -58,10 +58,46 @@ exports.getAllUsers = function (req, res, next) {
 
 }
 
-exports.updateUser = function (req, res, next) {
+exports.changePassword = function(req, res, next) {
 
+    //Get the user ID
     var userId = req.params.userId;
 
+    //Get the user
+    User.findByPk(userId).then(user => {
+
+        //Verify the current password
+        user.verifyPassword(req.body.currentPassword).then(isPasswordVerified => {
+            if (isPasswordVerified) {
+                //Password verified, update the user
+                user.update({
+                    password: req.body.newPassword
+                })
+                .then(user => {
+                    //Sucessfully updated the password
+                    res.json({
+                        successfullyUpdatedPassword: true,
+                        errorMessage: ''
+                    });
+                });
+
+            } else {
+                res.json({
+                    successfullyUpdatedPassword: false,
+                    errorMessage: 'Invalid current password.'
+                });
+            }
+        });
+    });
+
+}
+
+exports.updateUser = function (req, res, next) {
+
+    //Get the user ID
+    var userId = req.params.userId;
+
+    //Get the user and update it.
     User.findByPk(userId).then(user => {
         user.update(req.body).then(user => {
             res.json({

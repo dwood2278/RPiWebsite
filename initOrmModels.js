@@ -1,9 +1,10 @@
 const UserModel = require('./models/user');
 const Sequelize = require('sequelize');
+const config = require('./config');
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: './db/rpidb.sqlite'
+    storage: config.db.sqliteFile
 });
 
 const User = UserModel(sequelize, Sequelize);
@@ -20,7 +21,7 @@ User.count({ where: { userName: 'admin' } }).then(count => {
             firstName: 'Admin',
             lastName: 'User',
             userName: 'admin',
-            password: User.hashPassword('admin'),
+            password: 'admin',
             isAdmin: true
         })
         .then(newUser => {

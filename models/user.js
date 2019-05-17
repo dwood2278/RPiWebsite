@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 
+const config = require('../config');
+
 module.exports = (sequelize, DataTypes) => {  
     const User = sequelize.define('user', {
         id: {
@@ -77,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
 
     //Hash a password.
     User.hashPassword = function (password) {
-        return bcrypt.hashSync(password, 10);
+        return bcrypt.hashSync(password, config.bcrypt.saltRounds);
     }
 
     //Verify the password.
@@ -101,6 +103,6 @@ module.exports = (sequelize, DataTypes) => {
 //Helper function to hash password if changed
 function hashPasswordIfChanged(user, options) {
     if (user.password && user.changed('password')) {
-        user.password = bcrypt.hashSync(user.password, 10);
+        user.password = bcrypt.hashSync(user.password, config.bcrypt.saltRounds);
     }
 }

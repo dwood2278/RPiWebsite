@@ -3,6 +3,13 @@
         <h5 class="card-header">Change Password</h5>
         <div class="card-body">
             <div class="card-text">
+                <div v-if="sucessfullyChangedPassword" class="row">
+                    <div class="col-12">
+                        <b-alert show variant="success">
+                            <i class="fas fa-check"></i> Successfully changed password.
+                        </b-alert>
+                    </div>
+                </div>
                 <div v-if="errorMessage" class="row">
                     <div class="col-12">
                         <div class="alert alert-danger" role="alert">
@@ -51,13 +58,6 @@
                         </div>
                     </div>
                 </form>
-                <div v-if="sucessfullyChangedPassword" class="row">
-                    <div class="col-12">
-                        <b-alert show variant="success">
-                            <i class="fas fa-check"></i> Successfully changed password.
-                        </b-alert>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -74,11 +74,11 @@
                 currentPassword: '',
                 newPassword: '',
                 newPasswordConf: '',
+                errorMessage: '',
                 sucessfullyChangedPassword: false
             }
         },
         props: [
-            'errorMessage',
             'userId'
         ],
         validations: {
@@ -104,13 +104,15 @@
 
                     //Change password
                     axios
-                    .patch('/userapi/users/' + vueObj.userId, {
+                    .patch('/userapi/changepassword/' + vueObj.userId, {
                         password: vueObj.newPassword
                     })
                     .then(function(res) {
-                        if (res.data.sucessfullyUpdated) {
+                        if (res.data.sucessfullyChangedPassword) {
                             vueObj.sucessfullyChangedPassword = true;
-                        };
+                        } else if (res.data.errorMessage) {
+                            vueObj.errorMessage = es.data.errorMessage;
+                        }
                     })
                     .catch(function (error) {
 

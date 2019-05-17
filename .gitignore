@@ -15,3 +15,6 @@ Thumbs.db
 
 # Visual Studio Code 
 .vscode/
+
+#Dotenv files
+.env 

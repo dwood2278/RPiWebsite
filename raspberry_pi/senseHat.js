@@ -1,5 +1,7 @@
-var getSenseHatDataScript =  __dirname + '/get_sense_hat_data.py';
+const getSenseHatDataScript =  __dirname + '/get_sense_hat_data.py';
 const {PythonShell} = require('python-shell');
+
+const config = require('../config');
 
 var dummySenseHatData = {
     pressure: 993,
@@ -14,7 +16,7 @@ var dummySenseHatData = {
 
 exports.getSenseHatData = function () {
 
-    if (process.env.IS_RASPBERRY_PI)
+    if (config.raspberryPi.isRaspberryPi)
     {
         //Set up python call
         var pyshell = new PythonShell(getSenseHatDataScript, { mode: 'json' });
