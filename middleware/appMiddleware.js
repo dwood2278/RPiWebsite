@@ -7,10 +7,17 @@ exports.setGlobalResProperties = function (req, res, next) {
 
     //See if there is a user object
     if (req.session && req.session.user) {
-        res.locals.user = req.session.user;
+         //Get the user
+        User.findByPk(req.session.user.id).then(user => {
+            //Refresh it in session and assign it to the res.locals.
+            user.password = '';
+            req.session.user = user;
+            res.locals.user = req.session.user;
+            return next();
+        });
+    } else {
+        return next();
     }
-
-    return next();
 };
 
 //Handle errors

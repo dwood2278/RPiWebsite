@@ -61,7 +61,7 @@ exports.getAllUsers = function (req, res, next) {
 exports.changePassword = function(req, res, next) {
 
     //Get the user ID
-    var userId = req.params.id;
+    var userId = req.params.userId;
 
     //Get the user
     User.findByPk(userId).then(user => {
@@ -95,7 +95,7 @@ exports.changePassword = function(req, res, next) {
 exports.updateUser = function (req, res, next) {
 
     //Get the user ID
-    var userId = req.params.id;
+    var userId = req.params.userId;
 
     //Get the user and update it.
     User.findByPk(userId).then(user => {

@@ -22,12 +22,12 @@ exports.login_post = function (req, res, next) {
     //Authenticate the user
     User.authenticate(req.body.txtUserName, req.body.txtPassword).then(function(user) {
         if (user != undefined) {
-            
-            //Load the user into session.
-            req.session.user = user;
 
             //Remove the password for things that make it to the client
-            delete user.password;
+            user.password = '';
+
+            //Load the user into session.
+            req.session.user = user;
 
             let payload = {
                 user: user

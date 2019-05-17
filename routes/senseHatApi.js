@@ -6,6 +6,6 @@ const apiTokenAuth = require('../middleware/apiTokenAuthorization');
 senseHatApiController = require('../controllers/senseHatApiController');
 
 //GET home page.
-router.get('/getsensehatdata', [apiTokenAuth.hasValidToken], senseHatApiController.getSenseHatData);
+router.get('/getsensehatdata', [apiTokenAuth.isValidToken], senseHatApiController.getSenseHatData);
 
 module.exports = router;

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * Load dotenv (DJW)
+ * Use config (DJW)
  */
-require('dotenv').config();
+
 const config = require('../config');
 /**
  * Module dependencies.
