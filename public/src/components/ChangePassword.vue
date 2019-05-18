@@ -3,21 +3,21 @@
         <h5 class="card-header">Change Password</h5>
         <div class="card-body">
             <div class="card-text">
-                <div v-if="successfullyChangedPassword" class="row">
+                <div v-show="successfullyChangedPassword" class="row">
                     <div class="col-12">
                         <b-alert show variant="success">
                             <i class="fas fa-check"></i> Successfully changed password.
                         </b-alert>
                     </div>
                 </div>
-                <div v-if="errorMessage" class="row">
+                <div v-show="errorMessage" class="row">
                     <div class="col-12">
                         <div class="alert alert-danger" role="alert">
                             <i class="fas fa-exclamation-triangle"></i> {{ errorMessage }}
                         </div>
                     </div>
                 </div>
-                <div v-if="!successfullyChangedPassword">
+                <div v-show="!successfullyChangedPassword">
                     <div class="form-group row">
                         <label for="txtCurrentPassword" class="col-md-6 col-form-label">
                             Current Password <span v-show="$v.currentPassword.$error" class="error-asterisk">*</span>
@@ -101,7 +101,7 @@
                 //Check validation
                 this.$v.$touch();
                 if (!this.$v.$anyError) {
-                    //No errors
+
                     let vueObj = this;
                     axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
@@ -112,9 +112,9 @@
                         newPassword: vueObj.newPassword
                     })
                     .then(function(res) {
-                        if (res.data.successfullyChangedPassword) {
+                        if (!res.data.errorMessage) {
                             vueObj.successfullyChangedPassword = true;
-                        } else if (res.data.errorMessage) {
+                        } else {
                             vueObj.errorMessage = res.data.errorMessage;
                         }
                     })

@@ -7,13 +7,14 @@ const user_api_controller = require('../controllers/userApiController');
 //Get API Token
 router.post('/gettoken', user_api_controller.getToken);
 
-//Fetching users
-router.get('/getallusers', [apiTokenAuth.isAdminToken] , user_api_controller.getAllUsers);
+//Fetch user(s)
+router.get('/users', apiTokenAuth.isAdmin , user_api_controller.getAllUsers);
+router.get('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin , user_api_controller.getUser);
 
 //Update a user
-router.patch('/users/:userId', user_api_controller.updateUser);
+router.patch('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin, user_api_controller.updateUser);
 
 //Update a password
-router.patch('/changepassword/:userId', user_api_controller.changePassword);
+router.patch('/changepassword/:userId', apiTokenAuth.isCurrentUserOrAdmin, user_api_controller.changePassword);
 
 module.exports = router;

@@ -3,14 +3,21 @@
         <h5 class="card-header">Edit My Profile</h5>
         <div class="card-body">
             <div class="card-text">
-                <div v-if="errorMessage" class="row">
+                <div v-show="successfullyUpdated" class="row">
+                    <div class="col-12">
+                        <b-alert show variant="success">
+                            <i class="fas fa-check"></i> Successfully submitted user changes.
+                        </b-alert>
+                    </div>
+                </div>
+                <div v-show="errorMessage" class="row">
                     <div class="col-12">
                         <div class="alert alert-danger" role="alert">
                             <i class="fas fa-exclamation-triangle"></i> {{ errorMessage }}
                         </div>
                     </div>
                 </div>
-                <form action="/users/editUser" method="POST">
+                <div v-show="!successfullyUpdated">
                     <div class="form-group row">
                         <label for="txtFirstName" class="col-md-4 col-lg-2 col-form-label">
                             First Name
@@ -69,10 +76,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-12 text-center">
-                            <button type="submit" @click="submitForm" class="btn btn-primary"><i class="fas fa-user-edit"></i> Update</button>
+                            <button type="button" @click="submitForm" class="btn btn-primary"><i class="fas fa-user-edit"></i> Update</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -81,6 +88,7 @@
 <script>
 
     import { required, email } from 'vuelidate/lib/validators';
+    import axios from "axios";
 
     export default {
         name: 'editUserApp',
@@ -91,12 +99,12 @@
                 lastName: this.user.lastName,
                 email: this.user.email,
                 userName: this.user.userName,
-                isAdmin: this.isAdmin
+                successfullyUpdated: false,
+                errorMessage: ''
             }
         },
         props: [
-            'user',
-            'errorMessage'
+            'user'
         ],
         validations: {
             firstName: {
@@ -114,11 +122,39 @@
         },
         methods: {                    
             submitForm: function (event) {
+                
+                //Reset error message
+                this.errorMessage = '';
+
                 //Check validation
                 this.$v.$touch();
-                if (this.$v.$anyError) {
-                    //Cancel submission
-                    event.preventDefault();
+                if (!this.$v.$anyError) {
+                    
+                    let vueObj = this;
+                    axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    //Update the user
+                    axios
+                    .patch('/userapi/users/' + vueObj.user.id, {
+                        firstName: vueObj.firstName,
+                        middleName: vueObj.middleName,
+                        lastName: vueObj.lastName,
+                        email: vueObj.email,
+                        userName: vueObj.userName
+                    })
+                    .then(function(res) {
+                        if (!res.data.errorMessage) {
+                            vueObj.successfullyUpdated = true;
+                        } else {
+                            vueObj.errorMessage = res.data.errorMessage;
+                        }
+                    })
+                    .catch(function (error) {
+
+                        console.log(error);
+                    });
+
+                    
                 }
             }
         }

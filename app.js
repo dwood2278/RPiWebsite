@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 //Set up sessions
 app.use(session({
-    secret: config.session.sessionSecret,
+    secret: config.session.secret,
     resave: false,
     saveUninitialized: false
 }));

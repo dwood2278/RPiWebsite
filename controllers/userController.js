@@ -3,6 +3,8 @@ const Op = Sequelize.Op;
 const { User } = require('../initOrmModels');
 const jwt = require("jsonwebtoken");
 
+const config = require('../config');
+
 //Login page
 exports.login = function (req, res, next) {
     //Check if the user is logged in
@@ -32,9 +34,7 @@ exports.login_post = function (req, res, next) {
             let payload = {
                 user: user
             };
-            let token = jwt.sign(payload, 'testSecret', {
-                expiresIn: '24h'
-            });
+            let token = jwt.sign(payload, config.apiToken.secret, config.apiToken.options);
 
             res.cookie('RPiWebsite_token', token, {maxAge: 86400000});
 

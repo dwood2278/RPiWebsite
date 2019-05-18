@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const { User } = require('../initOrmModels');
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
+
+const config = require('../config');
 
 exports.getToken = function (req, res, next) {
 
@@ -17,17 +19,16 @@ exports.getToken = function (req, res, next) {
     User.authenticate(req.body.userName, req.body.password).then(user => {
         if (user != undefined) {
 
-            //Create client safe user and put it into jwt.
-            let clientUser = createClientUser(user);
+            //Remove password and put user into jwt.
+            user.password = '';
+
             let payload = {
-                user: clientUser
+                user: user
             };
-            let token = jwt.sign(payload, 'testSecret', {
-                expiresIn: '24h'
-            });
+            let token = jwt.sign(payload, config.apiToken.secret, config.apiToken.options);
             res.json({
                 authenticated: true,
-                user: clientUser,
+                user: user,
                 token: token
             });
         } else {
@@ -46,7 +47,8 @@ exports.getAllUsers = function (req, res, next) {
 
         //Loop through all users and return the client version of them.
         for (var i = 0; i < userList.length; i++) {
-            clientUserList.push(createClientUser(userList[i]));
+            userList[i].password = '';
+            clientUserList.push(userList[i]);
         }
 
         //Send response.
@@ -55,6 +57,26 @@ exports.getAllUsers = function (req, res, next) {
             userList: clientUserList
         });
     });
+
+}
+
+exports.getUser = function (req, res, next) {
+
+    //Get the user ID
+    var userId = req.params.userId;
+
+     //Get the user
+     User.findByPk(userId).then(user => {
+         user.password = '';
+         res.json({
+             user: user
+         });
+     })
+     .catch(function(err) {
+         res.json({
+             errorMessage: err
+         });
+     });
 
 }
 
@@ -77,7 +99,11 @@ exports.changePassword = function(req, res, next) {
                     //Sucessfully updated the password
                     res.json({
                         successfullyChangedPassword: true,
-                        errorMessage: ''
+                    });
+                })
+                .catch(function(err) {
+                    res.json({
+                        errorMessage: err
                     });
                 });
 
@@ -88,33 +114,79 @@ exports.changePassword = function(req, res, next) {
                 });
             }
         });
+    })
+    .catch(function(err) {
+        res.json({
+            errorMessage: err
+        });
     });
 
 }
 
 exports.updateUser = function (req, res, next) {
 
-    //Get the user ID
-    var userId = req.params.userId;
+    //Get the token so we can use it to check user data.
+    let token = req.headers['x-access-token'];
 
-    //Get the user and update it.
-    User.findByPk(userId).then(user => {
-        user.update(req.body).then(user => {
-            res.json({
-                sucessfullyUpdated: true
+    jwt.verify(token, config.apiToken.secret, function(err, decoded) {
+        if (!err) {
+            //Get the user ID
+            var userId = req.params.userId;
+
+            //Get the user and update it.
+            User.findByPk(userId).then(user => {
+
+                //Verify that the user is not trying to alter any properties that they should not.
+                if (user.userName == 'admin' && 
+                    req.body.userName != undefined &&
+                    req.body.userName != 'admin') {
+                    
+                    //Cannot alter username of admin
+                    res.json({
+                        errorMessage: 'Cannot change username for admin user.'
+                    });
+                } else if (user.userName == 'admin' && 
+                           req.body.isAdmin != undefined &&
+                           !req.body.isAdmin) {
+                    
+                    //Cannot set admin user to not be an admin
+                    res.json({
+                        errorMessage: 'Cannot change admin user to not be an admin.'
+                    });
+
+                } else if (decoded.user.id == userId && 
+                           req.body.isAdmin != undefined &&
+                           decoded.user.isAdmin != req.body.isAdmin) {
+
+                    //Cannot change isAdmin property of self.
+                    res.json({
+                        errorMessage: 'Cannot change admin status of current user.'
+                    });
+
+                } else {
+                    //All checks passed, update the user
+                    user.update(req.body).then(user => {
+                        user.password = '';
+                        res.json({
+                            user: user
+                        });
+                    })
+                    .catch(function(err) {
+                        res.json({
+                            errorMessage: err
+                        });
+                    });
+                }
+            })
+            .catch(function(err) {
+                res.json({
+                    errorMessage: err
+                });
             });
-        });
+        } else {
+            res.json({
+                errorMessage: err
+            });
+        }
     });
-}
-
-//Creates a user suitable for clients (i.e. no secure information like password)
-function createClientUser (user) {
-    return {
-        firstName: user.firstName,
-        middleName: user.middleName,
-        lastName: user.lastName,
-        email: user.email,
-        userName: user.userName,
-        isAdmin: user.isAdmin
-    }
 }

@@ -1,4 +1,6 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
+
+const config = require('../config');
 
 //See if the token is valid
 exports.isValidToken = function (req, res, next) {
@@ -11,7 +13,7 @@ exports.isValidToken = function (req, res, next) {
         return next(err);
     }
 
-    jwt.verify(token, 'testSecret', function(err, decoded) {
+    jwt.verify(token, config.apiToken.secret, function(err, decoded) {
         if (!err) {
             return next();
         } else {
@@ -22,7 +24,7 @@ exports.isValidToken = function (req, res, next) {
 };
 
 //See if the token is a valid admin token
-exports.isAdminToken = function (req, res, next) {
+exports.isAdmin = function (req, res, next) {
 
     let token = req.headers['x-access-token'];
 
@@ -32,7 +34,7 @@ exports.isAdminToken = function (req, res, next) {
         return next(err);
     }
 
-    jwt.verify(token, 'testSecret', function(err, decoded) {
+    jwt.verify(token, config.apiToken.secret, function(err, decoded) {
         if (!err) {
 
             //Check if the token is an admin token
@@ -52,7 +54,7 @@ exports.isAdminToken = function (req, res, next) {
 };
 
 //See if the token is a valid admin token
-exports.isCurrentUserOrAdminToken = function (req, res, next) {
+exports.isCurrentUserOrAdmin = function (req, res, next) {
 
     let token = req.headers['x-access-token'];
 
@@ -65,13 +67,13 @@ exports.isCurrentUserOrAdminToken = function (req, res, next) {
     //Get the user ID
     let userId = req.params.userId;
 
-    if (userID == undefined) {
+    if (userId == undefined) {
         var err = new Error('No :userID param in route.');
         err.status = 401;
         return next(err);
     }
 
-    jwt.verify(token, 'testSecret', function(err, decoded) {
+    jwt.verify(token, config.apiToken.secret, function(err, decoded) {
         if (!err) {
 
             //Check if the token is an admin token
