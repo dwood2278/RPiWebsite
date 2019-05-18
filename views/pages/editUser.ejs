@@ -10,28 +10,18 @@
             </header>
             <main>
                 <div class="container">
-                    <% if (!locals.userChangeSuccess) { %>
-                        <div class="row">
-                            <div class="col-12">
-                                <edit-user
-                                    :user = '<%- JSON.stringify(locals.user) %>'
-                                ></edit-user>
-                            </div>
-                        </div>
-                    <% } else { %>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success" role="alert">
-                                    <i class="fas fa-check"></i> Profile updated.
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <h5 class="card-header">Edit My Profile</h5>
+                                <div class="card-body">
+                                    <edit-user
+                                        :user = '<%- JSON.stringify(locals.user) %>'
+                                    ></edit-user>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="/users/editUser">Update your profile again.</a>
-                            </div>
-                        </div>
-                    <% } %>
+                    </div>
                 </div> 
             </main>
             <footer class="border-top footer text-muted bg-dark">

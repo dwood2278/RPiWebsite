@@ -28,9 +28,10 @@
                     </div>
                 </div>
             </div>
-            <b-modal :id="'modal-edit-user-' + aUser.id" :title="'Edit ' + aUser.firstName + ' ' + aUser.lastName" size="xl">
+            <b-modal :id="'modal-edit-user-' + aUser.id" :title="'Edit ' + aUser.firstName + ' ' + aUser.lastName" size="xl" hide-footer>
                 <edit-user
                     :user = "aUser"
+                    v-on:user-updated = "onUserUpdated"
                 ></edit-user>
             </b-modal>
         </div>
@@ -41,7 +42,8 @@
 
     import { required, email } from 'vuelidate/lib/validators';
     import axios from 'axios';
-    import EditUser from './EditUser.vue'
+    import _ from 'lodash';
+    import EditUser from './EditUser.vue';
 
     export default {
         name: 'manageUsersApp',
@@ -70,6 +72,20 @@
 
         },
         methods: {
+            onUserUpdated: function(updatedUser) {
+
+                //Close the modal
+                this.$bvModal.hide('modal-edit-user-' + updatedUser.id);
+
+                //Find and update the record.
+                var aUser = _.find(this.userList, {id: updatedUser.id});
+                aUser.firstName = updatedUser.firstName;
+                aUser.middleName = updatedUser.middleName;
+                aUser.lastName = updatedUser.lastName;
+                aUser.email = updatedUser.email;
+                aUser.userName = updatedUser.userName;
+
+            },
             submitForm: function (event) {
                 //Check validation
                 this.$v.$touch();
