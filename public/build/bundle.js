@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 147);
+/******/ 	return __webpack_require__(__webpack_require__.s = 148);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -711,9 +711,9 @@ exports.position = position;
 exports.__esModule = true;
 exports.readonlyDescriptor = exports.omit = exports.isPlainObject = exports.isObject = exports.is = exports.isFrozen = exports.create = exports.getPrototypeOf = exports.getOwnPropertySymbols = exports.getOwnPropertyDescriptor = exports.freeze = exports.defineProperty = exports.defineProperties = exports.keys = exports.getOwnPropertyNames = exports.assign = void 0;
 
-var _assign = _interopRequireDefault(__webpack_require__(183));
+var _assign = _interopRequireDefault(__webpack_require__(184));
 
-var _is = _interopRequireDefault(__webpack_require__(188));
+var _is = _interopRequireDefault(__webpack_require__(189));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -812,7 +812,7 @@ Object.defineProperty(exports, "withParams", {
 });
 exports.regex = exports.ref = exports.len = exports.req = void 0;
 
-var _withParams = _interopRequireDefault(__webpack_require__(319));
+var _withParams = _interopRequireDefault(__webpack_require__(320));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -884,7 +884,7 @@ exports.regex = regex;
 exports.__esModule = true;
 exports.getBreakpointsDownCached = exports.getBreakpointsUpCached = exports.getBreakpointsCached = exports.getBreakpointsDown = exports.getBreakpointsUp = exports.getBreakpoints = exports.getComponentConfig = exports.getConfigValue = exports.getDefaults = exports.getConfig = exports.resetConfig = exports.setConfig = void 0;
 
-var _cloneDeep = _interopRequireDefault(__webpack_require__(156));
+var _cloneDeep = _interopRequireDefault(__webpack_require__(157));
 
 var _get = _interopRequireDefault(__webpack_require__(56));
 
@@ -1243,9 +1243,9 @@ exports.default = _default;
 exports.__esModule = true;
 exports.concat = exports.arrayIncludes = exports.isArray = exports.from = void 0;
 
-var _from = _interopRequireDefault(__webpack_require__(157));
+var _from = _interopRequireDefault(__webpack_require__(158));
 
-var _isArray = _interopRequireDefault(__webpack_require__(180));
+var _isArray = _interopRequireDefault(__webpack_require__(181));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1451,7 +1451,7 @@ exports.getNoWarn = getNoWarn;
 "use strict";
 
 
-var bind = __webpack_require__(135);
+var bind = __webpack_require__(136);
 var isBuffer = __webpack_require__(344);
 
 /*global toString:true*/
@@ -2931,7 +2931,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _normalizeSlot2 = _interopRequireDefault(__webpack_require__(242));
+var _normalizeSlot2 = _interopRequireDefault(__webpack_require__(243));
 
 var _array = __webpack_require__(9);
 
@@ -3092,47 +3092,47 @@ Object.defineProperty(exports, "decimal", {
 });
 exports.helpers = void 0;
 
-var _alpha = _interopRequireDefault(__webpack_require__(318));
+var _alpha = _interopRequireDefault(__webpack_require__(319));
 
-var _alphaNum = _interopRequireDefault(__webpack_require__(321));
+var _alphaNum = _interopRequireDefault(__webpack_require__(322));
 
-var _numeric = _interopRequireDefault(__webpack_require__(322));
+var _numeric = _interopRequireDefault(__webpack_require__(323));
 
-var _between = _interopRequireDefault(__webpack_require__(323));
+var _between = _interopRequireDefault(__webpack_require__(324));
 
-var _email = _interopRequireDefault(__webpack_require__(324));
+var _email = _interopRequireDefault(__webpack_require__(325));
 
-var _ipAddress = _interopRequireDefault(__webpack_require__(325));
+var _ipAddress = _interopRequireDefault(__webpack_require__(326));
 
-var _macAddress = _interopRequireDefault(__webpack_require__(326));
+var _macAddress = _interopRequireDefault(__webpack_require__(327));
 
-var _maxLength = _interopRequireDefault(__webpack_require__(327));
+var _maxLength = _interopRequireDefault(__webpack_require__(328));
 
-var _minLength = _interopRequireDefault(__webpack_require__(328));
+var _minLength = _interopRequireDefault(__webpack_require__(329));
 
-var _required = _interopRequireDefault(__webpack_require__(329));
+var _required = _interopRequireDefault(__webpack_require__(330));
 
-var _requiredIf = _interopRequireDefault(__webpack_require__(330));
+var _requiredIf = _interopRequireDefault(__webpack_require__(331));
 
-var _requiredUnless = _interopRequireDefault(__webpack_require__(331));
+var _requiredUnless = _interopRequireDefault(__webpack_require__(332));
 
-var _sameAs = _interopRequireDefault(__webpack_require__(332));
+var _sameAs = _interopRequireDefault(__webpack_require__(333));
 
-var _url = _interopRequireDefault(__webpack_require__(333));
+var _url = _interopRequireDefault(__webpack_require__(334));
 
-var _or = _interopRequireDefault(__webpack_require__(334));
+var _or = _interopRequireDefault(__webpack_require__(335));
 
-var _and = _interopRequireDefault(__webpack_require__(335));
+var _and = _interopRequireDefault(__webpack_require__(336));
 
-var _not = _interopRequireDefault(__webpack_require__(336));
+var _not = _interopRequireDefault(__webpack_require__(337));
 
-var _minValue = _interopRequireDefault(__webpack_require__(337));
+var _minValue = _interopRequireDefault(__webpack_require__(338));
 
-var _maxValue = _interopRequireDefault(__webpack_require__(338));
+var _maxValue = _interopRequireDefault(__webpack_require__(339));
 
-var _integer = _interopRequireDefault(__webpack_require__(339));
+var _integer = _interopRequireDefault(__webpack_require__(340));
 
-var _decimal = _interopRequireDefault(__webpack_require__(340));
+var _decimal = _interopRequireDefault(__webpack_require__(341));
 
 var helpers = _interopRequireWildcard(__webpack_require__(6));
 
@@ -3161,8 +3161,8 @@ module.exports = __webpack_require__(36) ? function (object, key, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(35);
-var IE8_DOM_DEFINE = __webpack_require__(162);
-var toPrimitive = __webpack_require__(163);
+var IE8_DOM_DEFINE = __webpack_require__(163);
+var toPrimitive = __webpack_require__(164);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(36) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -18188,7 +18188,7 @@ Vue.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23), __webpack_require__(24), __webpack_require__(148).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23), __webpack_require__(24), __webpack_require__(149).setImmediate))
 
 /***/ }),
 /* 47 */
@@ -18937,17 +18937,17 @@ exports.default = void 0;
 
 var _dropdown = _interopRequireDefault(__webpack_require__(102));
 
-var _dropdownItem = _interopRequireDefault(__webpack_require__(218));
+var _dropdownItem = _interopRequireDefault(__webpack_require__(219));
 
-var _dropdownItemButton = _interopRequireDefault(__webpack_require__(219));
+var _dropdownItemButton = _interopRequireDefault(__webpack_require__(220));
 
-var _dropdownHeader = _interopRequireDefault(__webpack_require__(220));
+var _dropdownHeader = _interopRequireDefault(__webpack_require__(221));
 
-var _dropdownDivider = _interopRequireDefault(__webpack_require__(221));
+var _dropdownDivider = _interopRequireDefault(__webpack_require__(222));
 
-var _dropdownForm = _interopRequireDefault(__webpack_require__(222));
+var _dropdownForm = _interopRequireDefault(__webpack_require__(223));
 
-var _dropdownText = _interopRequireDefault(__webpack_require__(223));
+var _dropdownText = _interopRequireDefault(__webpack_require__(224));
 
 var _plugins = __webpack_require__(3);
 
@@ -20412,10 +20412,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(136);
+    adapter = __webpack_require__(137);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(136);
+    adapter = __webpack_require__(137);
   }
   return adapter;
 }
@@ -20605,7 +20605,7 @@ module.exports = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(161);
+var aFunction = __webpack_require__(162);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -20644,7 +20644,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(168);
+var $keys = __webpack_require__(169);
 var enumBugKeys = __webpack_require__(81);
 
 module.exports = Object.keys || function keys(O) {
@@ -21901,7 +21901,7 @@ var _vueFunctionalDataMerge = __webpack_require__(2);
 
 var _memoize = _interopRequireDefault(__webpack_require__(57));
 
-var _suffixPropName = _interopRequireDefault(__webpack_require__(214));
+var _suffixPropName = _interopRequireDefault(__webpack_require__(215));
 
 var _array = __webpack_require__(9);
 
@@ -22088,7 +22088,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _collapse = _interopRequireDefault(__webpack_require__(215));
+var _collapse = _interopRequireDefault(__webpack_require__(216));
 
 var _toggle = _interopRequireDefault(__webpack_require__(100));
 
@@ -22538,9 +22538,9 @@ var _dom = __webpack_require__(4);
 
 var _inspect = __webpack_require__(1);
 
-var _clickOut = _interopRequireDefault(__webpack_require__(216));
+var _clickOut = _interopRequireDefault(__webpack_require__(217));
 
-var _focusIn = _interopRequireDefault(__webpack_require__(217));
+var _focusIn = _interopRequireDefault(__webpack_require__(218));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23250,7 +23250,7 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _looseEqual = _interopRequireDefault(__webpack_require__(18));
 
-var _looseIndexOf = _interopRequireDefault(__webpack_require__(232));
+var _looseIndexOf = _interopRequireDefault(__webpack_require__(233));
 
 var _inspect = __webpack_require__(1);
 
@@ -24341,9 +24341,9 @@ exports.default = exports.props = void 0;
 
 var _vue = _interopRequireDefault(__webpack_require__(0));
 
-var _modalManager = _interopRequireDefault(__webpack_require__(255));
+var _modalManager = _interopRequireDefault(__webpack_require__(256));
 
-var _bvModalEvent = _interopRequireDefault(__webpack_require__(256));
+var _bvModalEvent = _interopRequireDefault(__webpack_require__(257));
 
 var _button = _interopRequireDefault(__webpack_require__(58));
 
@@ -25349,13 +25349,13 @@ exports.default = void 0;
 
 var _nav = _interopRequireDefault(__webpack_require__(66));
 
-var _navItem = _interopRequireDefault(__webpack_require__(258));
+var _navItem = _interopRequireDefault(__webpack_require__(259));
 
-var _navText = _interopRequireDefault(__webpack_require__(259));
+var _navText = _interopRequireDefault(__webpack_require__(260));
 
-var _navForm = _interopRequireDefault(__webpack_require__(260));
+var _navForm = _interopRequireDefault(__webpack_require__(261));
 
-var _navItemDropdown = _interopRequireDefault(__webpack_require__(261));
+var _navItemDropdown = _interopRequireDefault(__webpack_require__(262));
 
 var _dropdown = _interopRequireDefault(__webpack_require__(64));
 
@@ -25396,7 +25396,7 @@ exports.default = void 0;
 
 var _keyCodes = _interopRequireDefault(__webpack_require__(17));
 
-var _range = _interopRequireDefault(__webpack_require__(269));
+var _range = _interopRequireDefault(__webpack_require__(270));
 
 var _toString = _interopRequireDefault(__webpack_require__(28));
 
@@ -26178,7 +26178,7 @@ var _dom = __webpack_require__(4);
 
 var _inspect = __webpack_require__(1);
 
-var _safeTypes = __webpack_require__(274);
+var _safeTypes = __webpack_require__(275);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28614,14 +28614,62 @@ exports.default = _default;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ChangePassword_vue__ = __webpack_require__(135);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e8555fbe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ChangePassword_vue__ = __webpack_require__(361);
+var disposed = false
+var normalizeComponent = __webpack_require__(25)
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ChangePassword_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e8555fbe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ChangePassword_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "public/src/components/ChangePassword.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e8555fbe", Component.options)
+  } else {
+    hotAPI.reload("data-v-e8555fbe", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 135 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-//
-//
-//
-//
 //
 //
 //
@@ -28698,10 +28746,31 @@ exports.default = _default;
             successfullyChangedPassword: false
         };
     },
-    props: ['userId'],
+    props: ['userId', 'showSuccessMessage', 'requireCurrentPassword'],
     validations: {
         currentPassword: {
-            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
+            currentPasswordRequired(currentPassword) {
+                return !this.requireCurrentPassword || currentPassword;
+            },
+            currentPasswordValid(currentPassword) {
+
+                //Return true if this is blank as the required value will take care of it.
+                if (currentPassword == '') {
+                    return true;
+                }
+
+                let vueObj = this;
+                return new Promise((resolve, reject) => {
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/verifypassword/' + vueObj.userId, {
+                        password: currentPassword
+                    }).then(function (res) {
+                        resolve(res.data.isPasswordVerified);
+                    }).catch(function (err) {
+                        console.log(err);
+                        reject(err);
+                    });
+                });
+            }
         },
         newPassword: {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
@@ -28723,27 +28792,30 @@ exports.default = _default;
                 let vueObj = this;
                 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
-                //Change password
-                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/changepassword/' + vueObj.userId, {
-                    currentPassword: vueObj.currentPassword,
-                    newPassword: vueObj.newPassword
-                }).then(function (res) {
-                    if (!res.data.errorMessage) {
-                        vueObj.successfullyChangedPassword = true;
-                    } else {
-                        vueObj.errorMessage = res.data.errorMessage;
-                    }
-                }).catch(function (error) {
+                //Check if the current password needs to be verified.
+                if (this.requireCurrentPassword) {} else {
 
-                    console.log(error);
-                });
+                    //Change password
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/changepassword/' + vueObj.userId, {
+                        currentPassword: vueObj.currentPassword,
+                        newPassword: vueObj.newPassword
+                    }).then(function (res) {
+                        if (!res.data.errorMessage) {
+                            vueObj.successfullyChangedPassword = true;
+                        } else {
+                            vueObj.errorMessage = res.data.errorMessage;
+                        }
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+                }
             }
         }
     }
 });
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28761,7 +28833,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28772,7 +28844,7 @@ var settle = __webpack_require__(347);
 var buildURL = __webpack_require__(349);
 var parseHeaders = __webpack_require__(350);
 var isURLSameOrigin = __webpack_require__(351);
-var createError = __webpack_require__(137);
+var createError = __webpack_require__(138);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(352);
 
 module.exports = function xhrAdapter(config) {
@@ -28949,7 +29021,7 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28974,7 +29046,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28986,7 +29058,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29012,11 +29084,11 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_EditUser_vue__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_EditUser_vue__ = __webpack_require__(142);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1eae802b_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_EditUser_vue__ = __webpack_require__(362);
 var disposed = false
@@ -29064,7 +29136,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29172,7 +29244,7 @@ if (false) {(function () {
             errorMessage: ''
         };
     },
-    props: ['user'],
+    props: ['user', 'showSuccessMessage'],
     validations: {
         firstName: {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
@@ -29224,7 +29296,6 @@ if (false) {(function () {
                         vueObj.errorMessage = res.data.errorMessage;
                     }
                 }).catch(function (error) {
-
                     console.log(error);
                 });
             }
@@ -29233,7 +29304,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29416,7 +29487,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29426,7 +29497,8 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ChangePassword_vue__ = __webpack_require__(134);
 //
 //
 //
@@ -29467,6 +29539,15 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -29483,7 +29564,8 @@ if (false) {(function () {
         };
     },
     components: {
-        EditUser: __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__["a" /* default */]
+        EditUser: __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__["a" /* default */],
+        ChangePassword: __WEBPACK_IMPORTED_MODULE_4__ChangePassword_vue__["a" /* default */]
     },
     created() {
 
@@ -29510,19 +29592,12 @@ if (false) {(function () {
             aUser.email = updatedUser.email;
             aUser.userName = updatedUser.userName;
         },
-        submitForm: function (event) {
-            //Check validation
-            this.$v.$touch();
-            if (this.$v.$anyError) {
-                //Cancel submission
-                event.preventDefault();
-            }
-        }
+        onPasswordChanged: function (updatedUser) {}
     }
 });
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29607,7 +29682,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports) {
 
 /*
@@ -29689,7 +29764,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -29917,21 +29992,21 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuelidate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap_vue__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap_vue__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_bootstrap_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_bootstrap_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_cookies__ = __webpack_require__(316);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_cookies__ = __webpack_require__(317);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_cookies___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_cookies__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Login_vue__ = __webpack_require__(317);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ChangePassword_vue__ = __webpack_require__(342);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_EditUser_vue__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Login_vue__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ChangePassword_vue__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_EditUser_vue__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_CreateUser_vue__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_ManageUsers_vue__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_SenseHatData_vue__ = __webpack_require__(369);
@@ -29971,7 +30046,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["default"]({
 });
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -30027,7 +30102,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(149);
+__webpack_require__(150);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -30041,7 +30116,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -30234,7 +30309,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(23)))
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30252,7 +30327,7 @@ Object.defineProperty(exports, "withParams", {
 });
 exports.default = exports.validationMixin = void 0;
 
-var _vval = __webpack_require__(151);
+var _vval = __webpack_require__(152);
 
 var _params = __webpack_require__(71);
 
@@ -30915,7 +30990,7 @@ var _default = Vuelidate;
 exports.default = _default;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31074,7 +31149,7 @@ function h(tag, key, args) {
 }
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31083,9 +31158,9 @@ function h(tag, key, args) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var componentPlugins = _interopRequireWildcard(__webpack_require__(153));
+var componentPlugins = _interopRequireWildcard(__webpack_require__(154));
 
-var directivePlugins = _interopRequireWildcard(__webpack_require__(308));
+var directivePlugins = _interopRequireWildcard(__webpack_require__(309));
 
 var _plugins = __webpack_require__(3);
 
@@ -31121,7 +31196,7 @@ var _default = BootstrapVue;
 exports.default = _default;
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31129,43 +31204,43 @@ exports.default = _default;
 
 exports.__esModule = true;
 
-var _alert = _interopRequireDefault(__webpack_require__(154));
+var _alert = _interopRequireDefault(__webpack_require__(155));
 
 exports.Alert = _alert.default;
 
-var _badge = _interopRequireDefault(__webpack_require__(191));
+var _badge = _interopRequireDefault(__webpack_require__(192));
 
 exports.Badge = _badge.default;
 
-var _breadcrumb = _interopRequireDefault(__webpack_require__(193));
+var _breadcrumb = _interopRequireDefault(__webpack_require__(194));
 
 exports.Breadcrumb = _breadcrumb.default;
 
-var _button = _interopRequireDefault(__webpack_require__(195));
+var _button = _interopRequireDefault(__webpack_require__(196));
 
 exports.Button = _button.default;
 
-var _buttonGroup = _interopRequireDefault(__webpack_require__(196));
+var _buttonGroup = _interopRequireDefault(__webpack_require__(197));
 
 exports.ButtonGroup = _buttonGroup.default;
 
-var _buttonToolbar = _interopRequireDefault(__webpack_require__(198));
+var _buttonToolbar = _interopRequireDefault(__webpack_require__(199));
 
 exports.ButtonToolbar = _buttonToolbar.default;
 
-var _inputGroup = _interopRequireDefault(__webpack_require__(200));
+var _inputGroup = _interopRequireDefault(__webpack_require__(201));
 
 exports.InputGroup = _inputGroup.default;
 
-var _card = _interopRequireDefault(__webpack_require__(202));
+var _card = _interopRequireDefault(__webpack_require__(203));
 
 exports.Card = _card.default;
 
-var _carousel = _interopRequireDefault(__webpack_require__(209));
+var _carousel = _interopRequireDefault(__webpack_require__(210));
 
 exports.Carousel = _carousel.default;
 
-var _layout = _interopRequireDefault(__webpack_require__(212));
+var _layout = _interopRequireDefault(__webpack_require__(213));
 
 exports.Layout = _layout.default;
 
@@ -31177,63 +31252,63 @@ var _dropdown = _interopRequireDefault(__webpack_require__(64));
 
 exports.Dropdown = _dropdown.default;
 
-var _embed = _interopRequireDefault(__webpack_require__(224));
+var _embed = _interopRequireDefault(__webpack_require__(225));
 
 exports.Embed = _embed.default;
 
-var _form = _interopRequireDefault(__webpack_require__(226));
+var _form = _interopRequireDefault(__webpack_require__(227));
 
 exports.Form = _form.default;
 
-var _formGroup = _interopRequireDefault(__webpack_require__(229));
+var _formGroup = _interopRequireDefault(__webpack_require__(230));
 
 exports.FormGroup = _formGroup.default;
 
-var _formCheckbox = _interopRequireDefault(__webpack_require__(231));
+var _formCheckbox = _interopRequireDefault(__webpack_require__(232));
 
 exports.FormCheckbox = _formCheckbox.default;
 
-var _formRadio = _interopRequireDefault(__webpack_require__(234));
+var _formRadio = _interopRequireDefault(__webpack_require__(235));
 
 exports.FormRadio = _formRadio.default;
 
-var _formInput = _interopRequireDefault(__webpack_require__(236));
+var _formInput = _interopRequireDefault(__webpack_require__(237));
 
 exports.FormInput = _formInput.default;
 
-var _formTextarea = _interopRequireDefault(__webpack_require__(238));
+var _formTextarea = _interopRequireDefault(__webpack_require__(239));
 
 exports.FormTextarea = _formTextarea.default;
 
-var _formFile = _interopRequireDefault(__webpack_require__(240));
+var _formFile = _interopRequireDefault(__webpack_require__(241));
 
 exports.FormFile = _formFile.default;
 
-var _formSelect = _interopRequireDefault(__webpack_require__(243));
+var _formSelect = _interopRequireDefault(__webpack_require__(244));
 
 exports.FormSelect = _formSelect.default;
 
-var _image = _interopRequireDefault(__webpack_require__(245));
+var _image = _interopRequireDefault(__webpack_require__(246));
 
 exports.Image = _image.default;
 
-var _jumbotron = _interopRequireDefault(__webpack_require__(246));
+var _jumbotron = _interopRequireDefault(__webpack_require__(247));
 
 exports.Jumbotron = _jumbotron.default;
 
-var _link = _interopRequireDefault(__webpack_require__(248));
+var _link = _interopRequireDefault(__webpack_require__(249));
 
 exports.Link = _link.default;
 
-var _listGroup = _interopRequireDefault(__webpack_require__(249));
+var _listGroup = _interopRequireDefault(__webpack_require__(250));
 
 exports.ListGroup = _listGroup.default;
 
-var _media = _interopRequireDefault(__webpack_require__(252));
+var _media = _interopRequireDefault(__webpack_require__(253));
 
 exports.Media = _media.default;
 
-var _modal = _interopRequireDefault(__webpack_require__(254));
+var _modal = _interopRequireDefault(__webpack_require__(255));
 
 exports.Modal = _modal.default;
 
@@ -31241,50 +31316,50 @@ var _nav = _interopRequireDefault(__webpack_require__(119));
 
 exports.Nav = _nav.default;
 
-var _navbar = _interopRequireDefault(__webpack_require__(262));
+var _navbar = _interopRequireDefault(__webpack_require__(263));
 
 exports.Navbar = _navbar.default;
 
-var _pagination = _interopRequireDefault(__webpack_require__(267));
+var _pagination = _interopRequireDefault(__webpack_require__(268));
 
 exports.Pagination = _pagination.default;
 
-var _paginationNav = _interopRequireDefault(__webpack_require__(270));
+var _paginationNav = _interopRequireDefault(__webpack_require__(271));
 
 exports.PaginationNav = _paginationNav.default;
 
-var _popover = _interopRequireDefault(__webpack_require__(272));
+var _popover = _interopRequireDefault(__webpack_require__(273));
 
 exports.Popover = _popover.default;
 
-var _progress = _interopRequireDefault(__webpack_require__(275));
+var _progress = _interopRequireDefault(__webpack_require__(276));
 
 exports.Progress = _progress.default;
 
-var _spinner = _interopRequireDefault(__webpack_require__(277));
+var _spinner = _interopRequireDefault(__webpack_require__(278));
 
 exports.Spinner = _spinner.default;
 
-var _table = _interopRequireDefault(__webpack_require__(279));
+var _table = _interopRequireDefault(__webpack_require__(280));
 
 exports.Table = _table.default;
 
-var _tabs = _interopRequireDefault(__webpack_require__(301));
+var _tabs = _interopRequireDefault(__webpack_require__(302));
 
 exports.Tabs = _tabs.default;
 
-var _toast = _interopRequireDefault(__webpack_require__(304));
+var _toast = _interopRequireDefault(__webpack_require__(305));
 
 exports.Toast = _toast.default;
 
-var _tooltip = _interopRequireDefault(__webpack_require__(306));
+var _tooltip = _interopRequireDefault(__webpack_require__(307));
 
 exports.Tooltip = _tooltip.default;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31293,7 +31368,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.__esModule = true;
 exports.default = void 0;
 
-var _alert = _interopRequireDefault(__webpack_require__(155));
+var _alert = _interopRequireDefault(__webpack_require__(156));
 
 var _plugins = __webpack_require__(3);
 
@@ -31310,7 +31385,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31540,7 +31615,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31588,24 +31663,24 @@ var _default = cloneDeep;
 exports.default = _default;
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(158);
-__webpack_require__(173);
+__webpack_require__(159);
+__webpack_require__(174);
 module.exports = __webpack_require__(20).Array.from;
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at = __webpack_require__(159)(true);
+var $at = __webpack_require__(160)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(160)(String, 'String', function (iterated) {
+__webpack_require__(161)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -31621,7 +31696,7 @@ __webpack_require__(160)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(47);
@@ -31644,19 +31719,19 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var LIBRARY = __webpack_require__(72);
 var $export = __webpack_require__(26);
-var redefine = __webpack_require__(164);
+var redefine = __webpack_require__(165);
 var hide = __webpack_require__(33);
 var Iterators = __webpack_require__(52);
-var $iterCreate = __webpack_require__(165);
+var $iterCreate = __webpack_require__(166);
 var setToStringTag = __webpack_require__(82);
-var getPrototypeOf = __webpack_require__(172);
+var getPrototypeOf = __webpack_require__(173);
 var ITERATOR = __webpack_require__(21)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -31720,7 +31795,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -31730,7 +31805,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(36) && !__webpack_require__(50)(function () {
@@ -31739,7 +31814,7 @@ module.exports = !__webpack_require__(36) && !__webpack_require__(50)(function (
 
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -31757,19 +31832,19 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(33);
 
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var create = __webpack_require__(166);
+var create = __webpack_require__(167);
 var descriptor = __webpack_require__(51);
 var setToStringTag = __webpack_require__(82);
 var IteratorPrototype = {};
@@ -31784,12 +31859,12 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(35);
-var dPs = __webpack_require__(167);
+var dPs = __webpack_require__(168);
 var enumBugKeys = __webpack_require__(81);
 var IE_PROTO = __webpack_require__(54)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -31804,7 +31879,7 @@ var createDict = function () {
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(171).appendChild(iframe);
+  __webpack_require__(172).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -31831,7 +31906,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(34);
@@ -31850,12 +31925,12 @@ module.exports = __webpack_require__(36) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(37);
 var toIObject = __webpack_require__(76);
-var arrayIndexOf = __webpack_require__(169)(false);
+var arrayIndexOf = __webpack_require__(170)(false);
 var IE_PROTO = __webpack_require__(54)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -31873,14 +31948,14 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(76);
 var toLength = __webpack_require__(78);
-var toAbsoluteIndex = __webpack_require__(170);
+var toAbsoluteIndex = __webpack_require__(171);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -31902,7 +31977,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(47);
@@ -31915,7 +31990,7 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var document = __webpack_require__(27).document;
@@ -31923,7 +31998,7 @@ module.exports = document && document.documentElement;
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
@@ -31942,7 +32017,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31950,13 +32025,13 @@ module.exports = Object.getPrototypeOf || function (O) {
 var ctx = __webpack_require__(73);
 var $export = __webpack_require__(26);
 var toObject = __webpack_require__(55);
-var call = __webpack_require__(174);
-var isArrayIter = __webpack_require__(175);
+var call = __webpack_require__(175);
+var isArrayIter = __webpack_require__(176);
 var toLength = __webpack_require__(78);
-var createProperty = __webpack_require__(176);
-var getIterFn = __webpack_require__(177);
+var createProperty = __webpack_require__(177);
+var getIterFn = __webpack_require__(178);
 
-$export($export.S + $export.F * !__webpack_require__(179)(function (iter) { Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !__webpack_require__(180)(function (iter) { Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
     var O = toObject(arrayLike);
@@ -31986,7 +32061,7 @@ $export($export.S + $export.F * !__webpack_require__(179)(function (iter) { Arra
 
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -32004,7 +32079,7 @@ module.exports = function (iterator, fn, value, entries) {
 
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
@@ -32018,7 +32093,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32033,10 +32108,10 @@ module.exports = function (object, index, value) {
 
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(178);
+var classof = __webpack_require__(179);
 var ITERATOR = __webpack_require__(21)('iterator');
 var Iterators = __webpack_require__(52);
 module.exports = __webpack_require__(20).getIteratorMethod = function (it) {
@@ -32047,7 +32122,7 @@ module.exports = __webpack_require__(20).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
@@ -32076,7 +32151,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR = __webpack_require__(21)('iterator');
@@ -32104,25 +32179,25 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(181);
+__webpack_require__(182);
 module.exports = __webpack_require__(20).Array.isArray;
 
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
 var $export = __webpack_require__(26);
 
-$export($export.S, 'Array', { isArray: __webpack_require__(182) });
+$export($export.S, 'Array', { isArray: __webpack_require__(183) });
 
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -32133,33 +32208,33 @@ module.exports = Array.isArray || function isArray(arg) {
 
 
 /***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(184);
-module.exports = __webpack_require__(20).Object.assign;
-
-
-/***/ }),
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(26);
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(185) });
+__webpack_require__(185);
+module.exports = __webpack_require__(20).Object.assign;
 
 
 /***/ }),
 /* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(26);
+
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(186) });
+
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys = __webpack_require__(75);
-var gOPS = __webpack_require__(186);
-var pIE = __webpack_require__(187);
+var gOPS = __webpack_require__(187);
+var pIE = __webpack_require__(188);
 var toObject = __webpack_require__(55);
 var IObject = __webpack_require__(77);
 var $assign = Object.assign;
@@ -32192,38 +32267,38 @@ module.exports = !$assign || __webpack_require__(50)(function () {
 
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(189);
+__webpack_require__(190);
 module.exports = __webpack_require__(20).Object.is;
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
 var $export = __webpack_require__(26);
-$export($export.S, 'Object', { is: __webpack_require__(190) });
+$export($export.S, 'Object', { is: __webpack_require__(191) });
 
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports) {
 
 // 7.2.9 SameValue(x, y)
@@ -32234,7 +32309,7 @@ module.exports = Object.is || function is(x, y) {
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32243,7 +32318,7 @@ module.exports = Object.is || function is(x, y) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _badge = _interopRequireDefault(__webpack_require__(192));
+var _badge = _interopRequireDefault(__webpack_require__(193));
 
 var _plugins = __webpack_require__(3);
 
@@ -32260,7 +32335,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32337,7 +32412,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32346,7 +32421,7 @@ exports.default = _default2;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _breadcrumb = _interopRequireDefault(__webpack_require__(194));
+var _breadcrumb = _interopRequireDefault(__webpack_require__(195));
 
 var _breadcrumbItem = _interopRequireDefault(__webpack_require__(85));
 
@@ -32369,7 +32444,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32451,7 +32526,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32482,7 +32557,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32491,7 +32566,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _buttonGroup = _interopRequireDefault(__webpack_require__(197));
+var _buttonGroup = _interopRequireDefault(__webpack_require__(198));
 
 var _plugins = __webpack_require__(3);
 
@@ -32509,7 +32584,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32570,7 +32645,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32579,7 +32654,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _buttonToolbar = _interopRequireDefault(__webpack_require__(199));
+var _buttonToolbar = _interopRequireDefault(__webpack_require__(200));
 
 var _plugins = __webpack_require__(3);
 
@@ -32597,7 +32672,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32724,7 +32799,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32733,7 +32808,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _inputGroup = _interopRequireDefault(__webpack_require__(201));
+var _inputGroup = _interopRequireDefault(__webpack_require__(202));
 
 var _inputGroupAddon = _interopRequireDefault(__webpack_require__(59));
 
@@ -32762,7 +32837,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32885,7 +32960,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32894,7 +32969,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _card = _interopRequireDefault(__webpack_require__(203));
+var _card = _interopRequireDefault(__webpack_require__(204));
 
 var _cardHeader = _interopRequireDefault(__webpack_require__(92));
 
@@ -32908,11 +32983,11 @@ var _cardFooter = _interopRequireDefault(__webpack_require__(93));
 
 var _cardImg = _interopRequireDefault(__webpack_require__(94));
 
-var _cardImgLazy = _interopRequireDefault(__webpack_require__(206));
+var _cardImgLazy = _interopRequireDefault(__webpack_require__(207));
 
-var _cardText = _interopRequireDefault(__webpack_require__(207));
+var _cardText = _interopRequireDefault(__webpack_require__(208));
 
-var _cardGroup = _interopRequireDefault(__webpack_require__(208));
+var _cardGroup = _interopRequireDefault(__webpack_require__(209));
 
 var _plugins = __webpack_require__(3);
 
@@ -32938,7 +33013,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32953,7 +33028,7 @@ var _vueFunctionalDataMerge = __webpack_require__(2);
 
 var _prefixPropName = _interopRequireDefault(__webpack_require__(39));
 
-var _unprefixPropName = _interopRequireDefault(__webpack_require__(204));
+var _unprefixPropName = _interopRequireDefault(__webpack_require__(205));
 
 var _copyProps = _interopRequireDefault(__webpack_require__(40));
 
@@ -33066,7 +33141,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33075,7 +33150,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _lowerFirst = _interopRequireDefault(__webpack_require__(205));
+var _lowerFirst = _interopRequireDefault(__webpack_require__(206));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33091,7 +33166,7 @@ var _default = unprefixPropName;
 exports.default = _default;
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33112,7 +33187,7 @@ var _default = lowerFirst;
 exports.default = _default;
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33209,7 +33284,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33250,7 +33325,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33307,7 +33382,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33316,9 +33391,9 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _carousel = _interopRequireDefault(__webpack_require__(210));
+var _carousel = _interopRequireDefault(__webpack_require__(211));
 
-var _carouselSlide = _interopRequireDefault(__webpack_require__(211));
+var _carouselSlide = _interopRequireDefault(__webpack_require__(212));
 
 var _plugins = __webpack_require__(3);
 
@@ -33336,7 +33411,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34035,7 +34110,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34200,7 +34275,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34211,7 +34286,7 @@ exports.default = void 0;
 
 var _container = _interopRequireDefault(__webpack_require__(97));
 
-var _row = _interopRequireDefault(__webpack_require__(213));
+var _row = _interopRequireDefault(__webpack_require__(214));
 
 var _col = _interopRequireDefault(__webpack_require__(98));
 
@@ -34235,7 +34310,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34311,7 +34386,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34339,7 +34414,7 @@ var _default = suffixPropName;
 exports.default = _default;
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34607,7 +34682,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34673,7 +34748,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34731,7 +34806,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34796,7 +34871,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34867,7 +34942,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34916,7 +34991,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34960,7 +35035,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35002,7 +35077,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35041,7 +35116,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35050,7 +35125,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _embed = _interopRequireDefault(__webpack_require__(225));
+var _embed = _interopRequireDefault(__webpack_require__(226));
 
 var _plugins = __webpack_require__(3);
 
@@ -35067,7 +35142,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35128,7 +35203,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35139,9 +35214,9 @@ exports.default = void 0;
 
 var _form = _interopRequireDefault(__webpack_require__(65));
 
-var _formDatalist = _interopRequireDefault(__webpack_require__(227));
+var _formDatalist = _interopRequireDefault(__webpack_require__(228));
 
-var _formRow = _interopRequireDefault(__webpack_require__(228));
+var _formRow = _interopRequireDefault(__webpack_require__(229));
 
 var _formText = _interopRequireDefault(__webpack_require__(104));
 
@@ -35171,7 +35246,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35226,7 +35301,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35243,7 +35318,7 @@ var _default = _formRow.default;
 exports.default = _default;
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35252,7 +35327,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _formGroup = _interopRequireDefault(__webpack_require__(230));
+var _formGroup = _interopRequireDefault(__webpack_require__(231));
 
 var _plugins = __webpack_require__(3);
 
@@ -35270,7 +35345,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35760,7 +35835,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35771,7 +35846,7 @@ exports.default = void 0;
 
 var _formCheckbox = _interopRequireDefault(__webpack_require__(107));
 
-var _formCheckboxGroup = _interopRequireDefault(__webpack_require__(233));
+var _formCheckboxGroup = _interopRequireDefault(__webpack_require__(234));
 
 var _plugins = __webpack_require__(3);
 
@@ -35793,7 +35868,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35821,7 +35896,7 @@ var _default = looseIndexOf;
 exports.default = _default;
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35885,7 +35960,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35896,7 +35971,7 @@ exports.default = void 0;
 
 var _formRadio = _interopRequireDefault(__webpack_require__(110));
 
-var _formRadioGroup = _interopRequireDefault(__webpack_require__(235));
+var _formRadioGroup = _interopRequireDefault(__webpack_require__(236));
 
 var _plugins = __webpack_require__(3);
 
@@ -35916,7 +35991,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35975,7 +36050,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35984,7 +36059,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _formInput = _interopRequireDefault(__webpack_require__(237));
+var _formInput = _interopRequireDefault(__webpack_require__(238));
 
 var _plugins = __webpack_require__(3);
 
@@ -36002,7 +36077,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36172,7 +36247,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36181,7 +36256,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _formTextarea = _interopRequireDefault(__webpack_require__(239));
+var _formTextarea = _interopRequireDefault(__webpack_require__(240));
 
 var _plugins = __webpack_require__(3);
 
@@ -36199,7 +36274,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36436,7 +36511,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36445,7 +36520,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _formFile = _interopRequireDefault(__webpack_require__(241));
+var _formFile = _interopRequireDefault(__webpack_require__(242));
 
 var _plugins = __webpack_require__(3);
 
@@ -36463,7 +36538,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36827,7 +36902,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36860,7 +36935,7 @@ var _default = normalizeSlot;
 exports.default = _default;
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36869,7 +36944,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _formSelect = _interopRequireDefault(__webpack_require__(244));
+var _formSelect = _interopRequireDefault(__webpack_require__(245));
 
 var _plugins = __webpack_require__(3);
 
@@ -36887,7 +36962,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37042,7 +37117,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37071,7 +37146,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37080,7 +37155,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _jumbotron = _interopRequireDefault(__webpack_require__(247));
+var _jumbotron = _interopRequireDefault(__webpack_require__(248));
 
 var _plugins = __webpack_require__(3);
 
@@ -37097,7 +37172,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37231,7 +37306,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37257,7 +37332,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37266,9 +37341,9 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _listGroup = _interopRequireDefault(__webpack_require__(250));
+var _listGroup = _interopRequireDefault(__webpack_require__(251));
 
-var _listGroupItem = _interopRequireDefault(__webpack_require__(251));
+var _listGroupItem = _interopRequireDefault(__webpack_require__(252));
 
 var _plugins = __webpack_require__(3);
 
@@ -37286,7 +37361,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37346,7 +37421,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37442,7 +37517,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37451,7 +37526,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _media = _interopRequireDefault(__webpack_require__(253));
+var _media = _interopRequireDefault(__webpack_require__(254));
 
 var _mediaAside = _interopRequireDefault(__webpack_require__(116));
 
@@ -37474,7 +37549,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37557,7 +37632,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37568,7 +37643,7 @@ exports.default = void 0;
 
 var _modal = _interopRequireDefault(__webpack_require__(117));
 
-var _bvModal = _interopRequireDefault(__webpack_require__(257));
+var _bvModal = _interopRequireDefault(__webpack_require__(258));
 
 var _modal2 = _interopRequireDefault(__webpack_require__(118));
 
@@ -37599,7 +37674,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37852,7 +37927,7 @@ var _default = new ModalManager();
 exports.default = _default;
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37945,7 +38020,7 @@ var _default = BvModalEvent;
 exports.default = _default;
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38286,7 +38361,7 @@ var _default = install;
 exports.default = _default;
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38350,7 +38425,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38391,7 +38466,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38439,7 +38514,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38559,7 +38634,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38568,13 +38643,13 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _navbar = _interopRequireDefault(__webpack_require__(263));
+var _navbar = _interopRequireDefault(__webpack_require__(264));
 
-var _navbarNav = _interopRequireDefault(__webpack_require__(264));
+var _navbarNav = _interopRequireDefault(__webpack_require__(265));
 
-var _navbarBrand = _interopRequireDefault(__webpack_require__(265));
+var _navbarBrand = _interopRequireDefault(__webpack_require__(266));
 
-var _navbarToggle = _interopRequireDefault(__webpack_require__(266));
+var _navbarToggle = _interopRequireDefault(__webpack_require__(267));
 
 var _nav = _interopRequireDefault(__webpack_require__(119));
 
@@ -38607,7 +38682,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38694,7 +38769,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38750,7 +38825,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38809,7 +38884,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38893,7 +38968,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38902,7 +38977,7 @@ exports.default = _default2;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _pagination = _interopRequireDefault(__webpack_require__(268));
+var _pagination = _interopRequireDefault(__webpack_require__(269));
 
 var _plugins = __webpack_require__(3);
 
@@ -38919,7 +38994,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39054,7 +39129,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39077,7 +39152,7 @@ var _default = range;
 exports.default = _default;
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39086,7 +39161,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _paginationNav = _interopRequireDefault(__webpack_require__(271));
+var _paginationNav = _interopRequireDefault(__webpack_require__(272));
 
 var _plugins = __webpack_require__(3);
 
@@ -39103,7 +39178,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39473,7 +39548,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39482,7 +39557,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _popover = _interopRequireDefault(__webpack_require__(273));
+var _popover = _interopRequireDefault(__webpack_require__(274));
 
 var _popover2 = _interopRequireDefault(__webpack_require__(123));
 
@@ -39505,7 +39580,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39588,7 +39663,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39607,7 +39682,7 @@ var HTMLElement = w.HTMLElement || Object;
 exports.HTMLElement = HTMLElement;
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39616,7 +39691,7 @@ exports.HTMLElement = HTMLElement;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _progress = _interopRequireDefault(__webpack_require__(276));
+var _progress = _interopRequireDefault(__webpack_require__(277));
 
 var _progressBar = _interopRequireDefault(__webpack_require__(124));
 
@@ -39636,7 +39711,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39734,7 +39809,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39743,7 +39818,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _spinner = _interopRequireDefault(__webpack_require__(278));
+var _spinner = _interopRequireDefault(__webpack_require__(279));
 
 var _plugins = __webpack_require__(3);
 
@@ -39760,7 +39835,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39836,7 +39911,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39845,7 +39920,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _table = _interopRequireDefault(__webpack_require__(280));
+var _table = _interopRequireDefault(__webpack_require__(281));
 
 var _plugins = __webpack_require__(3);
 
@@ -39862,7 +39937,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39879,29 +39954,29 @@ var _id = _interopRequireDefault(__webpack_require__(11));
 
 var _normalizeSlot = _interopRequireDefault(__webpack_require__(31));
 
-var _mixinItems = _interopRequireDefault(__webpack_require__(281));
+var _mixinItems = _interopRequireDefault(__webpack_require__(282));
 
-var _mixinFiltering = _interopRequireDefault(__webpack_require__(283));
+var _mixinFiltering = _interopRequireDefault(__webpack_require__(284));
 
-var _mixinSorting = _interopRequireDefault(__webpack_require__(285));
+var _mixinSorting = _interopRequireDefault(__webpack_require__(286));
 
-var _mixinPagination = _interopRequireDefault(__webpack_require__(288));
+var _mixinPagination = _interopRequireDefault(__webpack_require__(289));
 
-var _mixinCaption = _interopRequireDefault(__webpack_require__(289));
+var _mixinCaption = _interopRequireDefault(__webpack_require__(290));
 
-var _mixinColgroup = _interopRequireDefault(__webpack_require__(290));
+var _mixinColgroup = _interopRequireDefault(__webpack_require__(291));
 
-var _mixinThead = _interopRequireDefault(__webpack_require__(291));
+var _mixinThead = _interopRequireDefault(__webpack_require__(292));
 
-var _mixinTfoot = _interopRequireDefault(__webpack_require__(292));
+var _mixinTfoot = _interopRequireDefault(__webpack_require__(293));
 
-var _mixinTbody = _interopRequireDefault(__webpack_require__(293));
+var _mixinTbody = _interopRequireDefault(__webpack_require__(294));
 
-var _mixinBusy = _interopRequireDefault(__webpack_require__(298));
+var _mixinBusy = _interopRequireDefault(__webpack_require__(299));
 
-var _mixinSelectable = _interopRequireDefault(__webpack_require__(299));
+var _mixinSelectable = _interopRequireDefault(__webpack_require__(300));
 
-var _mixinProvider = _interopRequireDefault(__webpack_require__(300));
+var _mixinProvider = _interopRequireDefault(__webpack_require__(301));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40081,7 +40156,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40092,7 +40167,7 @@ exports.default = void 0;
 
 var _inspect = __webpack_require__(1);
 
-var _normalizeFields = _interopRequireDefault(__webpack_require__(282));
+var _normalizeFields = _interopRequireDefault(__webpack_require__(283));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40157,7 +40232,7 @@ var _default2 = {
 exports.default = _default2;
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40280,7 +40355,7 @@ var _default = normalizeFields;
 exports.default = _default;
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40295,7 +40370,7 @@ var _warn = _interopRequireDefault(__webpack_require__(8));
 
 var _inspect = __webpack_require__(1);
 
-var _stringifyRecordValues = _interopRequireDefault(__webpack_require__(284));
+var _stringifyRecordValues = _interopRequireDefault(__webpack_require__(285));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40500,7 +40575,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40528,7 +40603,7 @@ function stringifyRecordValues(row) {
 }
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40537,7 +40612,7 @@ function stringifyRecordValues(row) {
 exports.__esModule = true;
 exports.default = void 0;
 
-var _stableSort = _interopRequireDefault(__webpack_require__(286));
+var _stableSort = _interopRequireDefault(__webpack_require__(287));
 
 var _startcase = _interopRequireDefault(__webpack_require__(68));
 
@@ -40545,7 +40620,7 @@ var _array = __webpack_require__(9);
 
 var _inspect = __webpack_require__(1);
 
-var _defaultSortCompare = _interopRequireDefault(__webpack_require__(287));
+var _defaultSortCompare = _interopRequireDefault(__webpack_require__(288));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40819,7 +40894,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40863,7 +40938,7 @@ var _default = stableSort;
 exports.default = _default;
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40908,7 +40983,7 @@ function defaultSortCompare(a, b, sortBy) {
 }
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40949,7 +41024,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41016,7 +41091,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41047,7 +41122,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41229,7 +41304,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41273,7 +41348,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41282,13 +41357,13 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _mixinTbodyRow = _interopRequireDefault(__webpack_require__(294));
+var _mixinTbodyRow = _interopRequireDefault(__webpack_require__(295));
 
-var _mixinEmpty = _interopRequireDefault(__webpack_require__(295));
+var _mixinEmpty = _interopRequireDefault(__webpack_require__(296));
 
-var _mixinTopRow = _interopRequireDefault(__webpack_require__(296));
+var _mixinTopRow = _interopRequireDefault(__webpack_require__(297));
 
-var _mixinBottomRow = _interopRequireDefault(__webpack_require__(297));
+var _mixinBottomRow = _interopRequireDefault(__webpack_require__(298));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41372,7 +41447,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41779,7 +41854,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41865,7 +41940,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41904,7 +41979,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41943,7 +42018,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42022,7 +42097,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42216,7 +42291,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42410,7 +42485,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42419,9 +42494,9 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _tabs = _interopRequireDefault(__webpack_require__(302));
+var _tabs = _interopRequireDefault(__webpack_require__(303));
 
-var _tab = _interopRequireDefault(__webpack_require__(303));
+var _tab = _interopRequireDefault(__webpack_require__(304));
 
 var _plugins = __webpack_require__(3);
 
@@ -42439,7 +42514,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43115,7 +43190,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43355,7 +43430,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43368,7 +43443,7 @@ var _toast = _interopRequireDefault(__webpack_require__(129));
 
 var _toaster = _interopRequireDefault(__webpack_require__(131));
 
-var _bvToast = _interopRequireDefault(__webpack_require__(305));
+var _bvToast = _interopRequireDefault(__webpack_require__(306));
 
 var _plugins = __webpack_require__(3);
 
@@ -43394,7 +43469,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43651,7 +43726,7 @@ var _default = install;
 exports.default = _default;
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43660,7 +43735,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _tooltip = _interopRequireDefault(__webpack_require__(307));
+var _tooltip = _interopRequireDefault(__webpack_require__(308));
 
 var _tooltip2 = _interopRequireDefault(__webpack_require__(132));
 
@@ -43683,7 +43758,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43757,7 +43832,7 @@ var _default = _vue.default.extend({
 exports.default = _default;
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43765,30 +43840,30 @@ exports.default = _default;
 
 exports.__esModule = true;
 
-var _toggle = _interopRequireDefault(__webpack_require__(309));
+var _toggle = _interopRequireDefault(__webpack_require__(310));
 
 exports.Toggle = _toggle.default;
 
-var _modal = _interopRequireDefault(__webpack_require__(310));
+var _modal = _interopRequireDefault(__webpack_require__(311));
 
 exports.Modal = _modal.default;
 
-var _scrollspy = _interopRequireDefault(__webpack_require__(311));
+var _scrollspy = _interopRequireDefault(__webpack_require__(312));
 
 exports.Scrollspy = _scrollspy.default;
 
-var _tooltip = _interopRequireDefault(__webpack_require__(314));
+var _tooltip = _interopRequireDefault(__webpack_require__(315));
 
 exports.Tooltip = _tooltip.default;
 
-var _popover = _interopRequireDefault(__webpack_require__(315));
+var _popover = _interopRequireDefault(__webpack_require__(316));
 
 exports.Popover = _popover.default;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43814,7 +43889,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43840,7 +43915,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43849,7 +43924,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _scrollspy = _interopRequireDefault(__webpack_require__(312));
+var _scrollspy = _interopRequireDefault(__webpack_require__(313));
 
 var _plugins = __webpack_require__(3);
 
@@ -43866,7 +43941,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43875,7 +43950,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _scrollspy = _interopRequireDefault(__webpack_require__(313));
+var _scrollspy = _interopRequireDefault(__webpack_require__(314));
 
 var _env = __webpack_require__(12);
 
@@ -44001,7 +44076,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44538,7 +44613,7 @@ var _default = ScrollSpy;
 exports.default = _default;
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44564,7 +44639,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44590,7 +44665,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
     /**
@@ -44717,13 +44792,13 @@ exports.default = _default;
 
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Login_vue__ = __webpack_require__(133);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5ac1b323_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5ac1b323_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Login_vue__ = __webpack_require__(342);
 var disposed = false
 var normalizeComponent = __webpack_require__(25)
 /* script */
@@ -44769,7 +44844,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44787,7 +44862,7 @@ var _default = (0, _common.regex)('alpha', /^[a-zA-Z]*$/);
 exports.default = _default;
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44797,13 +44872,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = process.env.BUILD === 'web' ? __webpack_require__(320).withParams : __webpack_require__(71).withParams;
+var withParams = process.env.BUILD === 'web' ? __webpack_require__(321).withParams : __webpack_require__(71).withParams;
 var _default = withParams;
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23)))
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44831,7 +44906,7 @@ exports.withParams = withParams;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44849,7 +44924,7 @@ var _default = (0, _common.regex)('alphaNum', /^[a-zA-Z0-9]*$/);
 exports.default = _default;
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44867,7 +44942,7 @@ var _default = (0, _common.regex)('numeric', /^[0-9]*$/);
 exports.default = _default;
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44893,7 +44968,7 @@ var _default = function _default(min, max) {
 exports.default = _default;
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44913,7 +44988,7 @@ var _default = (0, _common.regex)('email', emailRegex);
 exports.default = _default;
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44961,7 +45036,7 @@ var nibbleValid = function nibbleValid(nibble) {
 };
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44999,7 +45074,7 @@ var hexValid = function hexValid(hex) {
 };
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45024,7 +45099,7 @@ var _default = function _default(length) {
 exports.default = _default;
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45049,7 +45124,7 @@ var _default = function _default(length) {
 exports.default = _default;
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45069,7 +45144,7 @@ var _default = (0, _common.withParams)({
 exports.default = _default;
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45094,7 +45169,7 @@ var _default = function _default(prop) {
 exports.default = _default;
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45119,7 +45194,7 @@ var _default = function _default(prop) {
 exports.default = _default;
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45144,7 +45219,7 @@ var _default = function _default(equalTo) {
 exports.default = _default;
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45164,7 +45239,7 @@ var _default = (0, _common.regex)('url', urlRegex);
 exports.default = _default;
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45200,7 +45275,7 @@ var _default = function _default() {
 exports.default = _default;
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45236,7 +45311,7 @@ var _default = function _default() {
 exports.default = _default;
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45260,7 +45335,7 @@ var _default = function _default(validator) {
 exports.default = _default;
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45285,7 +45360,7 @@ var _default = function _default(min) {
 exports.default = _default;
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45310,7 +45385,7 @@ var _default = function _default(max) {
 exports.default = _default;
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45328,7 +45403,7 @@ var _default = (0, _common.regex)('integer', /^-?[0-9]*$/);
 exports.default = _default;
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45346,7 +45421,7 @@ var _default = (0, _common.regex)('decimal', /^[-]?\d*(\.\d+)?$/);
 exports.default = _default;
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45571,58 +45646,6 @@ if (false) {
 }
 
 /***/ }),
-/* 342 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ChangePassword_vue__ = __webpack_require__(134);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e8555fbe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ChangePassword_vue__ = __webpack_require__(361);
-var disposed = false
-var normalizeComponent = __webpack_require__(25)
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ChangePassword_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e8555fbe_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ChangePassword_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "public/src/components/ChangePassword.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e8555fbe", Component.options)
-  } else {
-    hotAPI.reload("data-v-e8555fbe", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45630,7 +45653,7 @@ if (false) {(function () {
 
 
 var utils = __webpack_require__(13);
-var bind = __webpack_require__(135);
+var bind = __webpack_require__(136);
 var Axios = __webpack_require__(345);
 var defaults = __webpack_require__(70);
 
@@ -45665,9 +45688,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(139);
+axios.Cancel = __webpack_require__(140);
 axios.CancelToken = __webpack_require__(359);
-axios.isCancel = __webpack_require__(138);
+axios.isCancel = __webpack_require__(139);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -45820,7 +45843,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(137);
+var createError = __webpack_require__(138);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -46253,7 +46276,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(13);
 var transformData = __webpack_require__(356);
-var isCancel = __webpack_require__(138);
+var isCancel = __webpack_require__(139);
 var defaults = __webpack_require__(70);
 var isAbsoluteURL = __webpack_require__(357);
 var combineURLs = __webpack_require__(358);
@@ -46413,7 +46436,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(139);
+var Cancel = __webpack_require__(140);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -46513,365 +46536,374 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card mx-auto", staticStyle: { "max-width": "500px" } },
-    [
-      _c("h5", { staticClass: "card-header" }, [_vm._v("Change Password")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "card-text" }, [
+  return _c("div", [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.successfullyChangedPassword,
+            expression: "successfullyChangedPassword"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "col-12" },
+          [
+            _c("b-alert", { attrs: { show: "", variant: "success" } }, [
+              _c("i", { staticClass: "fas fa-check" }),
+              _vm._v(" Successfully changed password.\n            ")
+            ])
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.errorMessage,
+            expression: "errorMessage"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "col-12" }, [
           _c(
             "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.successfullyChangedPassword,
-                  expression: "successfullyChangedPassword"
+            { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+            [
+              _c("i", { staticClass: "fas fa-exclamation-triangle" }),
+              _vm._v(" " + _vm._s(_vm.errorMessage) + "\n            ")
+            ]
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.successfullyChangedPassword,
+            expression: "!successfullyChangedPassword"
+          }
+        ]
+      },
+      [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.requireCurrentPassword,
+                expression: "requireCurrentPassword"
+              }
+            ],
+            staticClass: "form-group row"
+          },
+          [
+            _c(
+              "label",
+              {
+                staticClass: "col-md-6 col-form-label",
+                attrs: { for: "txtCurrentPassword" }
+              },
+              [
+                _vm._v("\n                Current Password "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.$v.currentPassword.$error,
+                        expression: "$v.currentPassword.$error"
+                      }
+                    ],
+                    staticClass: "error-asterisk"
+                  },
+                  [_vm._v("*")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model.lazy",
+                    value: _vm.currentPassword,
+                    expression: "currentPassword",
+                    modifiers: { lazy: true }
+                  }
+                ],
+                staticClass: "form-control",
+                class: { "invalid-field": _vm.$v.currentPassword.$error },
+                attrs: { type: "password", name: "txtCurrentPassword" },
+                domProps: { value: _vm.currentPassword },
+                on: {
+                  change: function($event) {
+                    _vm.currentPassword = $event.target.value
+                  }
                 }
-              ],
-              staticClass: "row"
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "offset-md-6 col-md-6 field-error-message" },
+              [
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value:
+                          _vm.$v.currentPassword.$error &&
+                          !_vm.$v.currentPassword.currentPasswordRequired,
+                        expression:
+                          "$v.currentPassword.$error && !$v.currentPassword.currentPasswordRequired"
+                      }
+                    ]
+                  },
+                  [_vm._v("Current password is required.")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value:
+                          _vm.$v.currentPassword.$error &&
+                          !_vm.$v.currentPassword.currentPasswordValid,
+                        expression:
+                          "$v.currentPassword.$error && !$v.currentPassword.currentPasswordValid"
+                      }
+                    ]
+                  },
+                  [_vm._v("Current password is invalid.")]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-6 col-form-label",
+              attrs: { for: "txtNewPassword" }
             },
             [
+              _vm._v("\n                New Password "),
               _c(
-                "div",
-                { staticClass: "col-12" },
-                [
-                  _c("b-alert", { attrs: { show: "", variant: "success" } }, [
-                    _c("i", { staticClass: "fas fa-check" }),
-                    _vm._v(
-                      " Successfully changed password.\n                    "
-                    )
-                  ])
-                ],
-                1
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.$v.newPassword.$error,
+                      expression: "$v.newPassword.$error"
+                    }
+                  ],
+                  staticClass: "error-asterisk"
+                },
+                [_vm._v("*")]
               )
             ]
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            {
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
               directives: [
                 {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.errorMessage,
-                  expression: "errorMessage"
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newPassword,
+                  expression: "newPassword"
                 }
               ],
-              staticClass: "row"
-            },
-            [
-              _c("div", { staticClass: "col-12" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "alert alert-danger",
-                    attrs: { role: "alert" }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-exclamation-triangle" }),
-                    _vm._v(
-                      " " + _vm._s(_vm.errorMessage) + "\n                    "
-                    )
-                  ]
-                )
-              ])
-            ]
-          ),
+              staticClass: "form-control",
+              class: { "invalid-field": _vm.$v.newPassword.$error },
+              attrs: { type: "password", name: "txtNewPassword" },
+              domProps: { value: _vm.newPassword },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.newPassword = $event.target.value
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c(
             "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.successfullyChangedPassword,
-                  expression: "!successfullyChangedPassword"
-                }
-              ]
-            },
+            { staticClass: "offset-md-6 col-md-6 field-error-message" },
             [
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-6 col-form-label",
-                    attrs: { for: "txtCurrentPassword" }
-                  },
-                  [
-                    _vm._v("\n                        Current Password "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.$v.currentPassword.$error,
-                            expression: "$v.currentPassword.$error"
-                          }
-                        ],
-                        staticClass: "error-asterisk"
-                      },
-                      [_vm._v("*")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.currentPassword,
-                        expression: "currentPassword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: { "invalid-field": _vm.$v.currentPassword.$error },
-                    attrs: { type: "password", name: "txtCurrentPassword" },
-                    domProps: { value: _vm.currentPassword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.currentPassword = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "offset-md-6 col-md-6 field-error-message" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.currentPassword.$error &&
-                              !_vm.$v.currentPassword.required,
-                            expression:
-                              "$v.currentPassword.$error && !$v.currentPassword.required"
-                          }
-                        ]
-                      },
-                      [_vm._v("Current password is required.")]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-6 col-form-label",
-                    attrs: { for: "txtNewPassword" }
-                  },
-                  [
-                    _vm._v("\n                        New Password "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.$v.newPassword.$error,
-                            expression: "$v.newPassword.$error"
-                          }
-                        ],
-                        staticClass: "error-asterisk"
-                      },
-                      [_vm._v("*")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newPassword,
-                        expression: "newPassword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: { "invalid-field": _vm.$v.newPassword.$error },
-                    attrs: { type: "password", name: "txtNewPassword" },
-                    domProps: { value: _vm.newPassword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.newPassword = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "offset-md-6 col-md-6 field-error-message" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.newPassword.$error &&
-                              !_vm.$v.newPassword.required,
-                            expression:
-                              "$v.newPassword.$error && !$v.newPassword.required"
-                          }
-                        ]
-                      },
-                      [_vm._v("New password is required.")]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-md-6 col-form-label",
-                    attrs: { for: "txtNewPasswordConf" }
-                  },
-                  [
-                    _vm._v("\n                        Confirm New Password  "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.$v.newPasswordConf.$error,
-                            expression: "$v.newPasswordConf.$error"
-                          }
-                        ],
-                        staticClass: "error-asterisk"
-                      },
-                      [_vm._v("*")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-6" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newPasswordConf,
-                        expression: "newPasswordConf"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    class: { "invalid-field": _vm.$v.newPasswordConf.$error },
-                    attrs: { type: "password", name: "txtNewPasswordConf" },
-                    domProps: { value: _vm.newPasswordConf },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.newPasswordConf = $event.target.value
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "offset-md-6 col-md-6 field-error-message" },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.newPasswordConf.$error &&
-                              !_vm.$v.newPasswordConf.required,
-                            expression:
-                              "$v.newPasswordConf.$error && !$v.newPasswordConf.required"
-                          }
-                        ]
-                      },
-                      [_vm._v("New password confirmation is required.")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value:
-                              _vm.$v.newPasswordConf.$error &&
-                              _vm.$v.newPasswordConf.required &&
-                              !_vm.$v.newPasswordConf.sameAsPassword,
-                            expression:
-                              "$v.newPasswordConf.$error && $v.newPasswordConf.required && !$v.newPasswordConf.sameAsPassword"
-                          }
-                        ]
-                      },
-                      [
-                        _vm._v(
-                          "Confirmation password does not match new password."
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group row" }, [
-                _c("div", { staticClass: "col-12 text-center" }, [
-                  _c(
-                    "button",
+              _c(
+                "span",
+                {
+                  directives: [
                     {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "button" },
-                      on: { click: _vm.submitForm }
-                    },
-                    [
-                      _c("i", { staticClass: "fas fa-key" }),
-                      _vm._v(" Change Password")
-                    ]
-                  )
-                ])
-              ])
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.$v.newPassword.$error &&
+                        !_vm.$v.newPassword.required,
+                      expression:
+                        "$v.newPassword.$error && !$v.newPassword.required"
+                    }
+                  ]
+                },
+                [_vm._v("New password is required.")]
+              )
             ]
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-6 col-form-label",
+              attrs: { for: "txtNewPasswordConf" }
+            },
+            [
+              _vm._v("\n                Confirm New Password  "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.$v.newPasswordConf.$error,
+                      expression: "$v.newPasswordConf.$error"
+                    }
+                  ],
+                  staticClass: "error-asterisk"
+                },
+                [_vm._v("*")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newPasswordConf,
+                  expression: "newPasswordConf"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "invalid-field": _vm.$v.newPasswordConf.$error },
+              attrs: { type: "password", name: "txtNewPasswordConf" },
+              domProps: { value: _vm.newPasswordConf },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.newPasswordConf = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "offset-md-6 col-md-6 field-error-message" },
+            [
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.$v.newPasswordConf.$error &&
+                        !_vm.$v.newPasswordConf.required,
+                      expression:
+                        "$v.newPasswordConf.$error && !$v.newPasswordConf.required"
+                    }
+                  ]
+                },
+                [_vm._v("New password confirmation is required.")]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.$v.newPasswordConf.$error &&
+                        _vm.$v.newPasswordConf.required &&
+                        !_vm.$v.newPasswordConf.sameAsPassword,
+                      expression:
+                        "$v.newPasswordConf.$error && $v.newPasswordConf.required && !$v.newPasswordConf.sameAsPassword"
+                    }
+                  ]
+                },
+                [_vm._v("Confirmation password does not match new password.")]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c("div", { staticClass: "col-12 text-center" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "button" },
+                on: { click: _vm.submitForm }
+              },
+              [
+                _c("i", { staticClass: "fas fa-key" }),
+                _vm._v(" Change Password")
+              ]
+            )
+          ])
         ])
-      ])
-    ]
-  )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -46901,8 +46933,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.successfullyUpdated,
-            expression: "successfullyUpdated"
+            value: _vm.successfullyUpdated && _vm.showSuccessMessage,
+            expression: "successfullyUpdated && showSuccessMessage"
           }
         ],
         staticClass: "row"
@@ -46956,8 +46988,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: !_vm.successfullyUpdated,
-            expression: "!successfullyUpdated"
+            value: !_vm.successfullyUpdated || !_vm.showSuccessMessage,
+            expression: "!successfullyUpdated || !showSuccessMessage"
           }
         ]
       },
@@ -47346,7 +47378,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CreateUser_vue__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_CreateUser_vue__ = __webpack_require__(143);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_538b5cc6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_CreateUser_vue__ = __webpack_require__(364);
 var disposed = false
@@ -48118,7 +48150,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ManageUsers_vue__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ManageUsers_vue__ = __webpack_require__(144);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4a916cdd_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ManageUsers_vue__ = __webpack_require__(368);
 var disposed = false
@@ -65402,6 +65434,14 @@ var render = function() {
                     _c(
                       "b-button",
                       {
+                        directives: [
+                          {
+                            name: "b-modal",
+                            rawName: "v-b-modal",
+                            value: "modal-change-password-" + aUser.id,
+                            expression: "'modal-change-password-' + aUser.id"
+                          }
+                        ],
                         staticClass: "btn-block",
                         attrs: { variant: "primary" }
                       },
@@ -65450,8 +65490,31 @@ var render = function() {
             },
             [
               _c("edit-user", {
-                attrs: { user: aUser },
+                attrs: { user: aUser, "show-success-message": false },
                 on: { "user-updated": _vm.onUserUpdated }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-modal",
+            {
+              attrs: {
+                id: "modal-change-password-" + aUser.id,
+                title:
+                  "Change Password for " +
+                  aUser.firstName +
+                  " " +
+                  aUser.lastName,
+                size: "xl",
+                "hide-footer": ""
+              }
+            },
+            [
+              _c("change-password", {
+                attrs: { user: aUser, "show-success-message": false },
+                on: { "password-changed": _vm.onPasswordChanged }
               })
             ],
             1
@@ -65479,7 +65542,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_SenseHatData_vue__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_SenseHatData_vue__ = __webpack_require__(145);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_95b066e6_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_SenseHatData_vue__ = __webpack_require__(370);
 var disposed = false
@@ -65667,7 +65730,7 @@ var content = __webpack_require__(372);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(146)("17bbcc31", content, false, {});
+var update = __webpack_require__(147)("17bbcc31", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -65686,7 +65749,7 @@ if(false) {
 /* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(145)(false);
+exports = module.exports = __webpack_require__(146)(false);
 // imports
 
 
@@ -65740,7 +65803,7 @@ var content = __webpack_require__(375);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(146)("ae668e66", content, false, {});
+var update = __webpack_require__(147)("ae668e66", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -65759,7 +65822,7 @@ if(false) {
 /* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(145)(false);
+exports = module.exports = __webpack_require__(146)(false);
 // imports
 
 

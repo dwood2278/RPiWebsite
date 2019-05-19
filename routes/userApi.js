@@ -11,6 +11,9 @@ router.post('/gettoken', user_api_controller.getToken);
 router.get('/users', apiTokenAuth.isAdmin , user_api_controller.getAllUsers);
 router.get('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin , user_api_controller.getUser);
 
+//Verify a user's password
+router.post('/verifypassword/:userId', user_api_controller.verifyPassword);
+
 //Update a user
 router.patch('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin, user_api_controller.updateUser);
 

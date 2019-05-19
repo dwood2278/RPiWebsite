@@ -20,7 +20,7 @@
                             <b-button variant="primary" v-b-modal="'modal-edit-user-' + aUser.id" class="btn-block"><i class="fas fa-pencil-alt"></i> Edit User</b-button>
                         </div>
                         <div class="col-12 text-center my-2">
-                            <b-button variant="primary" class="btn-block"><i class="fas fa-key"></i> Change Password</b-button>
+                            <b-button variant="primary" v-b-modal="'modal-change-password-' + aUser.id" class="btn-block"><i class="fas fa-key"></i> Change Password</b-button>
                         </div>
                         <div v-if="aUser.userName == 'admin'" class="col-12 text-center my-2">
                             <b-button variant="danger" class="btn-block"><i class="fas fa-trash"></i> Delete</b-button>
@@ -31,8 +31,16 @@
             <b-modal :id="'modal-edit-user-' + aUser.id" :title="'Edit ' + aUser.firstName + ' ' + aUser.lastName" size="xl" hide-footer>
                 <edit-user
                     :user = "aUser"
+                    :show-success-message = "false"
                     v-on:user-updated = "onUserUpdated"
                 ></edit-user>
+            </b-modal>
+            <b-modal :id="'modal-change-password-' + aUser.id" :title="'Change Password for ' + aUser.firstName + ' ' + aUser.lastName" size="xl" hide-footer>
+                <change-password
+                    :user = "aUser"
+                    :show-success-message = "false"
+                    v-on:password-changed = "onPasswordChanged"
+                ></change-password>
             </b-modal>
         </div>
     </div>
@@ -44,6 +52,7 @@
     import axios from 'axios';
     import _ from 'lodash';
     import EditUser from './EditUser.vue';
+    import ChangePassword from './ChangePassword.vue'
 
     export default {
         name: 'manageUsersApp',
@@ -54,7 +63,8 @@
             }
         },
         components: {
-            EditUser
+            EditUser,
+            ChangePassword
         },
         created () {
             
@@ -86,13 +96,8 @@
                 aUser.userName = updatedUser.userName;
 
             },
-            submitForm: function (event) {
-                //Check validation
-                this.$v.$touch();
-                if (this.$v.$anyError) {
-                    //Cancel submission
-                    event.preventDefault();
-                }
+            onPasswordChanged: function(updatedUser) {
+
             }
         }
     };

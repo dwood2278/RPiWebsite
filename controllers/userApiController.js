@@ -80,6 +80,27 @@ exports.getUser = function (req, res, next) {
 
 }
 
+exports.verifyPassword = function (req, res, next) {
+
+    //Get the user ID
+    var userId = req.params.userId;
+
+    //Get the user
+    User.findByPk(userId).then(user => {
+         //Verify the current password
+         user.verifyPassword(req.body.password).then(isPasswordVerified => {
+            res.json({
+                isPasswordVerified: isPasswordVerified
+            });
+        });
+    })
+    .catch(function(err) {
+        res.json({
+            errorMessage: err
+        });
+    });
+}
+
 exports.changePassword = function(req, res, next) {
 
     //Get the user ID

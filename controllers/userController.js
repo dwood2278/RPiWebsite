@@ -37,6 +37,7 @@ exports.login_post = function (req, res, next) {
             let token = jwt.sign(payload, config.apiToken.secret, config.apiToken.options);
 
             res.cookie('RPiWebsite_token', token, {maxAge: 86400000});
+            res.cookie('RPiWebsite_user', user, {maxAge: 86400000});
 
             if (req.session.loginRedirectUrl) {
                 var redirectUrl = req.session.loginRedirectUrl;

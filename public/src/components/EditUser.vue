@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-show="successfullyUpdated" class="row">
+        <div v-show="successfullyUpdated && showSuccessMessage" class="row">
             <div class="col-12">
                 <b-alert show variant="success">
                     <i class="fas fa-check"></i> Successfully submitted user changes.
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div v-show="!successfullyUpdated">
+        <div v-show="!successfullyUpdated || !showSuccessMessage">
             <div class="form-group row">
                 <label for="txtFirstName" class="col-md-4 col-lg-2 col-form-label">
                     First Name
