@@ -75,7 +75,7 @@
             }
         },
         props: [
-            'userId',
+            'user',
             'showSuccessMessage',
             'requireCurrentPassword'
         ],
@@ -97,7 +97,7 @@
                     let vueObj = this;
                     return new Promise((resolve, reject) => {
                         axios
-                        .post('/userapi/verifypassword/' + vueObj.userId, {
+                        .post('/userapi/verifypassword/' + vueObj.user.id, {
                             password: currentPassword
                         })
                         .then(function(res) {
@@ -137,13 +137,22 @@
 
                         //Change password
                         axios
-                        .patch('/userapi/changepassword/' + vueObj.userId, {
-                            currentPassword: vueObj.currentPassword,
-                            newPassword: vueObj.newPassword
+                        .patch('/userapi/users/' + vueObj.user.id, {
+                            password: vueObj.newPassword
                         })
                         .then(function(res) {
                             if (!res.data.errorMessage) {
                                 vueObj.successfullyChangedPassword = true;
+
+                                //Fire an event containing the data.
+                                vueObj.$emit('password-changed', {
+                                    id: vueObj.user.id,
+                                    firstName: vueObj.firstName,
+                                    middleName: vueObj.middleName,
+                                    lastName: vueObj.lastName,
+                                    email: vueObj.email,
+                                    userName: vueObj.userName
+                                });
                             } else {
                                 vueObj.errorMessage = res.data.errorMessage;
                             }

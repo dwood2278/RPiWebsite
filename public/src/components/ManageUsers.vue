@@ -35,10 +35,11 @@
                     v-on:user-updated = "onUserUpdated"
                 ></edit-user>
             </b-modal>
-            <b-modal :id="'modal-change-password-' + aUser.id" :title="'Change Password for ' + aUser.firstName + ' ' + aUser.lastName" size="xl" hide-footer>
+            <b-modal :id="'modal-change-password-' + aUser.id" :title="'Change Password for ' + aUser.firstName + ' ' + aUser.lastName" hide-footer>
                 <change-password
                     :user = "aUser"
                     :show-success-message = "false"
+                    :require-current-password = "loggedInUser.id == aUser.id"
                     v-on:password-changed = "onPasswordChanged"
                 ></change-password>
             </b-modal>
@@ -60,6 +61,7 @@
             return {
                 userList: [],
                 password: '',
+                loggedInUser: $cookies.get('RPiWebsite_user')
             }
         },
         components: {
@@ -67,7 +69,7 @@
             ChangePassword
         },
         created () {
-            
+
             //Fetch the user list.            
             let vueObj = this;
             axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
@@ -97,7 +99,8 @@
 
             },
             onPasswordChanged: function(updatedUser) {
-
+                //Close the modal
+                this.$bvModal.hide('modal-change-password-' + updatedUser.id);
             }
         }
     };

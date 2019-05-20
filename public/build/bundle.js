@@ -28746,7 +28746,7 @@ if (false) {(function () {
             successfullyChangedPassword: false
         };
     },
-    props: ['userId', 'showSuccessMessage', 'requireCurrentPassword'],
+    props: ['user', 'showSuccessMessage', 'requireCurrentPassword'],
     validations: {
         currentPassword: {
             currentPasswordRequired(currentPassword) {
@@ -28761,7 +28761,7 @@ if (false) {(function () {
 
                 let vueObj = this;
                 return new Promise((resolve, reject) => {
-                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/verifypassword/' + vueObj.userId, {
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/verifypassword/' + vueObj.user.id, {
                         password: currentPassword
                     }).then(function (res) {
                         resolve(res.data.isPasswordVerified);
@@ -28796,12 +28796,21 @@ if (false) {(function () {
                 if (this.requireCurrentPassword) {} else {
 
                     //Change password
-                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/changepassword/' + vueObj.userId, {
-                        currentPassword: vueObj.currentPassword,
-                        newPassword: vueObj.newPassword
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.user.id, {
+                        password: vueObj.newPassword
                     }).then(function (res) {
                         if (!res.data.errorMessage) {
                             vueObj.successfullyChangedPassword = true;
+
+                            //Fire an event containing the data.
+                            vueObj.$emit('password-changed', {
+                                id: vueObj.user.id,
+                                firstName: vueObj.firstName,
+                                middleName: vueObj.middleName,
+                                lastName: vueObj.lastName,
+                                email: vueObj.email,
+                                userName: vueObj.userName
+                            });
                         } else {
                             vueObj.errorMessage = res.data.errorMessage;
                         }
@@ -29547,6 +29556,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -29560,7 +29570,8 @@ if (false) {(function () {
     data() {
         return {
             userList: [],
-            password: ''
+            password: '',
+            loggedInUser: $cookies.get('RPiWebsite_user')
         };
     },
     components: {
@@ -29592,7 +29603,10 @@ if (false) {(function () {
             aUser.email = updatedUser.email;
             aUser.userName = updatedUser.userName;
         },
-        onPasswordChanged: function (updatedUser) {}
+        onPasswordChanged: function (updatedUser) {
+            //Close the modal
+            this.$bvModal.hide('modal-change-password-' + updatedUser.id);
+        }
     }
 });
 
@@ -65507,13 +65521,16 @@ var render = function() {
                   aUser.firstName +
                   " " +
                   aUser.lastName,
-                size: "xl",
                 "hide-footer": ""
               }
             },
             [
               _c("change-password", {
-                attrs: { user: aUser, "show-success-message": false },
+                attrs: {
+                  user: aUser,
+                  "show-success-message": false,
+                  "require-current-password": _vm.loggedInUser.id == aUser.id
+                },
                 on: { "password-changed": _vm.onPasswordChanged }
               })
             ],
@@ -65730,7 +65747,7 @@ var content = __webpack_require__(372);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(147)("17bbcc31", content, false, {});
+var update = __webpack_require__(147)("f9fe0d9e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -65803,7 +65820,7 @@ var content = __webpack_require__(375);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(147)("ae668e66", content, false, {});
+var update = __webpack_require__(147)("94acd34c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags

@@ -37,7 +37,7 @@ exports.login_post = function (req, res, next) {
             let token = jwt.sign(payload, config.apiToken.secret, config.apiToken.options);
 
             res.cookie('RPiWebsite_token', token, {maxAge: 86400000});
-            res.cookie('RPiWebsite_user', user, {maxAge: 86400000});
+            res.cookie('RPiWebsite_user', JSON.stringify(user), {maxAge: 86400000});
 
             if (req.session.loginRedirectUrl) {
                 var redirectUrl = req.session.loginRedirectUrl;
@@ -65,6 +65,7 @@ exports.logout = function (req, res, next) {
                 return next(err);
             } else {
                 res.clearCookie("RPiWebsite_token");
+                res.clearCookie('RPiWebsite_user');
                 return res.redirect('/login');
             }
         });
