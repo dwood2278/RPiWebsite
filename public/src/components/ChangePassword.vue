@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-show="successfullyChangedPassword" class="row">
+        <div v-show="successfullyChangedPassword && showSuccessMessage" class="row">
             <div class="col-12">
                 <b-alert show variant="success">
                     <i class="fas fa-check"></i> Successfully changed password.
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div v-show="!successfullyChangedPassword">
+        <div v-show="!successfullyChangedPassword || !showSuccessMessage">
             <div v-show="requireCurrentPassword" class="form-group row">
                 <label for="txtCurrentPassword" class="col-md-6 col-form-label">
                     Current Password <span v-show="$v.currentPassword.$error" class="error-asterisk">*</span>
@@ -125,42 +125,43 @@
 
                 //Check validation
                 this.$v.$touch();
-                if (!this.$v.$anyError) {
+                if (!this.$v.$pending && !this.$v.$anyError) {
 
                     let vueObj = this;
                     axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
-                    //Check if the current password needs to be verified.
-                    if(this.requireCurrentPassword) {
+                    //Change password
+                    axios
+                    .patch('/userapi/users/' + vueObj.user.id, {
+                        password: vueObj.newPassword
+                    })
+                    .then(function(res) {
+                        if (!res.data.errorMessage) {
+                            vueObj.successfullyChangedPassword = true;
+                            
+                            //Reset fields and validations
+                            //vueObj.$v.$reset();
 
-                    } else {
+                            //vueObj.currentPassword = '';
+                            //vueObj.newPassword = '';
+                            //vueObj.newPasswordConf = '';
 
-                        //Change password
-                        axios
-                        .patch('/userapi/users/' + vueObj.user.id, {
-                            password: vueObj.newPassword
-                        })
-                        .then(function(res) {
-                            if (!res.data.errorMessage) {
-                                vueObj.successfullyChangedPassword = true;
-
-                                //Fire an event containing the data.
-                                vueObj.$emit('password-changed', {
-                                    id: vueObj.user.id,
-                                    firstName: vueObj.firstName,
-                                    middleName: vueObj.middleName,
-                                    lastName: vueObj.lastName,
-                                    email: vueObj.email,
-                                    userName: vueObj.userName
-                                });
-                            } else {
-                                vueObj.errorMessage = res.data.errorMessage;
-                            }
-                        })
-                        .catch(function (err) {
-                            console.log(err);
-                        });
-                    }
+                            //Fire an event containing the data.
+                            vueObj.$emit('password-changed', {
+                                id: vueObj.user.id,
+                                firstName: vueObj.firstName,
+                                middleName: vueObj.middleName,
+                                lastName: vueObj.lastName,
+                                email: vueObj.email,
+                                userName: vueObj.userName
+                            });
+                        } else {
+                            vueObj.errorMessage = res.data.errorMessage;
+                        }
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
                 }
             }
         }

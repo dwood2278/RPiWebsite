@@ -28787,37 +28787,40 @@ if (false) {(function () {
 
             //Check validation
             this.$v.$touch();
-            if (!this.$v.$anyError) {
+            if (!this.$v.$pending && !this.$v.$anyError) {
 
                 let vueObj = this;
                 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
-                //Check if the current password needs to be verified.
-                if (this.requireCurrentPassword) {} else {
+                //Change password
+                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.user.id, {
+                    password: vueObj.newPassword
+                }).then(function (res) {
+                    if (!res.data.errorMessage) {
+                        vueObj.successfullyChangedPassword = true;
 
-                    //Change password
-                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.user.id, {
-                        password: vueObj.newPassword
-                    }).then(function (res) {
-                        if (!res.data.errorMessage) {
-                            vueObj.successfullyChangedPassword = true;
+                        //Reset fields and validations
+                        //vueObj.$v.$reset();
 
-                            //Fire an event containing the data.
-                            vueObj.$emit('password-changed', {
-                                id: vueObj.user.id,
-                                firstName: vueObj.firstName,
-                                middleName: vueObj.middleName,
-                                lastName: vueObj.lastName,
-                                email: vueObj.email,
-                                userName: vueObj.userName
-                            });
-                        } else {
-                            vueObj.errorMessage = res.data.errorMessage;
-                        }
-                    }).catch(function (err) {
-                        console.log(err);
-                    });
-                }
+                        //vueObj.currentPassword = '';
+                        //vueObj.newPassword = '';
+                        //vueObj.newPasswordConf = '';
+
+                        //Fire an event containing the data.
+                        vueObj.$emit('password-changed', {
+                            id: vueObj.user.id,
+                            firstName: vueObj.firstName,
+                            middleName: vueObj.middleName,
+                            lastName: vueObj.lastName,
+                            email: vueObj.email,
+                            userName: vueObj.userName
+                        });
+                    } else {
+                        vueObj.errorMessage = res.data.errorMessage;
+                    }
+                }).catch(function (err) {
+                    console.log(err);
+                });
             }
         }
     }
@@ -46558,8 +46561,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.successfullyChangedPassword,
-            expression: "successfullyChangedPassword"
+            value: _vm.successfullyChangedPassword && _vm.showSuccessMessage,
+            expression: "successfullyChangedPassword && showSuccessMessage"
           }
         ],
         staticClass: "row"
@@ -46613,8 +46616,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: !_vm.successfullyChangedPassword,
-            expression: "!successfullyChangedPassword"
+            value: !_vm.successfullyChangedPassword || !_vm.showSuccessMessage,
+            expression: "!successfullyChangedPassword || !showSuccessMessage"
           }
         ]
       },
@@ -65747,7 +65750,7 @@ var content = __webpack_require__(372);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(147)("f9fe0d9e", content, false, {});
+var update = __webpack_require__(147)("17bbcc31", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -65820,7 +65823,7 @@ var content = __webpack_require__(375);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(147)("94acd34c", content, false, {});
+var update = __webpack_require__(147)("ae668e66", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
