@@ -119,7 +119,7 @@
             }
         },
         methods: {
-            submitForm: function (event) {
+            submitForm: async function (event) {
                 //Reset error message
                 this.errorMessage = '';
 
@@ -130,15 +130,17 @@
                     let vueObj = this;
                     axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
-                    //Change password
-                    axios
-                    .patch('/userapi/users/' + vueObj.user.id, {
-                        password: vueObj.newPassword
-                    })
-                    .then(function(res) {
+                    try {
+
+                        //Change password
+                        let res = await axios
+                        .patch('/userapi/users/' + vueObj.user.id, {
+                            password: vueObj.newPassword
+                        });
+                       
                         if (!res.data.errorMessage) {
                             vueObj.successfullyChangedPassword = true;
-                            
+
                             //Reset fields and validations
                             //vueObj.$v.$reset();
 
@@ -154,14 +156,14 @@
                                 lastName: vueObj.lastName,
                                 email: vueObj.email,
                                 userName: vueObj.userName
-                            });
+                                });
                         } else {
                             vueObj.errorMessage = res.data.errorMessage;
                         }
-                    })
-                    .catch(function (err) {
+                    }
+                    catch(err) {
                         console.log(err);
-                    });
+                    }
                 }
             }
         }

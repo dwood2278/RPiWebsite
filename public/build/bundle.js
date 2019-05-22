@@ -28781,7 +28781,7 @@ if (false) {(function () {
         }
     },
     methods: {
-        submitForm: function (event) {
+        submitForm: async function (event) {
             //Reset error message
             this.errorMessage = '';
 
@@ -28792,10 +28792,13 @@ if (false) {(function () {
                 let vueObj = this;
                 __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
-                //Change password
-                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.user.id, {
-                    password: vueObj.newPassword
-                }).then(function (res) {
+                try {
+
+                    //Change password
+                    let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.user.id, {
+                        password: vueObj.newPassword
+                    });
+
                     if (!res.data.errorMessage) {
                         vueObj.successfullyChangedPassword = true;
 
@@ -28818,9 +28821,9 @@ if (false) {(function () {
                     } else {
                         vueObj.errorMessage = res.data.errorMessage;
                     }
-                }).catch(function (err) {
+                } catch (err) {
                     console.log(err);
-                });
+                }
             }
         }
     }
@@ -65750,7 +65753,7 @@ var content = __webpack_require__(372);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(147)("17bbcc31", content, false, {});
+var update = __webpack_require__(147)("f9fe0d9e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -65823,7 +65826,7 @@ var content = __webpack_require__(375);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(147)("ae668e66", content, false, {});
+var update = __webpack_require__(147)("94acd34c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
