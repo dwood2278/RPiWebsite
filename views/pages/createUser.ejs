@@ -10,26 +10,18 @@
             </header>
             <main>
                 <div class="container">
-                    <% if (!locals.createUserSuccess) { %>
-                        <div class="row">
-                            <div class="col-12">
-                                <create-user></create-user>
-                            </div>
-                        </div>
-                    <% } else { %>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="alert alert-success" role="alert">
-                                    <i class="fas fa-check"></i> User created.
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <h5 class="card-header">Create User</h5>
+                                <div class="card-body">
+                                    <div class="card-text">
+                                        <create-user></create-user>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="/users/createUser">Create another user.</a>
-                            </div>
-                        </div>
-                    <% } %>
+                    </div>
                 </div>
             </main>
             <footer class="border-top footer text-muted bg-dark">

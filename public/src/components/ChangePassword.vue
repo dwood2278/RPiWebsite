@@ -24,7 +24,6 @@
                 </div>
                 <div class="offset-md-6 col-md-6 field-error-message">
                     <span v-show="$v.currentPassword.$error && !$v.currentPassword.currentPasswordRequired">Current password is required.</span>
-                    <span v-show="$v.currentPassword.$error && !$v.currentPassword.currentPasswordValid">Current password is invalid.</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -86,28 +85,6 @@
                         !this.requireCurrentPassword ||
                         currentPassword
                     );
-                },
-                currentPasswordValid(currentPassword) {
-
-                    //Return true if this is blank as the required value will take care of it.
-                    if(currentPassword == ''){
-                        return true;
-                    }
-
-                    let vueObj = this;
-                    return new Promise((resolve, reject) => {
-                        axios
-                        .post('/userapi/verifypassword/' + vueObj.user.id, {
-                            password: currentPassword
-                        })
-                        .then(function(res) {
-                            resolve(res.data.isPasswordVerified);
-                        })
-                        .catch(function (err) {
-                            console.log(err);
-                            reject(err);
-                        });
-                    });
                 }
             },
             newPassword: {
@@ -125,47 +102,59 @@
 
                 //Check validation
                 this.$v.$touch();
-                if (!this.$v.$pending && !this.$v.$anyError) {
 
-                    let vueObj = this;
-                    axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+                if (!this.$v.$anyError) {
 
                     try {
 
+                        //Verify current password
+                        if (this.requireCurrentPassword) {
+                            let verifyPassRes = await axios
+                                .post('/userapi/verifypassword/' + this.user.id, {
+                                    password: this.currentPassword
+                                });
+                            if (!verifyPassRes.data.isPasswordVerified) {
+                                this.errorMessage = 'Invalid current password.';
+                                return;
+                            }
+                        }
+
+                        axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
                         //Change password
-                        let res = await axios
-                        .patch('/userapi/users/' + vueObj.user.id, {
-                            password: vueObj.newPassword
+                        let changePassRes = await axios
+                        .patch('/userapi/users/' + this.user.id, {
+                            password: this.newPassword
                         });
                        
-                        if (!res.data.errorMessage) {
-                            vueObj.successfullyChangedPassword = true;
+                        if (!changePassRes.data.errorMessage) {
+                            this.successfullyChangedPassword = true;
 
                             //Reset fields and validations
-                            //vueObj.$v.$reset();
+                            this.$v.$reset();
 
-                            //vueObj.currentPassword = '';
-                            //vueObj.newPassword = '';
-                            //vueObj.newPasswordConf = '';
+                            this.currentPassword = '';
+                            this.newPassword = '';
+                            this.newPasswordConf = '';
 
                             //Fire an event containing the data.
-                            vueObj.$emit('password-changed', {
-                                id: vueObj.user.id,
-                                firstName: vueObj.firstName,
-                                middleName: vueObj.middleName,
-                                lastName: vueObj.lastName,
-                                email: vueObj.email,
-                                userName: vueObj.userName
+                            this.$emit('password-changed', {
+                                id: this.user.id,
+                                firstName: this.firstName,
+                                middleName: this.middleName,
+                                lastName: this.lastName,
+                                email: this.email,
+                                userName: this.userName
                                 });
                         } else {
-                            vueObj.errorMessage = res.data.errorMessage;
+                            this.errorMessage = changePassRes.data.errorMessage;
                         }
                     }
                     catch(err) {
                         console.log(err);
                     }
                 }
-            }
+            },
         }
     };
 </script>
