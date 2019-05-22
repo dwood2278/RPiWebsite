@@ -14,10 +14,10 @@ router.get('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin , user_api_contro
 //Verify a user's password
 router.post('/verifypassword/:userId', user_api_controller.verifyPassword);
 
+//Create a new user
+router.post('/users', user_api_controller.createUser);
+
 //Update a user
 router.patch('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin, user_api_controller.updateUser);
-
-//Update a password
-router.patch('/changepassword/:userId', apiTokenAuth.isCurrentUserOrAdmin, user_api_controller.changePassword);
 
 module.exports = router;

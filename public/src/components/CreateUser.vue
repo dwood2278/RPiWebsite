@@ -95,7 +95,7 @@
         </div>
         <div class="form-group row">
             <div class="col-12 text-center">
-                <button type="submit" @click="submitForm" class="btn btn-primary"><i class="fas fa-user-plus"></i> Create User</button>
+                <button type="button" @click="submitForm" class="btn btn-primary"><i class="fas fa-user-plus"></i> Create User</button>
             </div>
         </div>
     </div>
@@ -159,12 +159,32 @@
             }
         },
         methods: {                    
-            submitForm: function (event) {
+            submitForm: async function (event) {
                 //Check validation
                 this.$v.$touch();
                 if (this.$v.$anyError) {
-                    //Cancel submission
-                    event.preventDefault();
+                    try {
+                        axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                        //Change password
+                        let newUser = await axios
+                        .post('/userapi/users', {
+                            firstName: this.firstName,
+                            middleName: this.middleName,
+                            lastName: this.lastName,
+                            email: this.email,
+                            userName: this.userName,
+                            password: this.password,
+                            isAdmin: this.isAdmin
+                        });
+
+                        //Fire an event containing the new user
+                        this.$emit('user-created', newUser);
+
+                    }
+                    catch(err) {
+                        console.log(err);
+                    }
                 }
             }
         }

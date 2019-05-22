@@ -29526,12 +29526,29 @@ if (false) {(function () {
         }
     },
     methods: {
-        submitForm: function (event) {
+        submitForm: async function (event) {
             //Check validation
             this.$v.$touch();
             if (this.$v.$anyError) {
-                //Cancel submission
-                event.preventDefault();
+                try {
+                    axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    //Change password
+                    let newUser = await axios.post('/userapi/users', {
+                        firstName: this.firstName,
+                        middleName: this.middleName,
+                        lastName: this.lastName,
+                        email: this.email,
+                        userName: this.userName,
+                        password: this.password,
+                        isAdmin: this.isAdmin
+                    });
+
+                    //Fire an event containing the new user
+                    this.$emit('user-created', newUser);
+                } catch (err) {
+                    console.log(err);
+                }
             }
         }
     }
@@ -29551,6 +29568,8 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ChangePassword_vue__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__CreateUser_vue__ = __webpack_require__(143);
+//
+//
 //
 //
 //
@@ -29653,6 +29672,14 @@ if (false) {(function () {
         });
     },
     methods: {
+        onUserCreated: function (newUser) {
+
+            //Close the modal
+            this.$bvModal.hide('modal-create-user');
+
+            //Add the new user to the user list.
+            this.userList.push(newUser);
+        },
         onUserUpdated: function (updatedUser) {
 
             //Close the modal
@@ -48104,7 +48131,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-primary",
-            attrs: { type: "submit" },
+            attrs: { type: "button" },
             on: { click: _vm.submitForm }
           },
           [_c("i", { staticClass: "fas fa-user-plus" }), _vm._v(" Create User")]
@@ -65334,7 +65361,7 @@ var render = function() {
       _c("div", { staticClass: "row my-3" }, [
         _c(
           "div",
-          { staticClass: "col-9 col-sm-6" },
+          { staticClass: "col-12 col-md-6" },
           [
             _c(
               "b-button",
@@ -65361,7 +65388,7 @@ var render = function() {
         _c(
           "label",
           {
-            staticClass: "col-form-label col-9 col-sm-3 text-right",
+            staticClass: "col-form-label col-6 col-md-3 text-right",
             attrs: { for: "ddlSortOrder" }
           },
           [_vm._v("Sort Order:")]
@@ -65373,10 +65400,10 @@ var render = function() {
       _c(
         "div",
         { staticClass: "row justify-content-center" },
-        _vm._l(_vm.userList, function(aUser, index) {
+        _vm._l(_vm.userList, function(aUser) {
           return _c(
             "div",
-            { staticClass: "col-md-12 col-lg-6" },
+            { key: aUser.id, staticClass: "col-md-12 col-lg-6" },
             [
               _c("div", { staticClass: "card" }, [
                 _c("h5", { staticClass: "card-header" }, [
@@ -65562,7 +65589,7 @@ var render = function() {
             "hide-footer": ""
           }
         },
-        [_c("create-user")],
+        [_c("create-user", { on: { "user-created": _vm.onUserCreated } })],
         1
       )
     ],
@@ -65574,7 +65601,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-6 col-md-3" }, [
       _c(
         "select",
         { staticClass: "form-control", attrs: { id: "ddlSortOrder" } },

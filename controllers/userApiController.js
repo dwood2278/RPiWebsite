@@ -95,52 +95,32 @@ exports.verifyPassword = function (req, res, next) {
         });
     })
     .catch(function(err) {
+        console.log(err);
         res.json({
             errorMessage: err
         });
     });
 }
 
-exports.changePassword = function(req, res, next) {
-
-    //Get the user ID
-    var userId = req.params.userId;
-
-    //Get the user
-    User.findByPk(userId).then(user => {
-
-        //Verify the current password
-        user.verifyPassword(req.body.currentPassword).then(isPasswordVerified => {
-            if (isPasswordVerified) {
-                //Password verified, update the user
-                user.update({
-                    password: req.body.newPassword
-                })
-                .then(user => {
-                    //Sucessfully updated the password
-                    res.json({
-                        successfullyChangedPassword: true,
-                    });
-                })
-                .catch(function(err) {
-                    res.json({
-                        errorMessage: err
-                    });
-                });
-
-            } else {
-                res.json({
-                    successfullyChangedPassword: false,
-                    errorMessage: 'Invalid current password.'
-                });
-            }
+exports.createUser = async function (req, res, next) {
+    
+    try {
+        var newUser = await User.create({  
+            firstName: req.body.firstName,
+            middleName: req.body.middleName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            userName: req.body.userName,
+            password: req.body.password,
+            isAdmin: req.body.isAdmin
         });
-    })
-    .catch(function(err) {
-        res.json({
-            errorMessage: err
-        });
-    });
+        newUser.password = '';
+        res.json(newUser);
+    }
+    catch(err) {
+        console.log(err);
+        res.json(err);
+    }
 
 }
 

@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="row my-3">
-            <div class="col-9 col-sm-6">
+            <div class="col-12 col-md-6">
                 <b-button variant="primary" v-b-modal="'modal-create-user'"><i class="fas fa-user-plus"></i> Create User</b-button>
             </div>
-            <label for="ddlSortOrder" class="col-form-label col-9 col-sm-3 text-right">Sort Order:</label>
-            <div class="col-3">
+            <label for="ddlSortOrder" class="col-form-label col-6 col-md-3 text-right">Sort Order:</label>
+            <div class="col-6 col-md-3">
                 <select class="form-control" id="ddlSortOrder">
                     <option>First Name</option>
                     <option>Last Name</option>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div v-for="(aUser, index) in userList" class="col-md-12 col-lg-6">
+            <div v-for="aUser in userList" class="col-md-12 col-lg-6" :key=aUser.id>
                 <div class="card">
                     <h5 class="card-header">
                         {{ aUser.firstName }} {{ aUser.lastName }}
@@ -60,7 +60,9 @@
             </div>
         </div>
         <b-modal id="modal-create-user" title="Create New User" size="xl" hide-footer>
-            <create-user></create-user>
+            <create-user
+                @user-created="onUserCreated"
+            ></create-user>
         </b-modal>
     </div>
 </template>
@@ -104,7 +106,15 @@
 
         },
         methods: {
-            onUserUpdated: function(updatedUser) {
+            onUserCreated: function (newUser) {
+
+                //Close the modal
+                this.$bvModal.hide('modal-create-user');
+
+                //Add the new user to the user list.
+                this.userList.push(newUser);
+            },
+            onUserUpdated: function (updatedUser) {
 
                 //Close the modal
                 this.$bvModal.hide('modal-edit-user-' + updatedUser.id);
