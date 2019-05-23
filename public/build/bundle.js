@@ -29505,7 +29505,6 @@ if (false) {(function () {
             passwordConf: ''
         };
     },
-    props: ['user', 'errorMessage'],
     validations: {
         firstName: {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
@@ -29568,7 +29567,7 @@ if (false) {(function () {
                 try {
                     __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
-                    //Change password
+                    //Create User
                     let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/users', {
                         firstName: this.firstName,
                         middleName: this.middleName,
@@ -29579,12 +29578,29 @@ if (false) {(function () {
                         isAdmin: this.isAdmin
                     });
 
+                    this.resetForm();
+
                     //Fire an event containing the new user
                     this.$emit('user-created', res.data);
                 } catch (err) {
                     console.log(err);
                 }
             }
+        },
+        resetForm: function () {
+
+            //Reset the form
+            this.firstName = '';
+            this.middleName = '';
+            this.lastName = '';
+            this.email = '';
+            this.isAdmin = false;
+            this.useEmailAsUsername = true;
+            this.userName = '';
+            this.password = '';
+            this.passwordConf = '';
+
+            this.$v.$reset();
         }
     }
 });
@@ -29683,6 +29699,18 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -29698,7 +29726,10 @@ if (false) {(function () {
         return {
             userList: [],
             password: '',
-            loggedInUser: $cookies.get('RPiWebsite_user')
+            loggedInUser: $cookies.get('RPiWebsite_user'),
+            sortOrder: 'lastName',
+            currentPage: 1,
+            perPage: 10
         };
     },
     components: {
@@ -29716,6 +29747,24 @@ if (false) {(function () {
         }).catch(function (error) {
             console.log(error);
         });
+    },
+    watch: {
+        sortOrder: function (val) {
+            //Reset page number to one.
+            this.currentPage = 1;
+        }
+    },
+    computed: {
+        sortedPagedUserList: function () {
+
+            var pageStartIndex = (this.currentPage - 1) * this.perPage;
+            var pageEndIndex = Math.min(pageStartIndex + this.perPage, this.userList.length);
+
+            return __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.orderBy(this.userList, this.sortOrder, 'asc').slice(pageStartIndex, pageEndIndex);
+        },
+        numberOfPages: function () {
+            return Math.ceil(this.userList.length / this.perPage);
+        }
     },
     methods: {
         onUserCreated: function (newUser) {
@@ -47535,7 +47584,7 @@ var render = function() {
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtFirstName" }
         },
         [
@@ -47558,7 +47607,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("input", {
           directives: [
             {
@@ -47587,7 +47636,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+            "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
           _c(
@@ -47612,13 +47661,13 @@ var render = function() {
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtMiddleName" }
         },
         [_vm._v("Middle Name")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("input", {
           directives: [
             {
@@ -47647,7 +47696,7 @@ var render = function() {
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtLastName" }
         },
         [
@@ -47670,7 +47719,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("input", {
           directives: [
             {
@@ -47699,7 +47748,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+            "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
           _c(
@@ -47724,7 +47773,7 @@ var render = function() {
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtEmail" }
         },
         [
@@ -47747,7 +47796,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("input", {
           directives: [
             {
@@ -47776,7 +47825,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+            "offset-lg-4 offset-xl-2 col-lg-8 col-xl-10 field-error-message"
         },
         [
           _c(
@@ -47800,7 +47849,7 @@ var render = function() {
     _c("div", { staticClass: "form-group row" }, [
       _c(
         "div",
-        { staticClass: "offset-md-4 offset-lg-2  col-md-8 col-lg-10" },
+        { staticClass: "offset-lg-3 offset-xl-2  col-lg-9 col-xl-10" },
         [
           _c("div", { staticClass: "form-check" }, [
             _c("input", {
@@ -47813,7 +47862,11 @@ var render = function() {
                 }
               ],
               staticClass: "form-check-input",
-              attrs: { type: "checkbox", name: "chkUseEmailAsUsername" },
+              attrs: {
+                type: "checkbox",
+                id: "chkUseEmailAsUsername",
+                name: "chkUseEmailAsUsername"
+              },
               domProps: {
                 checked: Array.isArray(_vm.useEmailAsUsername)
                   ? _vm._i(_vm.useEmailAsUsername, null) > -1
@@ -47863,7 +47916,7 @@ var render = function() {
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtUsername" }
         },
         [
@@ -47886,7 +47939,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("div", { staticClass: "input-group" }, [
           _c("input", {
             directives: [
@@ -47933,30 +47986,37 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "offset-md-4 offset-lg-2 col-md-8 col-lg-10" }, [
-        _vm.$v.userName.$error && !_vm.$v.userName.required
-          ? _c("span", { staticClass: "field-error-message" }, [
-              _vm._v("Username is required.")
-            ])
-          : !_vm.$v.$pending && !_vm.$v.userName.isUserNameAvailable
-          ? _c("span", { staticClass: "field-error-message" }, [
-              _vm._v("Username is unavailable.")
-            ])
-          : !_vm.$v.$pending &&
-            _vm.$v.userName.required &&
-            _vm.$v.userName.isUserNameAvailable
-          ? _c("span", { staticClass: "field-valid-message" }, [
-              _vm._v("Username is available.")
-            ])
-          : _vm._e()
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10",
+          staticStyle: { height: "15px" }
+        },
+        [
+          _vm.$v.userName.$error && !_vm.$v.userName.required
+            ? _c("span", { staticClass: "field-error-message" }, [
+                _vm._v("Username is required.")
+              ])
+            : !_vm.$v.$pending && !_vm.$v.userName.isUserNameAvailable
+            ? _c("span", { staticClass: "field-error-message" }, [
+                _vm._v("Username is unavailable.")
+              ])
+            : !_vm.$v.$pending &&
+              _vm.$v.userName.required &&
+              _vm.$v.userName.isUserNameAvailable
+            ? _c("span", { staticClass: "field-valid-message" }, [
+                _vm._v("Username is available.")
+              ])
+            : _vm._e()
+        ]
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group row" }, [
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtPassword" }
         },
         [
@@ -47979,7 +48039,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("input", {
           directives: [
             {
@@ -48008,7 +48068,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+            "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
           _c(
@@ -48033,7 +48093,7 @@ var render = function() {
       _c(
         "label",
         {
-          staticClass: "col-md-4 col-lg-2 col-form-label",
+          staticClass: "col-lg-3 col-xl-2 col-form-label",
           attrs: { for: "txtPasswordConf" }
         },
         [
@@ -48056,7 +48116,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
         _c("input", {
           directives: [
             {
@@ -48085,50 +48145,22 @@ var render = function() {
         "div",
         {
           staticClass:
-            "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+            "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value:
-                    _vm.$v.passwordConf.$error && !_vm.$v.passwordConf.required,
-                  expression:
-                    "$v.passwordConf.$error && !$v.passwordConf.required"
-                }
-              ]
-            },
-            [_vm._v("Password confirmation is required.")]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value:
-                    _vm.$v.passwordConf.$error &&
-                    _vm.$v.passwordConf.required &&
-                    !_vm.$v.passwordConf.sameAsPassword,
-                  expression:
-                    "$v.passwordConf.$error && $v.passwordConf.required && !$v.passwordConf.sameAsPassword"
-                }
-              ]
-            },
-            [_vm._v("Confirmation password does not match new password.")]
-          )
+          _vm.$v.passwordConf.$error && !_vm.$v.passwordConf.required
+            ? _c("span", [_vm._v("Password confirmation is required.")])
+            : _vm.$v.passwordConf.$error && !_vm.$v.passwordConf.sameAsPassword
+            ? _c("span", [
+                _vm._v("Confirmation password does not match new password.")
+              ])
+            : _vm._e()
         ]
       )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "offset-md-4 offset-lg-2 col-md-8 col-lg-10" }, [
+      _c("div", { staticClass: "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10" }, [
         _c("div", { staticClass: "form-check" }, [
           _c("input", {
             directives: [
@@ -48140,7 +48172,7 @@ var render = function() {
               }
             ],
             staticClass: "form-check-input",
-            attrs: { type: "checkbox", name: "chkIsAdmin" },
+            attrs: { type: "checkbox", id: "chkIsAdmin", name: "chkIsAdmin" },
             domProps: {
               checked: Array.isArray(_vm.isAdmin)
                 ? _vm._i(_vm.isAdmin, null) > -1
@@ -65451,13 +65483,61 @@ var render = function() {
           [_vm._v("Sort Order:")]
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-6 col-md-3" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.sortOrder,
+                  expression: "sortOrder"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "ddlSortOrder" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.sortOrder = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "firstName" } }, [
+                _vm._v("First Name")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "lastName" } }, [
+                _vm._v("Last Name")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "email" } }, [_vm._v("Email")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "userName" } }, [
+                _vm._v("User Name")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "isAdmin" } }, [_vm._v("Admin")])
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "row justify-content-center" },
-        _vm._l(_vm.userList, function(aUser) {
+        _vm._l(_vm.sortedPagedUserList, function(aUser) {
           return _c(
             "div",
             {
@@ -65690,6 +65770,44 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.userList.length > _vm.perPage,
+              expression: "userList.length > perPage"
+            }
+          ],
+          staticClass: "row my-3"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "col-12" },
+            [
+              _c("b-pagination", {
+                attrs: {
+                  "total-rows": _vm.userList.length,
+                  "per-page": _vm.perPage,
+                  align: "center"
+                },
+                model: {
+                  value: _vm.currentPage,
+                  callback: function($$v) {
+                    _vm.currentPage = $$v
+                  },
+                  expression: "currentPage"
+                }
+              })
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
         "b-modal",
         {
           attrs: {
@@ -65706,26 +65824,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 col-md-3" }, [
-      _c(
-        "select",
-        { staticClass: "form-control", attrs: { id: "ddlSortOrder" } },
-        [
-          _c("option", [_vm._v("First Name")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Last Name")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Email")])
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);

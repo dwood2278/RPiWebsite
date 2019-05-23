@@ -6,15 +6,17 @@
             </div>
             <label for="ddlSortOrder" class="col-form-label col-6 col-md-3 text-right">Sort Order:</label>
             <div class="col-6 col-md-3">
-                <select class="form-control" id="ddlSortOrder">
-                    <option>First Name</option>
-                    <option>Last Name</option>
-                    <option>Email</option>
+                <select class="form-control" id="ddlSortOrder" v-model="sortOrder">
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="email">Email</option>
+                    <option value="userName">User Name</option>
+                    <option value="isAdmin">Admin</option>
                 </select>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div v-for="aUser in userList" class="col-md-12 col-lg-6 d-flex align-items-stretch" style="width: 100%;" :key=aUser.id>
+            <div v-for="aUser in sortedPagedUserList" class="col-md-12 col-lg-6 d-flex align-items-stretch" style="width: 100%;" :key=aUser.id>
                 <div class="card flex-fill my-2" :class="{'border-dark': aUser.isAdmin}">
                     <h5 class="card-header">
                         {{ aUser.firstName }} {{ aUser.lastName }} <span v-if="aUser.isAdmin">(Admin)</span>
@@ -70,6 +72,16 @@
                 </b-modal>
             </div>
         </div>
+        <div v-show="userList.length > perPage" class="row my-3">
+            <div class="col-12">
+                <b-pagination
+                    v-model="currentPage"
+                    :total-rows="userList.length"
+                    :per-page="perPage"
+                    align="center"
+                ></b-pagination>
+            </div>
+        </div>
         <b-modal id="modal-create-user" title="Create New User" size="xl" hide-footer>
             <create-user
                 @user-created="onUserCreated"
@@ -93,7 +105,10 @@
             return {
                 userList: [],
                 password: '',
-                loggedInUser: $cookies.get('RPiWebsite_user')
+                loggedInUser: $cookies.get('RPiWebsite_user'),
+                sortOrder: 'lastName',
+                currentPage: 1,
+                perPage: 10
             }
         },
         components: {
@@ -115,6 +130,24 @@
                 console.log(error);
             });
 
+        },
+        watch: {
+            sortOrder: function (val) {
+                //Reset page number to one.
+                this.currentPage = 1;
+            }
+        },
+        computed: {
+            sortedPagedUserList: function () {
+
+            var pageStartIndex = ((this.currentPage - 1) * this.perPage);
+            var pageEndIndex = Math.min(pageStartIndex + this.perPage, this.userList.length);
+
+            return _.orderBy(this.userList, this.sortOrder, 'asc').slice(pageStartIndex, pageEndIndex);
+            },
+            numberOfPages: function () {
+                return Math.ceil(this.userList.length / this.perPage);
+            }
         },
         methods: {
             onUserCreated: function (newUser) {
