@@ -14,14 +14,15 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div v-for="aUser in userList" class="col-md-12 col-lg-6" :key=aUser.id>
-                <div class="card">
+            <div v-for="aUser in userList" class="col-md-12 col-lg-6 d-flex align-items-stretch" style="width: 100%;" :key=aUser.id>
+                <div class="card flex-fill my-2" :class="{'border-dark': aUser.isAdmin}">
                     <h5 class="card-header">
-                        {{ aUser.firstName }} {{ aUser.lastName }}
+                        {{ aUser.firstName }} {{ aUser.lastName }} <span v-if="aUser.isAdmin">(Admin)</span>
                     </h5>   
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
+                                ID: {{ aUser.id }}<br/>
                                 First Name: {{ aUser.firstName }}<br/>
                                 Middle Name: {{ aUser.middleName }}<br/>
                                 Last Name: {{ aUser.lastName }}<br/>
@@ -36,8 +37,8 @@
                             <div class="col-12 text-center my-2">
                                 <b-button variant="primary" v-b-modal="'modal-change-password-' + aUser.id" class="btn-block"><i class="fas fa-key"></i> Change Password</b-button>
                             </div>
-                            <div v-if="aUser.userName == 'admin'" class="col-12 text-center my-2">
-                                <b-button variant="danger" class="btn-block"><i class="fas fa-trash"></i> Delete</b-button>
+                            <div v-if="aUser.userName != 'admin'" class="col-12 text-center my-2">
+                                <b-button variant="danger" v-b-modal="'modal-delete-user-' + aUser.id" class="btn-block"><i class="fas fa-trash"></i> Delete</b-button>
                             </div>
                         </div>
                     </div>
@@ -56,6 +57,16 @@
                         :require-current-password = "loggedInUser.id == aUser.id"
                         v-on:password-changed = "onPasswordChanged"
                     ></change-password>
+                </b-modal>
+                <b-modal
+                    :id="'modal-delete-user-' + aUser.id" 
+                    :title="'Delete ' + aUser.firstName + ' ' + aUser.lastName"
+                    ok-variant="danger"
+                    ok-title="Yes"
+                    cancel-title="No"
+                    @ok="deleteUser(aUser)"
+                    >
+                    This action will delete the user {{ aUser.firstName }} {{ aUser.lastName }} permanently. Are you sure you want to do this?
                 </b-modal>
             </div>
         </div>
@@ -131,6 +142,26 @@
             onPasswordChanged: function(updatedUser) {
                 //Close the modal
                 this.$bvModal.hide('modal-change-password-' + updatedUser.id);
+            },
+            deleteUser: async function(userToDelete) {
+
+                 try {
+                    
+                    axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    let res = await axios
+                    .delete('/userapi/users/' + userToDelete.id);
+
+                    //Remove user from userlist (using lodash _.remove doesn't trigger reactive behavior, which is why _.filter is used).
+                    this.userList = _.filter(this.userList, function(user) {
+                        return user.id != userToDelete.id;
+                    });
+
+                 }
+                catch(err) {
+                    console.log(err);
+                }
+
             }
         }
     };

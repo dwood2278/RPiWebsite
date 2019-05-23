@@ -80,6 +80,72 @@ exports.getUser = function (req, res, next) {
 
 }
 
+exports.isUserNameAvaliable = async function (req, res, next) {
+
+    try {
+
+        //Find matching usernames
+        let matchingUsernames = await User.count({
+            where: {
+                userName: req.body.userName
+            }
+        });
+
+        if (matchingUsernames == 0) {
+            res.json({
+                isUserNameAvaliable: true
+            });
+        } else {
+            res.json({
+                isUserNameAvaliable: false
+            });
+        }
+
+    }
+    catch(err) {
+        console.log(err);
+        res.json({
+            errorMessage: err
+        });
+    }
+}
+
+exports.isUserNameAvaliableExcludeId = async function (req, res, next) {
+
+    //Get the user ID (current user excluded). 
+    var userId = req.params.userId;
+
+    try {
+
+        //Find matching usernames
+        let matchingUsernames = await User.count({
+            where: {
+                id: {
+                    [Op.ne]: userId
+                },
+                userName: req.body.userName
+            }
+        });
+
+        if (matchingUsernames == 0) {
+            res.json({
+                isUserNameAvaliable: true
+            });
+        } else {
+            res.json({
+                isUserNameAvaliable: false
+            });
+        }
+
+    }
+    catch(err) {
+        console.log(err);
+        res.json({
+            errorMessage: err
+        });
+    }
+}
+
 exports.verifyPassword = function (req, res, next) {
 
     //Get the user ID
@@ -190,4 +256,35 @@ exports.updateUser = function (req, res, next) {
             });
         }
     });
+}
+
+exports.deleteUser = async function (req, res, next) {
+
+    //Get the user ID
+    var userId = req.params.userId;
+
+    try {
+        var successfullyDeleted =  await User.destroy({
+            where:{
+                id: userId
+            }
+        });
+
+        if(successfullyDeleted) {
+            res.json({
+                deleted: true
+            });
+        } else {
+            res.json({
+                deleted: false
+            })
+        }
+    }
+    catch(err) {
+        console.log(err);
+        res.json({
+            errorMessage: err
+        });
+    }
+
 }

@@ -2644,8 +2644,8 @@ module.exports = function normalizeComponent (
 var global = __webpack_require__(27);
 var core = __webpack_require__(20);
 var ctx = __webpack_require__(73);
-var hide = __webpack_require__(33);
-var has = __webpack_require__(37);
+var hide = __webpack_require__(34);
+var has = __webpack_require__(38);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -3146,9 +3146,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(34);
+module.exports = __webpack_require__(344);
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__(35);
 var createDesc = __webpack_require__(51);
-module.exports = __webpack_require__(36) ? function (object, key, value) {
+module.exports = __webpack_require__(37) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -3157,15 +3163,15 @@ module.exports = __webpack_require__(36) ? function (object, key, value) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(35);
+var anObject = __webpack_require__(36);
 var IE8_DOM_DEFINE = __webpack_require__(164);
 var toPrimitive = __webpack_require__(165);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(36) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(37) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -3179,7 +3185,7 @@ exports.f = __webpack_require__(36) ? Object.defineProperty : function definePro
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(49);
@@ -3190,7 +3196,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
@@ -3200,7 +3206,7 @@ module.exports = !__webpack_require__(50)(function () {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 var hasOwnProperty = {}.hasOwnProperty;
@@ -3210,7 +3216,7 @@ module.exports = function (it, key) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3294,7 +3300,7 @@ var _default2 = _vue.default.extend({
 exports.default = _default2;
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3319,7 +3325,7 @@ var _default = prefixPropName;
 exports.default = _default;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3372,7 +3378,7 @@ var _default = copyProps;
 exports.default = _default;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3404,7 +3410,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6017,7 +6023,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6105,7 +6111,7 @@ var _default = BvEvent;
 exports.default = _default;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6202,12 +6208,6 @@ var _default2 = {
   }
 };
 exports.default = _default2;
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(344);
 
 /***/ }),
 /* 46 */
@@ -19145,9 +19145,9 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _popper = _interopRequireDefault(__webpack_require__(42));
+var _popper = _interopRequireDefault(__webpack_require__(43));
 
-var _bvEvent = _interopRequireDefault(__webpack_require__(43));
+var _bvEvent = _interopRequireDefault(__webpack_require__(44));
 
 var _noop = _interopRequireDefault(__webpack_require__(96));
 
@@ -20731,8 +20731,8 @@ module.exports = (
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(34).f;
-var has = __webpack_require__(37);
+var def = __webpack_require__(35).f;
+var has = __webpack_require__(38);
 var TAG = __webpack_require__(21)('toStringTag');
 
 module.exports = function (it, tag, stat) {
@@ -21151,13 +21151,13 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _vueFunctionalDataMerge = __webpack_require__(2);
 
-var _prefixPropName = _interopRequireDefault(__webpack_require__(39));
+var _prefixPropName = _interopRequireDefault(__webpack_require__(40));
 
-var _copyProps = _interopRequireDefault(__webpack_require__(40));
+var _copyProps = _interopRequireDefault(__webpack_require__(41));
 
 var _pluckProps = _interopRequireDefault(__webpack_require__(15));
 
-var _cardMixin = _interopRequireDefault(__webpack_require__(41));
+var _cardMixin = _interopRequireDefault(__webpack_require__(42));
 
 var _cardTitle = _interopRequireWildcard(__webpack_require__(90));
 
@@ -21346,13 +21346,13 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _vueFunctionalDataMerge = __webpack_require__(2);
 
-var _prefixPropName = _interopRequireDefault(__webpack_require__(39));
+var _prefixPropName = _interopRequireDefault(__webpack_require__(40));
 
-var _copyProps = _interopRequireDefault(__webpack_require__(40));
+var _copyProps = _interopRequireDefault(__webpack_require__(41));
 
 var _html = __webpack_require__(10);
 
-var _cardMixin = _interopRequireDefault(__webpack_require__(41));
+var _cardMixin = _interopRequireDefault(__webpack_require__(42));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21413,13 +21413,13 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _vueFunctionalDataMerge = __webpack_require__(2);
 
-var _prefixPropName = _interopRequireDefault(__webpack_require__(39));
+var _prefixPropName = _interopRequireDefault(__webpack_require__(40));
 
-var _copyProps = _interopRequireDefault(__webpack_require__(40));
+var _copyProps = _interopRequireDefault(__webpack_require__(41));
 
 var _html = __webpack_require__(10);
 
-var _cardMixin = _interopRequireDefault(__webpack_require__(41));
+var _cardMixin = _interopRequireDefault(__webpack_require__(42));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22526,9 +22526,9 @@ exports.default = _default2;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _popper = _interopRequireDefault(__webpack_require__(42));
+var _popper = _interopRequireDefault(__webpack_require__(43));
 
-var _bvEvent = _interopRequireDefault(__webpack_require__(43));
+var _bvEvent = _interopRequireDefault(__webpack_require__(44));
 
 var _keyCodes = _interopRequireDefault(__webpack_require__(17));
 
@@ -24347,7 +24347,7 @@ var _bvModalEvent = _interopRequireDefault(__webpack_require__(258));
 
 var _button = _interopRequireDefault(__webpack_require__(58));
 
-var _buttonClose = _interopRequireDefault(__webpack_require__(38));
+var _buttonClose = _interopRequireDefault(__webpack_require__(39));
 
 var _id = _interopRequireDefault(__webpack_require__(11));
 
@@ -26565,7 +26565,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _popper = _interopRequireDefault(__webpack_require__(42));
+var _popper = _interopRequireDefault(__webpack_require__(43));
 
 var _popover = _interopRequireDefault(__webpack_require__(121));
 
@@ -27063,7 +27063,7 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _portalVue = __webpack_require__(130);
 
-var _bvEvent = _interopRequireDefault(__webpack_require__(43));
+var _bvEvent = _interopRequireDefault(__webpack_require__(44));
 
 var _config = __webpack_require__(7);
 
@@ -27073,7 +27073,7 @@ var _listenOnRoot = _interopRequireDefault(__webpack_require__(30));
 
 var _normalizeSlot = _interopRequireDefault(__webpack_require__(31));
 
-var _buttonClose = _interopRequireDefault(__webpack_require__(38));
+var _buttonClose = _interopRequireDefault(__webpack_require__(39));
 
 var _toaster = _interopRequireDefault(__webpack_require__(131));
 
@@ -28339,7 +28339,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = void 0;
 
-var _popper = _interopRequireDefault(__webpack_require__(42));
+var _popper = _interopRequireDefault(__webpack_require__(43));
 
 var _tooltip = _interopRequireDefault(__webpack_require__(67));
 
@@ -28668,7 +28668,7 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -29148,7 +29148,7 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -29368,6 +29368,8 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
@@ -29471,6 +29473,19 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -29503,7 +29518,27 @@ if (false) {(function () {
             email: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["email"]
         },
         userName: {
-            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
+            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"],
+            async isUserNameAvailable(userName) {
+
+                //If this is blank, return true since required field will take care of it.
+                if (userName == '') {
+                    return true;
+                }
+
+                try {
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    //See if the username is available
+                    let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/isusernameavaliable', {
+                        userName: this.userName
+                    });
+
+                    return res.data.isUserNameAvaliable;
+                } catch (err) {
+                    console.log(err);
+                }
+            }
         },
         password: {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
@@ -29529,12 +29564,12 @@ if (false) {(function () {
         submitForm: async function (event) {
             //Check validation
             this.$v.$touch();
-            if (this.$v.$anyError) {
+            if (!this.$v.$anyError) {
                 try {
-                    axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
 
                     //Change password
-                    let newUser = await axios.post('/userapi/users', {
+                    let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/users', {
                         firstName: this.firstName,
                         middleName: this.middleName,
                         lastName: this.lastName,
@@ -29545,7 +29580,7 @@ if (false) {(function () {
                     });
 
                     //Fire an event containing the new user
-                    this.$emit('user-created', newUser);
+                    this.$emit('user-created', res.data);
                 } catch (err) {
                     console.log(err);
                 }
@@ -29561,13 +29596,24 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ChangePassword_vue__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__CreateUser_vue__ = __webpack_require__(143);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29696,6 +29742,22 @@ if (false) {(function () {
         onPasswordChanged: function (updatedUser) {
             //Close the modal
             this.$bvModal.hide('modal-change-password-' + updatedUser.id);
+        },
+        deleteUser: async function (userToDelete) {
+
+            try {
+
+                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete('/userapi/users/' + userToDelete.id);
+
+                //Remove user from userlist (using lodash _.remove doesn't trigger reactive behavior, which is why _.filter is used).
+                this.userList = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.filter(this.userList, function (user) {
+                    return user.id != userToDelete.id;
+                });
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 });
@@ -29705,7 +29767,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -31506,7 +31568,7 @@ var _dom = __webpack_require__(4);
 
 var _inspect = __webpack_require__(1);
 
-var _buttonClose = _interopRequireDefault(__webpack_require__(38));
+var _buttonClose = _interopRequireDefault(__webpack_require__(39));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31831,7 +31893,7 @@ module.exports = function (TO_STRING) {
 var LIBRARY = __webpack_require__(72);
 var $export = __webpack_require__(26);
 var redefine = __webpack_require__(166);
-var hide = __webpack_require__(33);
+var hide = __webpack_require__(34);
 var Iterators = __webpack_require__(52);
 var $iterCreate = __webpack_require__(167);
 var setToStringTag = __webpack_require__(82);
@@ -31912,7 +31974,7 @@ module.exports = function (it) {
 /* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(36) && !__webpack_require__(50)(function () {
+module.exports = !__webpack_require__(37) && !__webpack_require__(50)(function () {
   return Object.defineProperty(__webpack_require__(74)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -31939,7 +32001,7 @@ module.exports = function (it, S) {
 /* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(33);
+module.exports = __webpack_require__(34);
 
 
 /***/ }),
@@ -31954,7 +32016,7 @@ var setToStringTag = __webpack_require__(82);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(33)(IteratorPrototype, __webpack_require__(21)('iterator'), function () { return this; });
+__webpack_require__(34)(IteratorPrototype, __webpack_require__(21)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -31967,7 +32029,7 @@ module.exports = function (Constructor, NAME, next) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(35);
+var anObject = __webpack_require__(36);
 var dPs = __webpack_require__(169);
 var enumBugKeys = __webpack_require__(81);
 var IE_PROTO = __webpack_require__(54)('IE_PROTO');
@@ -32013,11 +32075,11 @@ module.exports = Object.create || function create(O, Properties) {
 /* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(34);
-var anObject = __webpack_require__(35);
+var dP = __webpack_require__(35);
+var anObject = __webpack_require__(36);
 var getKeys = __webpack_require__(75);
 
-module.exports = __webpack_require__(36) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(37) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -32032,7 +32094,7 @@ module.exports = __webpack_require__(36) ? Object.defineProperties : function de
 /* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(37);
+var has = __webpack_require__(38);
 var toIObject = __webpack_require__(76);
 var arrayIndexOf = __webpack_require__(171)(false);
 var IE_PROTO = __webpack_require__(54)('IE_PROTO');
@@ -32106,7 +32168,7 @@ module.exports = document && document.documentElement;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(37);
+var has = __webpack_require__(38);
 var toObject = __webpack_require__(55);
 var IE_PROTO = __webpack_require__(54)('IE_PROTO');
 var ObjectProto = Object.prototype;
@@ -32169,7 +32231,7 @@ $export($export.S + $export.F * !__webpack_require__(181)(function (iter) { Arra
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(35);
+var anObject = __webpack_require__(36);
 module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -32202,7 +32264,7 @@ module.exports = function (it) {
 
 "use strict";
 
-var $defineProperty = __webpack_require__(34);
+var $defineProperty = __webpack_require__(35);
 var createDesc = __webpack_require__(51);
 
 module.exports = function (object, index, value) {
@@ -32641,7 +32703,7 @@ exports.default = void 0;
 
 var _button = _interopRequireDefault(__webpack_require__(58));
 
-var _buttonClose = _interopRequireDefault(__webpack_require__(38));
+var _buttonClose = _interopRequireDefault(__webpack_require__(39));
 
 var _plugins = __webpack_require__(3);
 
@@ -33130,15 +33192,15 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _vueFunctionalDataMerge = __webpack_require__(2);
 
-var _prefixPropName = _interopRequireDefault(__webpack_require__(39));
+var _prefixPropName = _interopRequireDefault(__webpack_require__(40));
 
 var _unprefixPropName = _interopRequireDefault(__webpack_require__(206));
 
-var _copyProps = _interopRequireDefault(__webpack_require__(40));
+var _copyProps = _interopRequireDefault(__webpack_require__(41));
 
 var _pluckProps = _interopRequireDefault(__webpack_require__(15));
 
-var _cardMixin = _interopRequireDefault(__webpack_require__(41));
+var _cardMixin = _interopRequireDefault(__webpack_require__(42));
 
 var _cardBody = _interopRequireWildcard(__webpack_require__(89));
 
@@ -35361,7 +35423,7 @@ exports.default = void 0;
 
 var _vue = _interopRequireDefault(__webpack_require__(0));
 
-var _formOptions = _interopRequireDefault(__webpack_require__(44));
+var _formOptions = _interopRequireDefault(__webpack_require__(45));
 
 var _html = __webpack_require__(10);
 
@@ -36015,7 +36077,7 @@ var _id = _interopRequireDefault(__webpack_require__(11));
 
 var _form = _interopRequireDefault(__webpack_require__(19));
 
-var _formOptions = _interopRequireDefault(__webpack_require__(44));
+var _formOptions = _interopRequireDefault(__webpack_require__(45));
 
 var _formRadioCheckGroup = _interopRequireDefault(__webpack_require__(109));
 
@@ -36110,7 +36172,7 @@ var _id = _interopRequireDefault(__webpack_require__(11));
 
 var _form = _interopRequireDefault(__webpack_require__(19));
 
-var _formOptions = _interopRequireDefault(__webpack_require__(44));
+var _formOptions = _interopRequireDefault(__webpack_require__(45));
 
 var _formRadioCheckGroup = _interopRequireDefault(__webpack_require__(109));
 
@@ -37079,7 +37141,7 @@ var _vue = _interopRequireDefault(__webpack_require__(0));
 
 var _id = _interopRequireDefault(__webpack_require__(11));
 
-var _formOptions = _interopRequireDefault(__webpack_require__(44));
+var _formOptions = _interopRequireDefault(__webpack_require__(45));
 
 var _form = _interopRequireDefault(__webpack_require__(19));
 
@@ -38040,7 +38102,7 @@ exports.default = _default;
 exports.__esModule = true;
 exports.default = exports.BvModalEvent = void 0;
 
-var _bvEvent = _interopRequireDefault(__webpack_require__(43));
+var _bvEvent = _interopRequireDefault(__webpack_require__(44));
 
 var _warn = _interopRequireDefault(__webpack_require__(8));
 
@@ -47797,47 +47859,35 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.useEmailAsUsername,
-            expression: "!useEmailAsUsername"
-          }
-        ],
-        staticClass: "form-group row"
-      },
-      [
-        _c(
-          "label",
-          {
-            staticClass: "col-md-4 col-lg-2 col-form-label",
-            attrs: { for: "txtUsername" }
-          },
-          [
-            _vm._v("\n            Username "),
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.$v.userName.$error,
-                    expression: "$v.userName.$error"
-                  }
-                ],
-                staticClass: "error-asterisk"
-              },
-              [_vm._v("*")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+    _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-4 col-lg-2 col-form-label",
+          attrs: { for: "txtUsername" }
+        },
+        [
+          _vm._v("\n            Username "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.$v.userName.$error,
+                  expression: "$v.userName.$error"
+                }
+              ],
+              staticClass: "error-asterisk"
+            },
+            [_vm._v("*")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+        _c("div", { staticClass: "input-group" }, [
           _c("input", {
             directives: [
               {
@@ -47849,7 +47899,11 @@ var render = function() {
             ],
             staticClass: "form-control",
             class: { "invalid-field": _vm.$v.userName.$error },
-            attrs: { type: "text", name: "txtUserName" },
+            attrs: {
+              type: "text",
+              name: "txtUserName",
+              readonly: _vm.useEmailAsUsername
+            },
             domProps: { value: _vm.userName },
             on: {
               input: function($event) {
@@ -47859,48 +47913,51 @@ var render = function() {
                 _vm.userName = $event.target.value
               }
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
-          },
-          [
-            _c(
-              "span",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.$v.userName.$error && !_vm.$v.userName.required,
-                    expression: "$v.userName.$error && !$v.userName.required"
-                  }
-                ]
-              },
-              [_vm._v("Username is required.")]
-            )
-          ]
-        )
-      ]
-    ),
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group-append" }, [
+            _c("span", { staticClass: "input-group-text" }, [
+              !_vm.$v.userName.required
+                ? _c("span", [_c("i", { staticClass: "fas fa-cog" })])
+                : _vm.$v.$pending
+                ? _c("span", [_c("i", { staticClass: "fas fa-cog fa-spin" })])
+                : !_vm.$v.userName.isUserNameAvailable
+                ? _c("span", { staticStyle: { color: "red" } }, [
+                    _c("i", { staticClass: "fas fa-times-circle" })
+                  ])
+                : _c("span", { staticStyle: { color: "green" } }, [
+                    _c("i", { staticClass: "fas fa-check-circle" })
+                  ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "offset-md-4 offset-lg-2 col-md-8 col-lg-10" }, [
+        _vm.$v.userName.$error && !_vm.$v.userName.required
+          ? _c("span", { staticClass: "field-error-message" }, [
+              _vm._v("Username is required.")
+            ])
+          : !_vm.$v.$pending && !_vm.$v.userName.isUserNameAvailable
+          ? _c("span", { staticClass: "field-error-message" }, [
+              _vm._v("Username is unavailable.")
+            ])
+          : !_vm.$v.$pending &&
+            _vm.$v.userName.required &&
+            _vm.$v.userName.isUserNameAvailable
+          ? _c("span", { staticClass: "field-valid-message" }, [
+              _vm._v("Username is available.")
+            ])
+          : _vm._e()
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group row" }, [
       _c(
         "label",
         {
           staticClass: "col-md-4 col-lg-2 col-form-label",
-          attrs: { for: "txtPassword" },
-          model: {
-            value: _vm.password,
-            callback: function($$v) {
-              _vm.password = $$v
-            },
-            expression: "password"
-          }
+          attrs: { for: "txtPassword" }
         },
         [
           _vm._v("\n            Password "),
@@ -65403,129 +65460,155 @@ var render = function() {
         _vm._l(_vm.userList, function(aUser) {
           return _c(
             "div",
-            { key: aUser.id, staticClass: "col-md-12 col-lg-6" },
+            {
+              key: aUser.id,
+              staticClass: "col-md-12 col-lg-6 d-flex align-items-stretch",
+              staticStyle: { width: "100%" }
+            },
             [
-              _c("div", { staticClass: "card" }, [
-                _c("h5", { staticClass: "card-header" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(aUser.firstName) +
-                      " " +
-                      _vm._s(aUser.lastName) +
-                      "\n                "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _vm._v(
-                        "\n                            First Name: " +
-                          _vm._s(aUser.firstName)
-                      ),
-                      _c("br"),
-                      _vm._v(
-                        "\n                            Middle Name: " +
-                          _vm._s(aUser.middleName)
-                      ),
-                      _c("br"),
-                      _vm._v(
-                        "\n                            Last Name: " +
-                          _vm._s(aUser.lastName)
-                      ),
-                      _c("br"),
-                      _vm._v("\n                            Email: "),
-                      _c("a", { attrs: { href: "mailto:" + aUser.email } }, [
-                        _vm._v(_vm._s(aUser.email))
-                      ]),
-                      _c("br"),
-                      _vm._v(
-                        "\n                            Admin User: " +
-                          _vm._s(aUser.isAdmin ? "Yes" : "No") +
-                          "\n                        "
-                      )
-                    ])
+              _c(
+                "div",
+                {
+                  staticClass: "card flex-fill my-2",
+                  class: { "border-dark": aUser.isAdmin }
+                },
+                [
+                  _c("h5", { staticClass: "card-header" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(aUser.firstName) +
+                        " " +
+                        _vm._s(aUser.lastName) +
+                        " "
+                    ),
+                    aUser.isAdmin ? _c("span", [_vm._v("(Admin)")]) : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-12 text-center my-2" },
-                      [
-                        _c(
-                          "b-button",
-                          {
-                            directives: [
-                              {
-                                name: "b-modal",
-                                rawName: "v-b-modal",
-                                value: "modal-edit-user-" + aUser.id,
-                                expression: "'modal-edit-user-' + aUser.id"
-                              }
-                            ],
-                            staticClass: "btn-block",
-                            attrs: { variant: "primary" }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-pencil-alt" }),
-                            _vm._v(" Edit User")
-                          ]
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-12" }, [
+                        _vm._v(
+                          "\n                            ID: " +
+                            _vm._s(aUser.id)
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          "\n                            First Name: " +
+                            _vm._s(aUser.firstName)
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          "\n                            Middle Name: " +
+                            _vm._s(aUser.middleName)
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          "\n                            Last Name: " +
+                            _vm._s(aUser.lastName)
+                        ),
+                        _c("br"),
+                        _vm._v("\n                            Email: "),
+                        _c("a", { attrs: { href: "mailto:" + aUser.email } }, [
+                          _vm._v(_vm._s(aUser.email))
+                        ]),
+                        _c("br"),
+                        _vm._v(
+                          "\n                            Admin User: " +
+                            _vm._s(aUser.isAdmin ? "Yes" : "No") +
+                            "\n                        "
                         )
-                      ],
-                      1
-                    ),
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-12 text-center my-2" },
-                      [
-                        _c(
-                          "b-button",
-                          {
-                            directives: [
-                              {
-                                name: "b-modal",
-                                rawName: "v-b-modal",
-                                value: "modal-change-password-" + aUser.id,
-                                expression:
-                                  "'modal-change-password-' + aUser.id"
-                              }
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-12 text-center my-2" },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              directives: [
+                                {
+                                  name: "b-modal",
+                                  rawName: "v-b-modal",
+                                  value: "modal-edit-user-" + aUser.id,
+                                  expression: "'modal-edit-user-' + aUser.id"
+                                }
+                              ],
+                              staticClass: "btn-block",
+                              attrs: { variant: "primary" }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-pencil-alt" }),
+                              _vm._v(" Edit User")
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-12 text-center my-2" },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              directives: [
+                                {
+                                  name: "b-modal",
+                                  rawName: "v-b-modal",
+                                  value: "modal-change-password-" + aUser.id,
+                                  expression:
+                                    "'modal-change-password-' + aUser.id"
+                                }
+                              ],
+                              staticClass: "btn-block",
+                              attrs: { variant: "primary" }
+                            },
+                            [
+                              _c("i", { staticClass: "fas fa-key" }),
+                              _vm._v(" Change Password")
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      aUser.userName != "admin"
+                        ? _c(
+                            "div",
+                            { staticClass: "col-12 text-center my-2" },
+                            [
+                              _c(
+                                "b-button",
+                                {
+                                  directives: [
+                                    {
+                                      name: "b-modal",
+                                      rawName: "v-b-modal",
+                                      value: "modal-delete-user-" + aUser.id,
+                                      expression:
+                                        "'modal-delete-user-' + aUser.id"
+                                    }
+                                  ],
+                                  staticClass: "btn-block",
+                                  attrs: { variant: "danger" }
+                                },
+                                [
+                                  _c("i", { staticClass: "fas fa-trash" }),
+                                  _vm._v(" Delete")
+                                ]
+                              )
                             ],
-                            staticClass: "btn-block",
-                            attrs: { variant: "primary" }
-                          },
-                          [
-                            _c("i", { staticClass: "fas fa-key" }),
-                            _vm._v(" Change Password")
-                          ]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    aUser.userName == "admin"
-                      ? _c(
-                          "div",
-                          { staticClass: "col-12 text-center my-2" },
-                          [
-                            _c(
-                              "b-button",
-                              {
-                                staticClass: "btn-block",
-                                attrs: { variant: "danger" }
-                              },
-                              [
-                                _c("i", { staticClass: "fas fa-trash" }),
-                                _vm._v(" Delete")
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      : _vm._e()
+                            1
+                          )
+                        : _vm._e()
+                    ])
                   ])
-                ])
-              ]),
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "b-modal",
@@ -65571,6 +65654,33 @@ var render = function() {
                   })
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-modal",
+                {
+                  attrs: {
+                    id: "modal-delete-user-" + aUser.id,
+                    title: "Delete " + aUser.firstName + " " + aUser.lastName,
+                    "ok-variant": "danger",
+                    "ok-title": "Yes",
+                    "cancel-title": "No"
+                  },
+                  on: {
+                    ok: function($event) {
+                      return _vm.deleteUser(aUser)
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                This action will delete the user " +
+                      _vm._s(aUser.firstName) +
+                      " " +
+                      _vm._s(aUser.lastName) +
+                      " permanently. Are you sure you want to do this?\n            "
+                  )
+                ]
               )
             ],
             1
