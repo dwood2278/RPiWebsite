@@ -2,19 +2,20 @@ const config = require('../config');
 const { User } = require('../initOrmModels');
 
 //Set global response properties
-exports.setGlobalResProperties = function (req, res, next) {
+exports.setGlobalResProperties = async function (req, res, next) {
     res.locals.raspberryPiName = config.raspberryPi.name;
 
     //See if there is a user object
     if (req.session && req.session.user) {
          //Get the user
-        User.findByPk(req.session.user.id).then(user => {
-            //Refresh it in session and assign it to the res.locals.
-            user.password = '';
-            req.session.user = user;
-            res.locals.user = req.session.user;
-            return next();
-        });
+        let user = await User.findByPk(req.session.user.id);
+        
+        //Refresh it in session and assign it to the res.locals.
+        user.password = '';
+        req.session.user = user;
+        res.locals.user = req.session.user;
+        return next();
+        
     } else {
         return next();
     }

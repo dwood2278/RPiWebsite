@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 const config = require('../config');
 
-exports.getToken = function (req, res, next) {
+exports.getToken = async function (req, res, next) {
 
     //Check that the username and password are not undefined
     if (req.body.userName == undefined ||
@@ -15,8 +15,10 @@ exports.getToken = function (req, res, next) {
         });
     }
 
-    //Authenticate the user
-    User.authenticate(req.body.userName, req.body.password).then(user => {
+    try {
+
+        //Authenticate the user
+        let user = await User.authenticate(req.body.userName, req.body.password);
         if (user != undefined) {
 
             //Remove password and put user into jwt.
@@ -36,12 +38,16 @@ exports.getToken = function (req, res, next) {
                 authenticated: false,
             });
         }
-    });
+    } catch(err) {
+        console.log(err);
+    } 
 }
 
-exports.getAllUsers = function (req, res, next) {
+exports.getAllUsers = async function (req, res, next) {
 
-    User.findAll().then(userList => {
+    try {
+    
+        let userList = await User.findAll();
         
         var clientUserList = [];
 
@@ -52,31 +58,37 @@ exports.getAllUsers = function (req, res, next) {
         }
 
         //Send response.
-        //
         res.json({
             userList: clientUserList
         });
-    });
+
+    } catch(err) {
+        console.log(err);
+    } 
 
 }
 
-exports.getUser = function (req, res, next) {
+exports.getUser = async function (req, res, next) {
 
     //Get the user ID
     var userId = req.params.userId;
 
-     //Get the user
-     User.findByPk(userId).then(user => {
+    try {
+
+        //Get the user
+        let user = await User.findByPk(userId);
+
          user.password = '';
          res.json({
              user: user
          });
-     })
-     .catch(function(err) {
-         res.json({
-             errorMessage: err
-         });
-     });
+
+    } catch(err) {
+        console.log(err);
+        res.json({
+            errorMessage: err
+        });
+    } 
 
 }
 

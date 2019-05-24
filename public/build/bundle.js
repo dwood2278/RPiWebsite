@@ -47423,8 +47423,8 @@ var render = function() {
                     staticClass: "form-check-input",
                     attrs: {
                       type: "checkbox",
-                      id: "chkuseEmailAsUserName",
-                      name: "chkuseEmailAsUserName"
+                      id: "chkUseEmailAsUserName",
+                      name: "chkUseEmailAsUserName"
                     },
                     domProps: {
                       checked: Array.isArray(_vm.useEmailAsUserName)
@@ -47459,7 +47459,7 @@ var render = function() {
                     "label",
                     {
                       staticClass: "form-check-label",
-                      attrs: { for: "chkuseEmailAsUserName" }
+                      attrs: { for: "chkUseEmailAsUserName" }
                     },
                     [
                       _vm._v(
@@ -47908,8 +47908,8 @@ var render = function() {
               staticClass: "form-check-input",
               attrs: {
                 type: "checkbox",
-                id: "chkuseEmailAsUserName",
-                name: "chkuseEmailAsUserName"
+                id: "chkUseEmailAsUserName",
+                name: "chkUseEmailAsUserName"
               },
               domProps: {
                 checked: Array.isArray(_vm.useEmailAsUserName)
@@ -47943,7 +47943,7 @@ var render = function() {
               "label",
               {
                 staticClass: "form-check-label",
-                attrs: { for: "chkuseEmailAsUserName" }
+                attrs: { for: "chkUseEmailAsUserName" }
               },
               [
                 _vm._v(

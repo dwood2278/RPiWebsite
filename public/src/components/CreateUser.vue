@@ -42,8 +42,8 @@
         <div class="form-group row">
             <div class="offset-lg-3 offset-xl-2  col-lg-9 col-xl-10">
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="chkuseEmailAsUserName" name="chkuseEmailAsUserName" v-model="useEmailAsUserName">
-                    <label for="chkuseEmailAsUserName" class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="chkUseEmailAsUserName" name="chkUseEmailAsUserName" v-model="useEmailAsUserName">
+                    <label for="chkUseEmailAsUserName" class="form-check-label">
                         Use email address as username.
                     </label>
                 </div>
