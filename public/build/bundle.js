@@ -28814,6 +28814,7 @@ if (false) {(function () {
                     }
                 } catch (err) {
                     console.log(err);
+                    this.errorMessage = err;
                 }
             }
         }
@@ -29232,6 +29233,37 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -29241,16 +29273,24 @@ if (false) {(function () {
     name: 'editUserApp',
     data() {
         return {
+            loggedInUser: $cookies.get('RPiWebsite_user'),
+            id: this.user.id,
             firstName: this.user.firstName,
             middleName: this.user.middleName,
             lastName: this.user.lastName,
             email: this.user.email,
+            isAdmin: this.user.isAdmin,
+            useEmailAsUserName: true,
             userName: this.user.userName,
             successfullyUpdated: false,
             errorMessage: ''
         };
     },
     props: ['user', 'showSuccessMessage'],
+    created() {
+        //If the username an email match, set the useEmailAsUserName property.
+        this.useEmailAsUserName = this.userName == this.email && this.userName != 'admin';
+    },
     validations: {
         firstName: {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
@@ -29262,11 +29302,49 @@ if (false) {(function () {
             required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
         },
         userName: {
-            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
+            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"],
+            async isUserNameAvailable(userName) {
+
+                //If this is blank, return true since required field will take care of it.
+                if (userName == '') {
+                    return true;
+                }
+
+                try {
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    //See if the username is available
+                    let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/userapi/isusernameavaliable/' + this.id, {
+                        userName: this.userName
+                    });
+
+                    return res.data.isUserNameAvaliable;
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }
+    },
+    watch: {
+        email: function (val) {
+            if (this.useEmailAsUserName) {
+                this.userName = this.email;
+            }
+        },
+        useEmailAsUserName: function (val) {
+            if (this.useEmailAsUserName) {
+                this.userName = this.email;
+            }
+        }
+    },
+    computed: {
+        enableChangeAdmin: function () {
+            //Disable change admin for admin account or current logged in account.
+            return this.userName != 'admin' && this.loggedInUser.id != this.id;
         }
     },
     methods: {
-        submitForm: function (event) {
+        submitForm: async function (event) {
 
             //Reset error message
             this.errorMessage = '';
@@ -29275,35 +29353,40 @@ if (false) {(function () {
             this.$v.$touch();
             if (!this.$v.$anyError) {
 
-                let vueObj = this;
-                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+                try {
 
-                //Update the user
-                __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + vueObj.user.id, {
-                    firstName: vueObj.firstName,
-                    middleName: vueObj.middleName,
-                    lastName: vueObj.lastName,
-                    email: vueObj.email,
-                    userName: vueObj.userName
-                }).then(function (res) {
+                    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                    //Update the user
+                    let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/userapi/users/' + this.user.id, {
+                        firstName: this.firstName,
+                        middleName: this.middleName,
+                        lastName: this.lastName,
+                        email: this.email,
+                        userName: this.userName,
+                        isAdmin: this.isAdmin
+                    });
+
                     if (!res.data.errorMessage) {
-                        vueObj.successfullyUpdated = true;
+                        this.successfullyUpdated = true;
 
                         //Fire an event containing the data.
-                        vueObj.$emit('user-updated', {
-                            id: vueObj.user.id,
-                            firstName: vueObj.firstName,
-                            middleName: vueObj.middleName,
-                            lastName: vueObj.lastName,
-                            email: vueObj.email,
-                            userName: vueObj.userName
+                        this.$emit('user-updated', {
+                            id: this.user.id,
+                            firstName: this.firstName,
+                            middleName: this.middleName,
+                            lastName: this.lastName,
+                            email: this.email,
+                            userName: this.userName,
+                            isAdmin: this.isAdmin
                         });
                     } else {
-                        vueObj.errorMessage = res.data.errorMessage;
+                        this.errorMessage = res.data.errorMessage;
                     }
-                }).catch(function (error) {
-                    console.log(error);
-                });
+                } catch (err) {
+                    console.log(err);
+                    this.errorMessage = err;
+                }
             }
         }
     }
@@ -29494,12 +29577,13 @@ if (false) {(function () {
     name: 'createUserApp',
     data() {
         return {
+            loggedInUser: $cookies.get('RPiWebsite_user'),
             firstName: '',
             middleName: '',
             lastName: '',
             email: '',
             isAdmin: false,
-            useEmailAsUsername: true,
+            useEmailAsUserName: true,
             userName: '',
             password: '',
             passwordConf: ''
@@ -29549,12 +29633,12 @@ if (false) {(function () {
     },
     watch: {
         email: function (val) {
-            if (this.useEmailAsUsername) {
+            if (this.useEmailAsUserName) {
                 this.userName = this.email;
             }
         },
-        useEmailAsUsername: function (val) {
-            if (this.useEmailAsUsername) {
+        useEmailAsUserName: function (val) {
+            if (this.useEmailAsUserName) {
                 this.userName = this.email;
             }
         }
@@ -29595,7 +29679,7 @@ if (false) {(function () {
             this.lastName = '';
             this.email = '';
             this.isAdmin = false;
-            this.useEmailAsUsername = true;
+            this.useEmailAsUserName = true;
             this.userName = '';
             this.password = '';
             this.passwordConf = '';
@@ -29737,16 +29821,19 @@ if (false) {(function () {
         EditUser: __WEBPACK_IMPORTED_MODULE_3__EditUser_vue__["a" /* default */],
         ChangePassword: __WEBPACK_IMPORTED_MODULE_4__ChangePassword_vue__["a" /* default */]
     },
-    created() {
+    async created() {
 
-        //Fetch the user list.            
-        let vueObj = this;
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/userapi/users').then(function (res) {
-            vueObj.userList = res.data.userList;
-        }).catch(function (error) {
-            console.log(error);
-        });
+        try {
+
+            //Fetch the user list.            
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+            let res = await __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/userapi/users');
+
+            this.userList = res.data.userList;
+        } catch (err) {
+            console.log(err);
+        }
     },
     watch: {
         sortOrder: function (val) {
@@ -29787,6 +29874,7 @@ if (false) {(function () {
             aUser.lastName = updatedUser.lastName;
             aUser.email = updatedUser.email;
             aUser.userName = updatedUser.userName;
+            aUser.isAdmin = updatedUser.isAdmin;
         },
         onPasswordChanged: function (updatedUser) {
             //Close the modal
@@ -29807,6 +29895,9 @@ if (false) {(function () {
             } catch (err) {
                 console.log(err);
             }
+        },
+        isDefaultAdminOrLoggedInUser: function (aUser) {
+            return aUser.userName == 'admin' || aUser.id == this.loggedInUser.id;
         }
     }
 });
@@ -29873,18 +29964,22 @@ if (false) {(function () {
             serverRequestError: ''
         };
     },
-    created: function () {
-        var vueObject = this;
+    created: async function () {
+
         this.isLoading = true;
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/sensehatapi/getsensehatdata').then(function (response) {
-            vueObject.senseHatData = response.data;
-            vueObject.isLoading = false;
-        }).catch(function (error) {
-            vueObject.serverRequestError = error;
-            console.log(error);
-            vueObject.isLoading = false;
-        });
+
+        try {
+
+            let res = await __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/sensehatapi/getsensehatdata');
+
+            this.senseHatData = res.data;
+            this.isLoading = false;
+        } catch (err) {
+            this.serverRequestError = err;
+            console.log(err);
+            this.isLoading = false;
+        }
     },
     methods: {
         celsiusToFahrenheit: function (celsiusTemp) {
@@ -46842,21 +46937,9 @@ var render = function() {
               },
               [
                 _vm._v("\n                Current Password "),
-                _c(
-                  "span",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.$v.currentPassword.$error,
-                        expression: "$v.currentPassword.$error"
-                      }
-                    ],
-                    staticClass: "error-asterisk"
-                  },
-                  [_vm._v("*")]
-                )
+                _vm.$v.currentPassword.$error
+                  ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+                  : _vm._e()
               ]
             ),
             _vm._v(" "),
@@ -46887,23 +46970,10 @@ var render = function() {
               "div",
               { staticClass: "offset-md-6 col-md-6 field-error-message" },
               [
-                _c(
-                  "span",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value:
-                          _vm.$v.currentPassword.$error &&
-                          !_vm.$v.currentPassword.currentPasswordRequired,
-                        expression:
-                          "$v.currentPassword.$error && !$v.currentPassword.currentPasswordRequired"
-                      }
-                    ]
-                  },
-                  [_vm._v("Current password is required.")]
-                )
+                _vm.$v.currentPassword.$error &&
+                !_vm.$v.currentPassword.currentPasswordRequired
+                  ? _c("span", [_vm._v("Current password is required.")])
+                  : _vm._e()
               ]
             )
           ]
@@ -46918,21 +46988,9 @@ var render = function() {
             },
             [
               _vm._v("\n                New Password "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.$v.newPassword.$error,
-                      expression: "$v.newPassword.$error"
-                    }
-                  ],
-                  staticClass: "error-asterisk"
-                },
-                [_vm._v("*")]
-              )
+              _vm.$v.newPassword.$error
+                ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -46965,23 +47023,9 @@ var render = function() {
             "div",
             { staticClass: "offset-md-6 col-md-6 field-error-message" },
             [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.$v.newPassword.$error &&
-                        !_vm.$v.newPassword.required,
-                      expression:
-                        "$v.newPassword.$error && !$v.newPassword.required"
-                    }
-                  ]
-                },
-                [_vm._v("New password is required.")]
-              )
+              _vm.$v.newPassword.$error && !_vm.$v.newPassword.required
+                ? _c("span", [_vm._v("New password is required.")])
+                : _vm._e()
             ]
           )
         ]),
@@ -46995,21 +47039,9 @@ var render = function() {
             },
             [
               _vm._v("\n                Confirm New Password  "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.$v.newPasswordConf.$error,
-                      expression: "$v.newPasswordConf.$error"
-                    }
-                  ],
-                  staticClass: "error-asterisk"
-                },
-                [_vm._v("*")]
-              )
+              _vm.$v.newPasswordConf.$error
+                ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
@@ -47042,42 +47074,14 @@ var render = function() {
             "div",
             { staticClass: "offset-md-6 col-md-6 field-error-message" },
             [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.$v.newPasswordConf.$error &&
-                        !_vm.$v.newPasswordConf.required,
-                      expression:
-                        "$v.newPasswordConf.$error && !$v.newPasswordConf.required"
-                    }
-                  ]
-                },
-                [_vm._v("New password confirmation is required.")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.$v.newPasswordConf.$error &&
-                        _vm.$v.newPasswordConf.required &&
-                        !_vm.$v.newPasswordConf.sameAsPassword,
-                      expression:
-                        "$v.newPasswordConf.$error && $v.newPasswordConf.required && !$v.newPasswordConf.sameAsPassword"
-                    }
-                  ]
-                },
-                [_vm._v("Confirmation password does not match new password.")]
-              )
+              _vm.$v.newPasswordConf.$error && !_vm.$v.newPasswordConf.required
+                ? _c("span", [_vm._v("New password confirmation is required.")])
+                : _vm.$v.newPasswordConf.$error &&
+                  !_vm.$v.newPasswordConf.sameAsPassword
+                ? _c("span", [
+                    _vm._v("Confirmation password does not match new password.")
+                  ])
+                : _vm._e()
             ]
           )
         ]),
@@ -47195,30 +47199,18 @@ var render = function() {
           _c(
             "label",
             {
-              staticClass: "col-md-4 col-lg-2 col-form-label",
+              staticClass: "col-lg-3 col-xl-2 col-form-label",
               attrs: { for: "txtFirstName" }
             },
             [
               _vm._v("\n                First Name\n                "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.$v.firstName.$error,
-                      expression: "$v.firstName.$error"
-                    }
-                  ],
-                  staticClass: "error-asterisk"
-                },
-                [_vm._v("*")]
-              )
+              _vm.$v.firstName.$error
+                ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+          _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
             _c("input", {
               directives: [
                 {
@@ -47247,25 +47239,12 @@ var render = function() {
             "div",
             {
               staticClass:
-                "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+                "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
             },
             [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.$v.firstName.$error && !_vm.$v.firstName.required,
-                      expression:
-                        "$v.firstName.$error && !$v.firstName.required"
-                    }
-                  ]
-                },
-                [_vm._v("First name is required.")]
-              )
+              _vm.$v.firstName.$error && !_vm.$v.firstName.required
+                ? _c("span", [_vm._v("First name is required.")])
+                : _vm._e()
             ]
           )
         ]),
@@ -47274,13 +47253,13 @@ var render = function() {
           _c(
             "label",
             {
-              staticClass: "col-md-4 col-lg-2 col-form-label",
+              staticClass: "col-lg-3 col-xl-2 col-form-label",
               attrs: { for: "txtMiddleName" }
             },
             [_vm._v("\n                Middle Name\n            ")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+          _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
             _c("input", {
               directives: [
                 {
@@ -47309,30 +47288,18 @@ var render = function() {
           _c(
             "label",
             {
-              staticClass: "col-md-4 col-lg-2 col-form-label",
+              staticClass: "col-lg-3 col-xl-2 col-form-label",
               attrs: { for: "txtLastName" }
             },
             [
               _vm._v("\n                Last Name\n                "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.$v.lastName.$error,
-                      expression: "$v.lastName.$error"
-                    }
-                  ],
-                  staticClass: "error-asterisk"
-                },
-                [_vm._v("*")]
-              )
+              _vm.$v.lastName.$error
+                ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+          _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
             _c("input", {
               directives: [
                 {
@@ -47361,24 +47328,12 @@ var render = function() {
             "div",
             {
               staticClass:
-                "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+                "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
             },
             [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.$v.lastName.$error && !_vm.$v.lastName.required,
-                      expression: "$v.lastName.$error && !$v.lastName.required"
-                    }
-                  ]
-                },
-                [_vm._v("Last name is required.")]
-              )
+              _vm.$v.lastName.$error && !_vm.$v.lastName.required
+                ? _c("span", [_vm._v("Last name is required.")])
+                : _vm._e()
             ]
           )
         ]),
@@ -47387,30 +47342,18 @@ var render = function() {
           _c(
             "label",
             {
-              staticClass: "col-md-4 col-lg-2 col-form-label",
+              staticClass: "col-lg-3 col-xl-2 col-form-label",
               attrs: { for: "txtEmail" }
             },
             [
               _vm._v("\n                Email\n                "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.$v.email.$error,
-                      expression: "$v.email.$error"
-                    }
-                  ],
-                  staticClass: "error-asterisk"
-                },
-                [_vm._v("*")]
-              )
+              _vm.$v.email.$error
+                ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+                : _vm._e()
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-8 col-lg-10" }, [
+          _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
             _c("input", {
               directives: [
                 {
@@ -47439,36 +47382,106 @@ var render = function() {
             "div",
             {
               staticClass:
-                "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+                "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
             },
             [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.$v.email.$error && !_vm.$v.email.required,
-                      expression: "$v.email.$error && !$v.email.required"
-                    }
-                  ]
-                },
-                [_vm._v("Email is required.")]
-              )
+              _vm.$v.email.$error && !_vm.$v.email.required
+                ? _c("span", [_vm._v("Email is required.")])
+                : _vm._e()
             ]
           )
         ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.userName != "admin",
+                expression: "userName != 'admin'"
+              }
+            ],
+            staticClass: "form-group row"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10" },
+              [
+                _c("div", { staticClass: "form-check" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.useEmailAsUserName,
+                        expression: "useEmailAsUserName"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "checkbox",
+                      id: "chkuseEmailAsUserName",
+                      name: "chkuseEmailAsUserName"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.useEmailAsUserName)
+                        ? _vm._i(_vm.useEmailAsUserName, null) > -1
+                        : _vm.useEmailAsUserName
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.useEmailAsUserName,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              (_vm.useEmailAsUserName = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.useEmailAsUserName = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.useEmailAsUserName = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "chkuseEmailAsUserName" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Use email address as username.\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
           _c(
             "label",
             {
-              staticClass: "col-md-4 col-lg-2 col-form-label",
+              staticClass: "col-lg-3 col-xl-2 col-form-label",
               attrs: { for: "txtUsername" }
             },
             [
-              _vm._v("\n                Username\n                "),
+              _vm._v("\n                Username "),
               _c(
                 "span",
                 {
@@ -47487,60 +47500,160 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-8 col-lg-10" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.userName,
-                  expression: "userName"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "invalid-field": _vm.$v.userName.$error },
-              attrs: {
-                type: "text",
-                name: "txtUserName",
-                readonly: _vm.userName == "admin"
-              },
-              domProps: { value: _vm.userName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _c("div", { staticClass: "col-lg-9 col-xl-10" }, [
+            _c("div", { staticClass: "input-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.userName,
+                    expression: "userName"
                   }
-                  _vm.userName = $event.target.value
+                ],
+                staticClass: "form-control",
+                class: { "invalid-field": _vm.$v.userName.$error },
+                attrs: {
+                  type: "text",
+                  name: "txtUserName",
+                  disabled: _vm.userName == "admin" || _vm.useEmailAsUserName
+                },
+                domProps: { value: _vm.userName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.userName = $event.target.value
+                  }
                 }
-              }
-            })
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c("span", { staticClass: "input-group-text" }, [
+                  !_vm.$v.userName.required
+                    ? _c("span", [_c("i", { staticClass: "fas fa-cog" })])
+                    : _vm.$v.$pending
+                    ? _c("span", [
+                        _c("i", { staticClass: "fas fa-cog fa-spin" })
+                      ])
+                    : !_vm.$v.userName.isUserNameAvailable
+                    ? _c("span", { staticStyle: { color: "red" } }, [
+                        _c("i", { staticClass: "fas fa-times-circle" })
+                      ])
+                    : _c("span", { staticStyle: { color: "green" } }, [
+                        _c("i", { staticClass: "fas fa-check-circle" })
+                      ])
+                ])
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c(
             "div",
             {
-              staticClass:
-                "offset-md-4 offset-lg-2 col-md-8 col-lg-10 field-error-message"
+              staticClass: "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10",
+              staticStyle: { height: "15px" }
             },
             [
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value:
-                        _vm.$v.userName.$error && !_vm.$v.userName.required,
-                      expression: "$v.userName.$error && !$v.userName.required"
-                    }
-                  ]
-                },
-                [_vm._v("Username is required.")]
-              )
+              _vm.$v.userName.$error && !_vm.$v.userName.required
+                ? _c("span", { staticClass: "field-error-message" }, [
+                    _vm._v("Username is required.")
+                  ])
+                : !_vm.$v.$pending && !_vm.$v.userName.isUserNameAvailable
+                ? _c("span", { staticClass: "field-error-message" }, [
+                    _vm._v("Username is unavailable.")
+                  ])
+                : !_vm.$v.$pending &&
+                  _vm.$v.userName.required &&
+                  _vm.$v.userName.isUserNameAvailable
+                ? _c("span", { staticClass: "field-valid-message" }, [
+                    _vm._v("Username is available.")
+                  ])
+                : _vm._e()
             ]
           )
         ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.enableChangeAdmin,
+                expression: "enableChangeAdmin"
+              }
+            ],
+            staticClass: "form-group row"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10" },
+              [
+                _c("div", { staticClass: "form-check" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.isAdmin,
+                        expression: "isAdmin"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "checkbox",
+                      id: "chkIsAdmin",
+                      name: "chkIsAdmin"
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.isAdmin)
+                        ? _vm._i(_vm.isAdmin, null) > -1
+                        : _vm.isAdmin
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.isAdmin,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.isAdmin = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.isAdmin = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.isAdmin = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "chkIsAdmin" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        This user is an admin.\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
           _c("div", { staticClass: "col-12 text-center" }, [
@@ -47589,21 +47702,9 @@ var render = function() {
         },
         [
           _vm._v("\n            First Name "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.firstName.$error,
-                  expression: "$v.firstName.$error"
-                }
-              ],
-              staticClass: "error-asterisk"
-            },
-            [_vm._v("*")]
-          )
+          _vm.$v.firstName.$error
+            ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -47639,20 +47740,9 @@ var render = function() {
             "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.firstName.$error && !_vm.$v.firstName.required,
-                  expression: "$v.firstName.$error && !$v.firstName.required"
-                }
-              ]
-            },
-            [_vm._v("First name is required.")]
-          )
+          _vm.$v.firstName.$error && !_vm.$v.firstName.required
+            ? _c("span", [_vm._v("First name is required.")])
+            : _vm._e()
         ]
       )
     ]),
@@ -47701,21 +47791,9 @@ var render = function() {
         },
         [
           _vm._v("\n            Last Name "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.lastName.$error,
-                  expression: "$v.lastName.$error"
-                }
-              ],
-              staticClass: "error-asterisk"
-            },
-            [_vm._v("*")]
-          )
+          _vm.$v.lastName.$error
+            ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -47751,20 +47829,9 @@ var render = function() {
             "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.lastName.$error && !_vm.$v.lastName.required,
-                  expression: "$v.lastName.$error && !$v.lastName.required"
-                }
-              ]
-            },
-            [_vm._v("Last name is required.")]
-          )
+          _vm.$v.lastName.$error && !_vm.$v.lastName.required
+            ? _c("span", [_vm._v("Last name is required.")])
+            : _vm._e()
         ]
       )
     ]),
@@ -47778,21 +47845,9 @@ var render = function() {
         },
         [
           _vm._v("\n            Email "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.email.$error,
-                  expression: "$v.email.$error"
-                }
-              ],
-              staticClass: "error-asterisk"
-            },
-            [_vm._v("*")]
-          )
+          _vm.$v.email.$error
+            ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -47828,20 +47883,9 @@ var render = function() {
             "offset-lg-4 offset-xl-2 col-lg-8 col-xl-10 field-error-message"
         },
         [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.email.$error && !_vm.$v.email.required,
-                  expression: "$v.email.$error && !$v.email.required"
-                }
-              ]
-            },
-            [_vm._v("Email is required.")]
-          )
+          _vm.$v.email.$error && !_vm.$v.email.required
+            ? _c("span", [_vm._v("Email is required.")])
+            : _vm._e()
         ]
       )
     ]),
@@ -47857,39 +47901,39 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.useEmailAsUsername,
-                  expression: "useEmailAsUsername"
+                  value: _vm.useEmailAsUserName,
+                  expression: "useEmailAsUserName"
                 }
               ],
               staticClass: "form-check-input",
               attrs: {
                 type: "checkbox",
-                id: "chkUseEmailAsUsername",
-                name: "chkUseEmailAsUsername"
+                id: "chkuseEmailAsUserName",
+                name: "chkuseEmailAsUserName"
               },
               domProps: {
-                checked: Array.isArray(_vm.useEmailAsUsername)
-                  ? _vm._i(_vm.useEmailAsUsername, null) > -1
-                  : _vm.useEmailAsUsername
+                checked: Array.isArray(_vm.useEmailAsUserName)
+                  ? _vm._i(_vm.useEmailAsUserName, null) > -1
+                  : _vm.useEmailAsUserName
               },
               on: {
                 change: function($event) {
-                  var $$a = _vm.useEmailAsUsername,
+                  var $$a = _vm.useEmailAsUserName,
                     $$el = $event.target,
                     $$c = $$el.checked ? true : false
                   if (Array.isArray($$a)) {
                     var $$v = null,
                       $$i = _vm._i($$a, $$v)
                     if ($$el.checked) {
-                      $$i < 0 && (_vm.useEmailAsUsername = $$a.concat([$$v]))
+                      $$i < 0 && (_vm.useEmailAsUserName = $$a.concat([$$v]))
                     } else {
                       $$i > -1 &&
-                        (_vm.useEmailAsUsername = $$a
+                        (_vm.useEmailAsUserName = $$a
                           .slice(0, $$i)
                           .concat($$a.slice($$i + 1)))
                     }
                   } else {
-                    _vm.useEmailAsUsername = $$c
+                    _vm.useEmailAsUserName = $$c
                   }
                 }
               }
@@ -47899,7 +47943,7 @@ var render = function() {
               "label",
               {
                 staticClass: "form-check-label",
-                attrs: { for: "chkUseEmailAsUsername" }
+                attrs: { for: "chkuseEmailAsUserName" }
               },
               [
                 _vm._v(
@@ -47921,21 +47965,9 @@ var render = function() {
         },
         [
           _vm._v("\n            Username "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.userName.$error,
-                  expression: "$v.userName.$error"
-                }
-              ],
-              staticClass: "error-asterisk"
-            },
-            [_vm._v("*")]
-          )
+          _vm.$v.userName.$error
+            ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -47955,7 +47987,7 @@ var render = function() {
             attrs: {
               type: "text",
               name: "txtUserName",
-              readonly: _vm.useEmailAsUsername
+              readonly: _vm.useEmailAsUserName
             },
             domProps: { value: _vm.userName },
             on: {
@@ -48021,21 +48053,9 @@ var render = function() {
         },
         [
           _vm._v("\n            Password "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.password.$error,
-                  expression: "$v.password.$error"
-                }
-              ],
-              staticClass: "error-asterisk"
-            },
-            [_vm._v("*")]
-          )
+          _vm.$v.password.$error
+            ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -48071,20 +48091,9 @@ var render = function() {
             "offset-lg-3 offset-xl-2 col-lg-9 col-xl-10 field-error-message"
         },
         [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.password.$error && !_vm.$v.password.required,
-                  expression: "$v.password.$error && !$v.password.required"
-                }
-              ]
-            },
-            [_vm._v("Password is required.")]
-          )
+          _vm.$v.password.$error && !_vm.$v.password.required
+            ? _c("span", [_vm._v("Password is required.")])
+            : _vm._e()
         ]
       )
     ]),
@@ -48098,21 +48107,9 @@ var render = function() {
         },
         [
           _vm._v("\n            Confirm Password  "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$v.passwordConf.$error,
-                  expression: "$v.passwordConf.$error"
-                }
-              ],
-              staticClass: "error-asterisk"
-            },
-            [_vm._v("*")]
-          )
+          _vm.$v.passwordConf.$error
+            ? _c("span", { staticClass: "error-asterisk" }, [_vm._v("*")])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -65656,7 +65653,7 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      aUser.userName != "admin"
+                      !_vm.isDefaultAdminOrLoggedInUser(aUser)
                         ? _c(
                             "div",
                             { staticClass: "col-12 text-center my-2" },

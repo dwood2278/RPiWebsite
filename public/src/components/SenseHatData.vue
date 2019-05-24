@@ -53,21 +53,24 @@
                 serverRequestError: ''
             }
         },
-        created: function () {
-            var vueObject = this;
+        created: async function () {
+
             this.isLoading = true;
             axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
-            axios
-            .get('/sensehatapi/getsensehatdata')
-            .then(function(response) {
-                vueObject.senseHatData = response.data;
-                vueObject.isLoading = false;
-            })
-            .catch(function (error) {
-                vueObject.serverRequestError = error;
-                console.log(error);
-                vueObject.isLoading = false;
-            });
+
+            try {
+
+                let res = await axios
+                .get('/sensehatapi/getsensehatdata');
+
+                this.senseHatData = res.data;
+                this.isLoading = false;
+
+            } catch(err) {
+                this.serverRequestError = err;
+                console.log(err);
+                this.isLoading = false;
+            }
         },
         methods: {
             celsiusToFahrenheit: function (celsiusTemp) {

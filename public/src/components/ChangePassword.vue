@@ -17,36 +17,36 @@
         <div v-show="!successfullyChangedPassword || !showSuccessMessage">
             <div v-show="requireCurrentPassword" class="form-group row">
                 <label for="txtCurrentPassword" class="col-md-6 col-form-label">
-                    Current Password <span v-show="$v.currentPassword.$error" class="error-asterisk">*</span>
+                    Current Password <span v-if="$v.currentPassword.$error" class="error-asterisk">*</span>
                 </label>
                 <div class="col-md-6">
                     <input type="password" class="form-control" v-bind:class="{ 'invalid-field': $v.currentPassword.$error }" name="txtCurrentPassword" v-model.lazy="currentPassword">
                 </div>
                 <div class="offset-md-6 col-md-6 field-error-message">
-                    <span v-show="$v.currentPassword.$error && !$v.currentPassword.currentPasswordRequired">Current password is required.</span>
+                    <span v-if="$v.currentPassword.$error && !$v.currentPassword.currentPasswordRequired">Current password is required.</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="txtNewPassword" class="col-md-6 col-form-label">
-                    New Password <span v-show="$v.newPassword.$error" class="error-asterisk">*</span>
+                    New Password <span v-if="$v.newPassword.$error" class="error-asterisk">*</span>
                 </label>
                 <div class="col-md-6">
                     <input type="password" class="form-control" v-bind:class="{ 'invalid-field': $v.newPassword.$error }" name="txtNewPassword" v-model="newPassword">
                 </div>
                 <div class="offset-md-6 col-md-6 field-error-message">
-                    <span v-show="$v.newPassword.$error && !$v.newPassword.required">New password is required.</span>
+                    <span v-if="$v.newPassword.$error && !$v.newPassword.required">New password is required.</span>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="txtNewPasswordConf" class="col-md-6 col-form-label">
-                    Confirm New Password  <span v-show="$v.newPasswordConf.$error" class="error-asterisk">*</span>
+                    Confirm New Password  <span v-if="$v.newPasswordConf.$error" class="error-asterisk">*</span>
                 </label>
                 <div class="col-md-6">
                     <input type="password" class="form-control" v-bind:class="{ 'invalid-field': $v.newPasswordConf.$error }" name="txtNewPasswordConf" v-model="newPasswordConf">
                 </div>
                 <div class="offset-md-6 col-md-6 field-error-message">
-                    <span v-show="$v.newPasswordConf.$error && !$v.newPasswordConf.required">New password confirmation is required.</span>
-                    <span v-show="$v.newPasswordConf.$error && $v.newPasswordConf.required && !$v.newPasswordConf.sameAsPassword">Confirmation password does not match new password.</span>
+                    <span v-if="$v.newPasswordConf.$error && !$v.newPasswordConf.required">New password confirmation is required.</span>
+                    <span v-else-if="$v.newPasswordConf.$error && !$v.newPasswordConf.sameAsPassword">Confirmation password does not match new password.</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -149,9 +149,9 @@
                         } else {
                             this.errorMessage = changePassRes.data.errorMessage;
                         }
-                    }
-                    catch(err) {
+                    } catch(err) {
                         console.log(err);
+                        this.errorMessage = err;
                     }
                 }
             },

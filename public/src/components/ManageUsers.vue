@@ -39,7 +39,7 @@
                             <div class="col-12 text-center my-2">
                                 <b-button variant="primary" v-b-modal="'modal-change-password-' + aUser.id" class="btn-block"><i class="fas fa-key"></i> Change Password</b-button>
                             </div>
-                            <div v-if="aUser.userName != 'admin'" class="col-12 text-center my-2">
+                            <div v-if="!isDefaultAdminOrLoggedInUser(aUser)" class="col-12 text-center my-2">
                                 <b-button variant="danger" v-b-modal="'modal-delete-user-' + aUser.id" class="btn-block"><i class="fas fa-trash"></i> Delete</b-button>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <edit-user
                         :user = "aUser"
                         :show-success-message = "false"
-                        v-on:user-updated = "onUserUpdated"
+                        @user-updated = "onUserUpdated"
                     ></edit-user>
                 </b-modal>
                 <b-modal :id="'modal-change-password-' + aUser.id" :title="'Change Password for ' + aUser.firstName + ' ' + aUser.lastName" hide-footer>
@@ -57,7 +57,7 @@
                         :user = "aUser"
                         :show-success-message = "false"
                         :require-current-password = "loggedInUser.id == aUser.id"
-                        v-on:password-changed = "onPasswordChanged"
+                        @password-changed = "onPasswordChanged"
                     ></change-password>
                 </b-modal>
                 <b-modal
@@ -116,19 +116,21 @@
             EditUser,
             ChangePassword
         },
-        created () {
+        async created () {
 
-            //Fetch the user list.            
-            let vueObj = this;
-            axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
-            axios
-            .get('/userapi/users')
-            .then(function(res) {
-                vueObj.userList = res.data.userList;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            try {
+
+                //Fetch the user list.            
+                axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+            
+                let res = await axios
+                .get('/userapi/users');
+
+                this.userList = res.data.userList;
+
+            } catch(err) {
+                console.log(err);
+            }
 
         },
         watch: {
@@ -170,6 +172,7 @@
                 aUser.lastName = updatedUser.lastName;
                 aUser.email = updatedUser.email;
                 aUser.userName = updatedUser.userName;
+                aUser.isAdmin = updatedUser.isAdmin;
 
             },
             onPasswordChanged: function(updatedUser) {
@@ -190,11 +193,15 @@
                         return user.id != userToDelete.id;
                     });
 
-                 }
+                }
                 catch(err) {
                     console.log(err);
                 }
 
+            },
+            isDefaultAdminOrLoggedInUser: function (aUser) {
+                return aUser.userName == 'admin' ||
+                       aUser.id == this.loggedInUser.id;
             }
         }
     };
