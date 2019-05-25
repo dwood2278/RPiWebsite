@@ -1,4 +1,3 @@
-
 var senseHat = require ('../raspberry_pi/senseHat.js');
 
 // Return SenseHatData as JSON

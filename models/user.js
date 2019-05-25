@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 
+const config = require('../config');
+
 module.exports = (sequelize, DataTypes) => {  
     const User = sequelize.define('user', {
         id: {
@@ -35,6 +37,21 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             required: true
         }
+    },{
+        hooks: {
+            beforeCreate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            },
+            beforeBulkCreate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            },
+            beforeUpdate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            },
+            beforeBulkUpdate: (user, options) => {
+                hashPasswordIfChanged(user, options);
+            }
+        }
     });
 
     //Authenticate username and password.
@@ -62,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
 
     //Hash a password.
     User.hashPassword = function (password) {
-        return bcrypt.hashSync(password, 10);
+        return bcrypt.hashSync(password, config.bcrypt.saltRounds);
     }
 
     //Verify the password.
@@ -82,3 +99,10 @@ module.exports = (sequelize, DataTypes) => {
 
     return User;
 };
+
+//Helper function to hash password if changed
+function hashPasswordIfChanged(user, options) {
+    if (user.password && user.changed('password')) {
+        user.password = bcrypt.hashSync(user.password, config.bcrypt.saltRounds);
+    }
+}

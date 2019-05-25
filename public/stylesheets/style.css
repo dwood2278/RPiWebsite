@@ -4,8 +4,7 @@ html {
 }
   
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 80px !important;
 }
 
 .footer {
@@ -13,9 +12,8 @@ body {
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    /* Set the fixed height of the footer here */
     height: 60px;
-    line-height: 60px; /* Vertically center the text there */
+    line-height: 60px;
 }
 
 a {
@@ -27,8 +25,18 @@ a {
 [v-cloak]::before { content: "loading…" }
 
 /* Error styles */
-.error-text {
+.error-asterisk {
     color: red;
+}
+
+.field-error-message {
+    color: red;
+    font-size: 0.75em;
+}
+
+.field-valid-message {
+    color: green;
+    font-size: 0.75em;
 }
 
 .invalid-field {
