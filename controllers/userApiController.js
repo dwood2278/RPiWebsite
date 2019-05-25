@@ -40,6 +40,9 @@ exports.getToken = async function (req, res, next) {
         }
     } catch(err) {
         console.log(err);
+        res.json({
+            errorMessage: err
+        });
     } 
 }
 
@@ -64,6 +67,9 @@ exports.getAllUsers = async function (req, res, next) {
 
     } catch(err) {
         console.log(err);
+        res.json({
+            errorMessage: err
+        });
     } 
 
 }
@@ -113,8 +119,7 @@ exports.isUserNameAvaliable = async function (req, res, next) {
             });
         }
 
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err);
         res.json({
             errorMessage: err
@@ -149,8 +154,7 @@ exports.isUserNameAvaliableExcludeId = async function (req, res, next) {
             });
         }
 
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err);
         res.json({
             errorMessage: err
@@ -158,26 +162,29 @@ exports.isUserNameAvaliableExcludeId = async function (req, res, next) {
     }
 }
 
-exports.verifyPassword = function (req, res, next) {
+exports.verifyPassword = async function (req, res, next) {
 
     //Get the user ID
     var userId = req.params.userId;
 
-    //Get the user
-    User.findByPk(userId).then(user => {
-         //Verify the current password
-         user.verifyPassword(req.body.password).then(isPasswordVerified => {
-            res.json({
-                isPasswordVerified: isPasswordVerified
-            });
+    try {
+
+        //Get the user
+        let user = await User.findByPk(userId);
+
+        //Verify the current password
+        let isPasswordVerified = await user.verifyPassword(req.body.password);
+
+        res.json({
+            isPasswordVerified: isPasswordVerified
         });
-    })
-    .catch(function(err) {
+
+    } catch(err) {
         console.log(err);
         res.json({
             errorMessage: err
         });
-    });
+    }
 }
 
 exports.createUser = async function (req, res, next) {
@@ -194,26 +201,27 @@ exports.createUser = async function (req, res, next) {
         });
         newUser.password = '';
         res.json(newUser);
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err);
-        res.json(err);
+        res.json({
+            errorMessage: err
+        });
     }
 
 }
 
-exports.updateUser = function (req, res, next) {
+exports.updateUser = async function (req, res, next) {
 
     //Get the token so we can use it to check user data.
     let token = req.headers['x-access-token'];
 
-    jwt.verify(token, config.apiToken.secret, function(err, decoded) {
+    jwt.verify(token, config.apiToken.secret, async function(err, decoded) {
         if (!err) {
             //Get the user ID
             var userId = req.params.userId;
-
-            //Get the user and update it.
-            User.findByPk(userId).then(user => {
+            try {
+                //Get the user and update it.
+                let user = await User.findByPk(userId);
 
                 //Verify that the user is not trying to alter any properties that they should not.
                 if (user.userName == 'admin' && 
@@ -244,25 +252,20 @@ exports.updateUser = function (req, res, next) {
 
                 } else {
                     //All checks passed, update the user
-                    user.update(req.body).then(user => {
-                        user.password = '';
-                        res.json({
-                            user: user
-                        });
-                    })
-                    .catch(function(err) {
-                        res.json({
-                            errorMessage: err
-                        });
+                    await user.update(req.body)
+                    user.password = '';
+                    res.json({
+                        user: user
                     });
                 }
-            })
-            .catch(function(err) {
+            } catch(err) {
+                console.log(err);
                 res.json({
                     errorMessage: err
                 });
-            });
+            }
         } else {
+            console.log(err);
             res.json({
                 errorMessage: err
             });
@@ -291,8 +294,7 @@ exports.deleteUser = async function (req, res, next) {
                 deleted: false
             })
         }
-    }
-    catch(err) {
+    } catch(err) {
         console.log(err);
         res.json({
             errorMessage: err

@@ -19,12 +19,12 @@ router.post('/isusernameavaliable/:userId', user_api_controller.isUserNameAvalia
 router.post('/verifypassword/:userId', user_api_controller.verifyPassword);
 
 //Create a new user
-router.post('/users', user_api_controller.createUser);
+router.post('/users', apiTokenAuth.isAdmin, user_api_controller.createUser);
 
 //Update a user
 router.patch('/users/:userId', apiTokenAuth.isCurrentUserOrAdmin, user_api_controller.updateUser);
 
 //Delete a user
-router.delete('/users/:userId', user_api_controller.deleteUser);
+router.delete('/users/:userId', apiTokenAuth.isAdmin, user_api_controller.deleteUser);
 
 module.exports = router;
