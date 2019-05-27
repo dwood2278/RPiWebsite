@@ -12,6 +12,7 @@
     "bcrypt": "^3.0.6",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.19",
+    "connect-sqlite3": "^0.9.11",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^8.0.0",

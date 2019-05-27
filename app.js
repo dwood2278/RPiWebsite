@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const SQLiteStore = require('connect-sqlite3')(session);
 const logger = require('morgan');
 
 const config = require('./config');
@@ -23,6 +24,10 @@ app.use(cookieParser());
 
 //Set up sessions
 app.use(session({
+    store: new SQLiteStore({
+        db: config.session.sqliteFileName,
+        dir: config.session.sqliteDirectory
+    }),
     secret: config.session.secret,
     resave: false,
     saveUninitialized: false
