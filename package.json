@@ -26,7 +26,7 @@
     "morgan": "~1.9.0",
     "popper.js": "^1.15.0",
     "python-shell": "^1.0.7",
-    "sequelize": "^5.7.6",
+    "sequelize": "^5.15.1",
     "sqlite3": "^4.0.6",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
