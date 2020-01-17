@@ -44,7 +44,7 @@ const development = {
  */
 const production = {
     app: {
-        port: 3000
+        port: 80
     }
 };
 
