@@ -13,7 +13,8 @@ exports.setGlobalResProperties = async function (req, res, next) {
         //Refresh it in session and assign it to the res.locals.
         user.password = '';
         req.session.user = user;
-        res.locals.user = req.session.user;
+        res.locals.user = req.session.user.dataValues;
+        res.locals.firstName = JSON.stringify(req.session.user);
         return next();
         
     } else {
@@ -30,7 +31,7 @@ exports.errorHandler = function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     if (!req.is('json')) {
-        res.render('pages/error', {
+        res.render('error', {
             title: 'Error',
             session: req.session
         });
