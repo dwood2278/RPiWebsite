@@ -1,5 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
+const exphbs = require('express-handlebars');
+const allHbsHelpers = require('handlebars-helpers')();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -15,7 +17,8 @@ const senseHatApiRouter = require('./routes/senseHatApi')
 
 const app = express();
 
-app.set('view engine', 'ejs');
+app.engine('handlebars', exphbs({defaultLayout: 'main', helpers: allHbsHelpers}));
+app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
 app.use(express.json());

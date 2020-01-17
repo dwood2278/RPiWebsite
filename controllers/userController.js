@@ -12,7 +12,7 @@ exports.login = function (req, res, next) {
         //Redirect to home since user is logged in.
         res.redirect('/');
     } else {
-        res.render('pages/login', {
+        res.render('login', {
             title: 'Login',
             session: req.session
         });
@@ -49,7 +49,7 @@ exports.login_post = async function (req, res, next) {
                 res.redirect('/');
             }
         } else {
-            res.render('pages/login', {
+            res.render('login', {
                 title: 'Login',
                 body: req.body,
                 errorMessage: "Invalid username or password."
@@ -79,14 +79,14 @@ exports.logout = function (req, res, next) {
 
 //Password change page.
 exports.changePassword = function (req, res, next) {
-    res.render('pages/changePassword', {
+    res.render('changePassword', {
         title: 'Change Password'
     });
 }
 
 //Edit the user profile
 exports.editUser = function (req, res, next) {
-    res.render('pages/editUser', {
+    res.render('editUser', {
         title: 'Edit User',
     });
 }
@@ -94,7 +94,7 @@ exports.editUser = function (req, res, next) {
 //Manage Users page
 exports.manageUsers = function (req, res, next) {
         
-    res.render('pages/manageUsers', {
+    res.render('manageUsers', {
         title: 'Manage Users'
     });
 
