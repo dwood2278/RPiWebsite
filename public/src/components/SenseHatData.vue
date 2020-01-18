@@ -1,6 +1,6 @@
 <template>
     <div class="card mx-auto">
-        <h5 class="card-header">Sense Hat Data</h5>
+        <h5 class="card-header">Sense Hat Data <i v-if="isRefreshing" class="fas fa-circle-notch fa-spin"></i></h5>
         <div class="card-body">
             <div class="card-text">
                 <div class="row" v-if="isLoading">
@@ -18,7 +18,8 @@
                         Humidity: {{ senseHatData.humidity.toFixed(1) }}%<br/>
                         Pitch: {{ senseHatData.pitch.toFixed(1) }}<br/>
                         Roll: {{ senseHatData.roll.toFixed(1) }}<br/>
-                        Yaw: {{ senseHatData.yaw.toFixed(1) }}
+                        Yaw: {{ senseHatData.yaw.toFixed(1) }}<br/><br/>
+                        Last Updated at {{ lastUpdatedDate.toLocaleDateString() + " " + lastUpdatedDate.toLocaleTimeString()}}
                     </div>
                 </div>
                 <div class="row" v-if="serverRequestError">
@@ -49,7 +50,10 @@
                     roll: 0,
                     yaw: 0
                 },
+                lastUpdatedDate: new Date(),
                 isLoading: false,
+                isRefreshing: false,
+                refreshInterval: 30000,
                 serverRequestError: ''
             }
         },
@@ -64,7 +68,11 @@
                 .get('/sensehatapi/getsensehatdata');
 
                 this.senseHatData = res.data;
+                this.lastUpdatedDate = new Date();
                 this.isLoading = false;
+
+                //Set up auto refresh
+                setInterval(this.refreshSenseHatData, this.refreshInterval);
 
             } catch(err) {
                 this.serverRequestError = err;
@@ -73,6 +81,27 @@
             }
         },
         methods: {
+            refreshSenseHatData: async function () {
+
+                this.isRefreshing = true;
+                axios.defaults.headers.common['x-access-token'] = $cookies.get('RPiWebsite_token');
+
+                try {
+
+                    let res = await axios
+                    .get('/sensehatapi/getsensehatdata');
+
+                    this.senseHatData = res.data;
+                    this.lastUpdatedDate = new Date();
+                    this.isRefreshing = false;
+
+                } catch(err) {
+                    this.serverRequestError = err;
+                    console.log(err);
+                    this.isRefreshing = false;
+                }
+
+            },
             celsiusToFahrenheit: function (celsiusTemp) {
                 return (celsiusTemp * 9/5) + 32;
             },
