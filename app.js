@@ -13,11 +13,12 @@ const appMiddleware = require('./middleware/appMiddleware');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/userRouter');
 const userApiRouter = require('./routes/userApi');
-const senseHatApiRouter = require('./routes/senseHatApi')
+const senseHatApiRouter = require('./routes/senseHatApi');
+const customHbsHelpers = require('./customHbsHelpers');
 
 const app = express();
 
-app.engine('handlebars', exphbs({defaultLayout: 'main', helpers: allHbsHelpers}));
+app.engine('handlebars', exphbs({defaultLayout: 'main', helpers: {...allHbsHelpers, ...customHbsHelpers}}));
 app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
