@@ -1,3 +1,7 @@
+const fs = require('fs');
+const path = require('path');
+const { promisify } = require('util');
+const readdir = promisify(fs.readdir);
 const config = require('../config');
 const { User } = require('../initOrmModels');
 
@@ -13,13 +17,13 @@ exports.setGlobalResProperties = async function (req, res, next) {
         //Refresh it in session and assign it to the res.locals.
         user.password = '';
         req.session.user = user;
-        res.locals.user = req.session.user.dataValues;
-        res.locals.firstName = JSON.stringify(req.session.user);
-        return next();
-        
-    } else {
-        return next();
+        res.locals.user = req.session.user.dataValues;      
     }
+
+    // Loop through all the files in the build folder
+    res.locals.builtJsFiles = await readdir(path.join(__dirname, '../public/build'));
+        
+    return next();
 };
 
 //Handle errors

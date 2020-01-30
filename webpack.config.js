@@ -1,7 +1,10 @@
+const { VueLoaderPlugin } = require('vue-loader');
+
 module.exports = {
     entry: './public/src/main.js',
     output: {
-      filename: './public/build/bundle.js'
+      path: __dirname + '/public/build',
+      filename: '[name]-bundle.js'
     },
     resolve: {
       alias: {
@@ -37,5 +40,31 @@ module.exports = {
           }
         }
       ]
+    },
+    plugins: [
+      // vue-loader no longer works without this plugin.
+      // https://github.com/symfony/webpack-encore/issues/311
+      new VueLoaderPlugin()
+    ],
+    optimization: {
+      runtimeChunk: 'single',
+      splitChunks: {
+        chunks: 'all',
+        maxInitialRequests: Infinity,
+        minSize: 0,
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name(module) {
+              // get the name. E.g. node_modules/packageName/not/this/part.js
+              // or node_modules/packageName
+              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+  
+              // npm package names are URL-safe, but some servers don't like @ symbols
+              return `npm.${packageName.replace('@', '')}`;
+            }
+          }
+        }
+      }
     }
   }
