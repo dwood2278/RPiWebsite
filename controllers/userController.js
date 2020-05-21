@@ -38,8 +38,8 @@ exports.login_post = async function (req, res, next) {
             };
             let token = jwt.sign(payload, config.apiToken.secret, config.apiToken.options);
 
-            res.cookie('RPiWebsite_token', token, {maxAge: 86400000});
-            res.cookie('RPiWebsite_user', JSON.stringify(user), {maxAge: 86400000});
+            res.cookie('RPiWebsite_token', token);
+            res.cookie('RPiWebsite_user', JSON.stringify(user));
 
             if (req.session.loginRedirectUrl) {
                 var redirectUrl = req.session.loginRedirectUrl;
